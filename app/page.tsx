@@ -27,10 +27,8 @@ type PricingCardProps = {
 	title: string;
 	price: string;
 	description: string;
-	features: string;
-	icon: ForwardRefExoticComponent<
-		Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-	>;
+	features: string[];
+	icon: ReactNode;
 };
 
 export default function Home() {
