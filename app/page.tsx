@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { PricingCard } from "./components/pricing-card";
 import { ChevronLeft, ChevronRight, Dumbbell, Bike } from "lucide-react";
 
 export default function Home() {
@@ -179,7 +178,6 @@ export default function Home() {
 								"Free parking",
 							]}
 							icon={<Bike className="w-6 h-6" />}
-							isPopular
 						/>
 						<PricingCard
 							title="Ultimate Membership"
@@ -217,7 +215,7 @@ function InstructorCard({ name, location, image }) {
 	);
 }
 
-function PricingCard({ title, price, description, features, icon, isPopular }) {
+function PricingCard({ title, price, description, features, icon }: any) {
 	return (
 		<div
 			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
