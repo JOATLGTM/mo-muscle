@@ -1,101 +1,163 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	return (
+		<div className="bg-black text-white">
+			{/* Hero Section */}
+			<section className="relative min-h-screen pt-24">
+				<Image
+					src="/deadlift.jpg"
+					alt="Deadlift Exercise"
+					fill
+					className="object-cover brightness-50"
+					priority
+				/>
+				<div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-24">
+					<p className="text-sm tracking-wider mb-4">
+						THE MIND IS PRIMARY
+					</p>
+					<h1 className="text-6xl font-bold mb-4">MO MUSCLES</h1>
+					<p className="text-xl mb-8">
+						WELCOME TO THE OFFICIAL SITE OF MO MUSCLES
+					</p>
+					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white px-8">
+						TRAIN WITH US
+					</Button>
+				</div>
+			</section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+			{/* Train With Gym Mo Section */}
+			<section className="py-24 text-center bg-white text-black">
+				<div className="container mx-auto px-4">
+					<p className="text-sm tracking-wider mb-8 text-gray-600">
+						FIND THE PROBLEM, FIX THE PROBLEM
+					</p>
+					<h2 className="text-4xl font-bold mb-8">TRAIN WITH MO</h2>
+					<p className="max-w-3xl mx-auto text-gray-700 mb-12">
+						At MoMuscle, we believe in a personalized approach to
+						fitness. Our trainers guide you through each step,
+						ensuring you achieve your physical goals effectively.
+					</p>
+					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+						TRAIN WITH US
+					</Button>
+				</div>
+			</section>
+
+			{/* Seminar Section */}
+			<section className="py-24 bg-black text-white">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 container mx-auto px-4">
+					<div className="relative aspect-square">
+						<Image
+							src="/A94BAB7E-EBBF-4614-867C-2AF564B4C6D2.JPG"
+							alt="Mo Muscle Team"
+							fill
+							className="object-cover"
+						/>
+					</div>
+					<div className="flex flex-col justify-center">
+						<p className="text-sm tracking-wider mb-4">
+							LEARN WITH US
+						</p>
+						<h2 className="text-4xl font-bold mb-6">
+							MO MUSCLE TRAINING SERIES
+						</h2>
+						<p className="text-gray-400 mb-8">
+							Our trainers are dedicated professional who
+							specialize in transforming your fitness journey.
+							With personalized training plans and unwavering
+							support, they help you achieve your goals.
+						</p>
+						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white self-start">
+							LEARN MORE
+						</Button>
+					</div>
+				</div>
+			</section>
+
+			{/* Our Company Section */}
+			<section className="py-24 text-center bg-white text-black">
+				<div className="container mx-auto px-4">
+					<p className="text-sm tracking-wider mb-8 text-gray-600">
+						THE FIRST RULE OF ANY PHYSICAL TRAINING
+					</p>
+					<h2 className="text-4xl font-bold mb-8">THE FORM</h2>
+					<p className="max-w-3xl mx-auto text-gray-700 mb-12">
+						Mo Muscle is a collective of insanely dedicated and hard
+						working people interested in self improvement and elite
+						physical and mental performance. We don't like talking
+						about ourselves, but we'll do our best.
+					</p>
+					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+						LEARN MORE
+					</Button>
+				</div>
+			</section>
+
+			{/* Certified Instructors Section */}
+			<section className="py-24 text-center bg-black">
+				<div className="container mx-auto px-4">
+					<p className="text-sm tracking-wider mb-4">FIND A COACH</p>
+					<h2 className="text-4xl font-bold mb-8">
+						CERTIFIED INSTRUCTORS
+					</h2>
+					<p className="max-w-3xl mx-auto text-gray-400 mb-12">
+						Our Certified instructors have passed through our
+						rigorous process of physical and mental testing to
+						represent Gym Jones wherever they coach. They embrace
+						traditional ideas, and continue to create and implement
+						new ones. They are experienced, creative, inquisitive
+						and experts in their fields. Meet a certified instructor
+						in your area.
+					</p>
+
+					<div className="relative">
+						<div className="flex overflow-x-auto gap-6 pb-6 justify-center">
+							{/* Instructor Cards */}
+							<InstructorCard
+								name="MO NAYAL"
+								location="COLUMBUS OHIO"
+								image="/placeholder.svg?height=400&width=400"
+							/>
+							<InstructorCard
+								name="THE OTHER LADY"
+								location="COLUMBUS OHIO"
+								image="/placeholder.svg?height=400&width=400"
+							/>
+						</div>
+
+						<button className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full">
+							<ChevronLeft className="w-6 h-6" />
+						</button>
+						<button className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full">
+							<ChevronRight className="w-6 h-6" />
+						</button>
+					</div>
+
+					<Button className="mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white">
+						SEE ALL INSTRUCTORS
+					</Button>
+				</div>
+			</section>
+		</div>
+	);
+}
+
+function InstructorCard({ name, location, image }) {
+	return (
+		<div className="min-w-[300px] group cursor-pointer">
+			<div className="relative aspect-square mb-4">
+				<Image
+					src={image}
+					alt={name}
+					fill
+					className="object-cover transition-opacity group-hover:opacity-75"
+				/>
+			</div>
+			<h3 className="font-bold text-lg">{name}</h3>
+			<p className="text-gray-400">{location}</p>
+		</div>
+	);
 }
