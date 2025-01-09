@@ -1,6 +1,37 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Dumbbell, Bike } from "lucide-react";
+import {
+	ChevronLeft,
+	ChevronRight,
+	Dumbbell,
+	Bike,
+	LucideProps,
+} from "lucide-react";
+import {
+	ForwardRefExoticComponent,
+	JSXElementConstructor,
+	Key,
+	ReactElement,
+	ReactNode,
+	ReactPortal,
+	RefAttributes,
+} from "react";
+
+type InstructorCardProps = {
+	name: string;
+	location: string;
+	image: string;
+};
+
+type PricingCardProps = {
+	title: string;
+	price: string;
+	description: string;
+	features: string;
+	icon: ForwardRefExoticComponent<
+		Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+	>;
+};
 
 export default function Home() {
 	return (
@@ -198,7 +229,7 @@ export default function Home() {
 	);
 }
 
-function InstructorCard({ name, location, image }) {
+function InstructorCard({ name, location, image }: InstructorCardProps) {
 	return (
 		<div className="min-w-[300px] group cursor-pointer">
 			<div className="relative aspect-square mb-4">
@@ -215,7 +246,13 @@ function InstructorCard({ name, location, image }) {
 	);
 }
 
-function PricingCard({ title, price, description, features, icon }: any) {
+function PricingCard({
+	title,
+	price,
+	description,
+	features,
+	icon,
+}: PricingCardProps) {
 	return (
 		<div
 			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
@@ -227,9 +264,40 @@ function PricingCard({ title, price, description, features, icon }: any) {
 			<p className="text-3xl font-bold mb-4">${price}/month</p>
 			<p className="text-white mb-4">{description}</p>
 			<ul className="list-disc list-inside">
-				{features.map((feature, index) => (
-					<li key={index}>{feature}</li>
-				))}
+				{features.map(
+					(
+						feature:
+							| string
+							| number
+							| bigint
+							| boolean
+							| ReactElement<
+									unknown,
+									string | JSXElementConstructor<any>
+							  >
+							| Iterable<ReactNode>
+							| ReactPortal
+							| Promise<
+									| string
+									| number
+									| bigint
+									| boolean
+									| ReactPortal
+									| ReactElement<
+											unknown,
+											string | JSXElementConstructor<any>
+									  >
+									| Iterable<ReactNode>
+									| null
+									| undefined
+							  >
+							| null
+							| undefined,
+						index: Key | null | undefined
+					) => (
+						<li key={index}>{feature}</li>
+					)
+				)}
 			</ul>
 			<Button className="mt-4 bg-white text-[#0283C0]">SIGN UP</Button>
 		</div>
