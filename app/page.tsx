@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { PricingCard } from "./components/pricing-card";
+import { ChevronLeft, ChevronRight, Dumbbell, Bike } from "lucide-react";
 
 export default function Home() {
 	return (
@@ -141,6 +142,60 @@ export default function Home() {
 					</Button>
 				</div>
 			</section>
+
+			{/* Pricing Section */}
+			<section className="py-24 bg-white">
+				<div className="container mx-auto px-4">
+					<div className="text-center mb-12">
+						<p className="text-[#DB4D4D] text-sm tracking-wider mb-4">
+							PRICING PLAN
+						</p>
+						<h2 className="text-4xl font-bold text-black">
+							Our Pricing Plan
+						</h2>
+					</div>
+
+					<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+						<PricingCard
+							title="Basic Membership"
+							price="19"
+							description="This category typically offers access to the gym's facilities and equipment."
+							features={[
+								"12 trainings",
+								"Free shower & lockers",
+								"Personal yoga mat",
+								"Free parking",
+							]}
+							icon={<Dumbbell className="w-6 h-6" />}
+						/>
+						<PricingCard
+							title="Standard Membership"
+							price="39"
+							description="This category typically offers access to the gym's facilities and equipment."
+							features={[
+								"12 trainings",
+								"Free shower & lockers",
+								"Personal yoga mat",
+								"Free parking",
+							]}
+							icon={<Bike className="w-6 h-6" />}
+							isPopular
+						/>
+						<PricingCard
+							title="Ultimate Membership"
+							price="69"
+							description="This category typically offers access to the gym's facilities and equipment."
+							features={[
+								"12 trainings",
+								"Free shower & lockers",
+								"Personal yoga mat",
+								"Free parking",
+							]}
+							icon={<Dumbbell className="w-6 h-6" />}
+						/>
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 }
@@ -158,6 +213,27 @@ function InstructorCard({ name, location, image }) {
 			</div>
 			<h3 className="font-bold text-lg">{name}</h3>
 			<p className="text-gray-400">{location}</p>
+		</div>
+	);
+}
+
+function PricingCard({ title, price, description, features, icon, isPopular }) {
+	return (
+		<div
+			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
+		>
+			<div className="flex items-center mb-4">
+				{icon}
+				<h3 className="font-bold text-lg ml-4">{title}</h3>
+			</div>
+			<p className="text-3xl font-bold mb-4">${price}/month</p>
+			<p className="text-white mb-4">{description}</p>
+			<ul className="list-disc list-inside">
+				{features.map((feature, index) => (
+					<li key={index}>{feature}</li>
+				))}
+			</ul>
+			<Button className="mt-4 bg-white text-[#0283C0]">SIGN UP</Button>
 		</div>
 	);
 }
