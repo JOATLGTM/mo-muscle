@@ -9,17 +9,13 @@ export const metadata = {
 	title: "Mo Muscle",
 	description: "The start of your physical journey",
 	icons: {
-		icon: "/icon.ico",
-		shortcut: "/icon.ico",
-		apple: "/icon.ico",
+		icon: "./favicon.ico",
+		shortcut: "./favicon.ico",
+		apple: "./favicon.ico",
 	},
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="bg-black">
 			<body className={`${inter.className} min-h-screen flex flex-col`}>

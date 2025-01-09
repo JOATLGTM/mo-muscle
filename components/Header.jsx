@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-const Header: FC = () => {
+const Header = () => {
 	return (
 		<header className="absolute top-0 left-0 right-0 z-50">
 			<div className="container mx-auto px-4">
