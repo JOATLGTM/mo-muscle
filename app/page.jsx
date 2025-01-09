@@ -13,7 +13,7 @@ export default function Home() {
 	return (
 		<div className="bg-black text-white">
 			{/* Hero Section */}
-			<section className="relative min-h-screen pt-24">
+			<section className="relative min-h-screen">
 				<Image
 					src="/deadlift.jpg"
 					alt="Deadlift Exercise"
@@ -21,7 +21,7 @@ export default function Home() {
 					className="object-cover brightness-50"
 					priority
 				/>
-				<div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-24">
+				<div className="absolute inset-0 flex flex-col items-center justify-center text-center">
 					<p className="text-sm tracking-wider">
 						THE MIND IS PRIMARY
 					</p>
