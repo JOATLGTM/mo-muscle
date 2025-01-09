@@ -1,34 +1,42 @@
+import React, { FC } from "react";
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
 
-export default function Footer() {
+const Footer: FC = () => {
 	return (
 		<footer className="bg-black text-white py-16">
-			<div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 ">
+			<div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
 				<div>
 					<h3 className="text-sm font-bold mb-6">CONTACT US</h3>
-					<div className="space-y-2 text-gray-400">
+					<address className="space-y-2 text-gray-400 not-italic">
 						<p>3675 Park Mill Run Dr</p>
 						<p>Hilliard, OH 43026</p>
 						<p>(123)456-7890</p>
-						<p>yomomma@gmail.com</p>
-					</div>
+						<p>
+							<a
+								href="mailto:yomomma@gmail.com"
+								className="hover:text-white"
+							>
+								yomomma@gmail.com
+							</a>
+						</p>
+					</address>
 				</div>
 
 				<div>
 					<h3 className="text-sm font-bold mb-6">LINKS</h3>
-					<div className="space-y-2 text-gray-400">
+					<nav className="space-y-2 text-gray-400">
 						<p>
-							<Link href="#" className="hover:text-white">
+							<Link href="/terms" className="hover:text-white">
 								TERMS OF SERVICE
 							</Link>
 						</p>
 						<p>
-							<Link href="#" className="hover:text-white">
+							<Link href="/privacy" className="hover:text-white">
 								PRIVACY
 							</Link>
 						</p>
-					</div>
+					</nav>
 				</div>
 			</div>
 
@@ -41,12 +49,14 @@ export default function Footer() {
 						<Link
 							href="#"
 							className="text-gray-400 hover:text-white"
+							aria-label="Facebook"
 						>
 							<Facebook className="w-5 h-5" />
 						</Link>
 						<Link
 							href="#"
 							className="text-gray-400 hover:text-white"
+							aria-label="Instagram"
 						>
 							<Instagram className="w-5 h-5" />
 						</Link>
@@ -55,4 +65,6 @@ export default function Footer() {
 			</div>
 		</footer>
 	);
-}
+};
+
+export default Footer;

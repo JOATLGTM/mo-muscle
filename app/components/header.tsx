@@ -1,8 +1,9 @@
+import React, { FC } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-export default function Header() {
+const Header: FC = () => {
 	return (
 		<header className="absolute top-0 left-0 right-0 z-50">
 			<div className="container mx-auto px-4">
@@ -45,4 +46,6 @@ export default function Header() {
 			</div>
 		</header>
 	);
-}
+};
+
+export default Header;
