@@ -67,7 +67,7 @@ export default function Home() {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 container mx-auto px-4">
 					<div className="relative aspect-square">
 						<Image
-							src="/A94BAB7E-EBBF-4614-867C-2AF564B4C6D2.JPG"
+							src="/IMG_8380.JPG"
 							alt="Mo Muscle Team"
 							fill
 							className="object-cover"
