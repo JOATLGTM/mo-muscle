@@ -9,9 +9,9 @@ export const metadata = {
 	title: "Mo Muscle",
 	description: "The start of your physical journey",
 	icons: {
-		icon: "./favicon.ico",
-		shortcut: "./favicon.ico",
-		apple: "./favicon.ico",
+		icon: "/icon.ico",
+		shortcut: "/icon.ico",
+		apple: "/icon.ico",
 	},
 };
 

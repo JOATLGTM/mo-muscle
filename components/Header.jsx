@@ -10,7 +10,7 @@ const Header = () => {
 				<nav className="flex items-center justify-between h-24 py-4">
 					<Link href="/" className="relative w-48 h-8">
 						<Image
-							src="/MoMuscle_Logo_FINAL_Horiz_1Color_Blue.png"
+							src="/badge-logo-white.png"
 							alt="Mo Muscle"
 							fill
 							className="object-contain"

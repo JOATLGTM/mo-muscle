@@ -7,6 +7,7 @@ import {
 	Bike,
 	LucideProps,
 } from "lucide-react";
+import { ScrollingText } from "@/components/ScrollingText";
 
 export default function Home() {
 	return (
@@ -21,10 +22,17 @@ export default function Home() {
 					priority
 				/>
 				<div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-24">
-					<p className="text-sm tracking-wider mb-4">
+					<p className="text-sm tracking-wider">
 						THE MIND IS PRIMARY
 					</p>
-					<h1 className="text-6xl font-bold mb-4">MO MUSCLES</h1>
+					<Image
+						src="/horizontal_logo_white.png"
+						alt="horizontal logo"
+						className="object-cover brightness-50"
+						width={400}
+						height={200}
+					/>
+					{/* <h1 className="text-6xl font-bold mb-4">MO MUSCLES</h1> */}
 					<p className="text-xl mb-8">
 						WELCOME TO THE OFFICIAL SITE OF MO MUSCLES
 					</p>
@@ -51,6 +59,8 @@ export default function Home() {
 					</Button>
 				</div>
 			</section>
+
+			<ScrollingText />
 
 			{/* Seminar Section */}
 			<section className="py-24 bg-black text-white">
