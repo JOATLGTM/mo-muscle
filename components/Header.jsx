@@ -26,7 +26,7 @@ const Header = () => {
 							ABOUT US
 						</Link>
 						<Link
-							href="#"
+							href="/trainers"
 							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 						>
 							TRAINERS

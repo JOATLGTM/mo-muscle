@@ -1,15 +1,85 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-	ChevronLeft,
-	ChevronRight,
-	Dumbbell,
-	Bike,
-	LucideProps,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+	const trainWithRef = useRef(null);
+	const seminarRef = useRef(null);
+	const companyRef = useRef(null);
+	const pricingRef = useRef(null);
+	const instructorsRef = useRef(null);
+
+	useEffect(() => {
+		const ctx = gsap.context(() => {
+			// Train With Section Animation
+			gsap.from(trainWithRef.current, {
+				opacity: 0,
+				y: 100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: trainWithRef.current,
+					start: "top 80%",
+				},
+			});
+
+			// Seminar Section Animation
+			gsap.from(seminarRef.current, {
+				opacity: 0,
+				x: -100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: seminarRef.current,
+					start: "top 80%",
+				},
+			});
+
+			// Company Section Animation
+			gsap.from(companyRef.current, {
+				opacity: 0,
+				y: 100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: companyRef.current,
+					start: "top 80%",
+				},
+			});
+
+			// Pricing Section Animation
+			gsap.from(pricingRef.current, {
+				opacity: 0,
+				y: 100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: pricingRef.current,
+					start: "top 80%",
+				},
+			});
+
+			// Instructors Section Animation
+			gsap.from(instructorsRef.current, {
+				opacity: 0,
+				x: 100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: instructorsRef.current,
+					start: "top 80%",
+				},
+			});
+		});
+
+		return () => ctx.revert();
+	}, []);
+
 	return (
 		<div className="bg-black text-white">
 			{/* Hero Section */}
@@ -43,50 +113,53 @@ export default function Home() {
 			</section>
 
 			{/* Train With Gym Mo Section */}
-			<section className="py-24 text-center bg-white text-black">
+			<section
+				ref={trainWithRef}
+				className="py-24 text-center bg-white text-black"
+			>
 				<div className="container mx-auto px-4">
-					<p className="text-sm tracking-wider mb-8 text-gray-600">
+					<p className="text-sm tracking-wider mb-8 text-[#0283C0]">
 						FIND THE PROBLEM, FIX THE PROBLEM
 					</p>
-					<h2 className="text-4xl font-bold mb-8">TRAIN WITH MO</h2>
-					<p className="max-w-3xl mx-auto text-gray-700 mb-12">
+					<h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						TRAIN WITH MO
+					</h2>
+					<p className="max-w-3xl mx-auto text-gray-600 mb-12">
 						At MoMuscle, we believe in a personalized approach to
 						fitness. Our trainers guide you through each step,
 						ensuring you achieve your physical goals effectively.
 					</p>
-					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
 						TRAIN WITH US
 					</Button>
 				</div>
 			</section>
 
-			<ScrollingText />
-
 			{/* Seminar Section */}
-			<section className="py-24 bg-black text-white">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 container mx-auto px-4">
-					<div className="relative aspect-square">
+			<section ref={seminarRef} className="py-24 bg-black text-white">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 container mx-auto px-4 items-center">
+					<div className="relative aspect-square overflow-hidden rounded-lg shadow-2xl">
 						<Image
 							src="/IMG_8380.JPG"
 							alt="Mo Muscle Team"
 							fill
-							className="object-cover"
+							className="object-cover transform hover:scale-110 transition-all duration-500"
 						/>
 					</div>
 					<div className="flex flex-col justify-center">
-						<p className="text-sm tracking-wider mb-4">
+						<p className="text-sm tracking-wider mb-4 text-[#0283C0]">
 							LEARN WITH US
 						</p>
-						<h2 className="text-4xl font-bold mb-6">
+						<h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 							MO MUSCLE TRAINING SERIES
 						</h2>
-						<p className="text-gray-400 mb-8">
-							Our trainers are dedicated professional who
+						<p className="text-gray-300 mb-8">
+							Our trainers are dedicated professionals who
 							specialize in transforming your fitness journey.
 							With personalized training plans and unwavering
 							support, they help you achieve your goals.
 						</p>
-						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white self-start">
+						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white self-start transform hover:scale-105 transition-all duration-300">
 							LEARN MORE
 						</Button>
 					</div>
@@ -94,78 +167,36 @@ export default function Home() {
 			</section>
 
 			{/* Our Company Section */}
-			<section className="py-24 text-center bg-white text-black">
+			<section
+				ref={companyRef}
+				className="py-24 text-center bg-white text-black"
+			>
 				<div className="container mx-auto px-4">
-					<p className="text-sm tracking-wider mb-8 text-gray-600">
+					<p className="text-sm tracking-wider mb-8 text-[#0283C0]">
 						THE FIRST RULE OF ANY PHYSICAL TRAINING
 					</p>
-					<h2 className="text-4xl font-bold mb-8">THE FORM</h2>
-					<p className="max-w-3xl mx-auto text-gray-700 mb-12">
-						Mo Muscle is a collective of insanely dedicated and hard
-						working people interested in self improvement and elite
-						physical and mental performance. We don't like talking
-						about ourselves, but we'll do our best.
+					<h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						THE FORM
+					</h2>
+					<p className="max-w-3xl mx-auto text-gray-600 mb-12">
+						Mo Muscle is a collective of insanely dedicated and
+						hard-working people interested in self-improvement and
+						elite physical and mental performance. We don't like
+						talking about ourselves, but we'll do our best.
 					</p>
-					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
 						LEARN MORE
 					</Button>
 				</div>
 			</section>
 
-			{/* Certified Instructors Section */}
-			<section className="py-24 text-center bg-black">
-				<div className="container mx-auto px-4">
-					<p className="text-sm tracking-wider mb-4">FIND A COACH</p>
-					<h2 className="text-4xl font-bold mb-8">
-						CERTIFIED INSTRUCTORS
-					</h2>
-					<p className="max-w-3xl mx-auto text-gray-400 mb-12">
-						Our Certified instructors have passed through our
-						rigorous process of physical and mental testing to
-						represent Gym Jones wherever they coach. They embrace
-						traditional ideas, and continue to create and implement
-						new ones. They are experienced, creative, inquisitive
-						and experts in their fields. Meet a certified instructor
-						in your area.
-					</p>
-
-					<div className="relative">
-						<div className="flex overflow-x-auto gap-6 pb-6 justify-center">
-							{/* Instructor Cards */}
-							<InstructorCard
-								name="MO NAYAL"
-								location="COLUMBUS OHIO"
-								image="/placeholder.svg?height=400&width=400"
-							/>
-							<InstructorCard
-								name="THE OTHER LADY"
-								location="COLUMBUS OHIO"
-								image="/placeholder.svg?height=400&width=400"
-							/>
-						</div>
-
-						<button className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full">
-							<ChevronLeft className="w-6 h-6" />
-						</button>
-						<button className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full">
-							<ChevronRight className="w-6 h-6" />
-						</button>
-					</div>
-
-					<Button className="mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white">
-						SEE ALL INSTRUCTORS
-					</Button>
-				</div>
-			</section>
+			<ScrollingText />
 
 			{/* Pricing Section */}
-			<section className="py-24 bg-white">
+			<section ref={pricingRef} className="py-24 bg-white text-black">
 				<div className="container mx-auto px-4">
 					<div className="text-center mb-12">
-						<p className="text-[#DB4D4D] text-sm tracking-wider mb-4">
-							PRICING PLAN
-						</p>
-						<h2 className="text-4xl font-bold text-black">
+						<h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 							Our Pricing Plan
 						</h2>
 					</div>
@@ -181,7 +212,8 @@ export default function Home() {
 								"Personal yoga mat",
 								"Free parking",
 							]}
-							icon={<Dumbbell className="w-6 h-6" />}
+							icon={<ChevronRight className="w-6 h-6" />}
+							darkMode={false}
 						/>
 						<PricingCard
 							title="Standard Membership"
@@ -193,7 +225,9 @@ export default function Home() {
 								"Personal yoga mat",
 								"Free parking",
 							]}
-							icon={<Bike className="w-6 h-6" />}
+							icon={<ChevronRight className="w-6 h-6" />}
+							isPopular
+							darkMode={false}
 						/>
 						<PricingCard
 							title="Ultimate Membership"
@@ -205,9 +239,54 @@ export default function Home() {
 								"Personal yoga mat",
 								"Free parking",
 							]}
-							icon={<Dumbbell className="w-6 h-6" />}
+							icon={<ChevronRight className="w-6 h-6" />}
+							darkMode={false}
 						/>
 					</div>
+				</div>
+			</section>
+
+			{/* Certified Instructors Section */}
+			<section
+				ref={instructorsRef}
+				className="py-24 text-center bg-black text-white"
+			>
+				<div className="container mx-auto px-4">
+					<p className="text-sm tracking-wider mb-4 text-[#0283C0]">
+						FIND A COACH
+					</p>
+					<h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						CERTIFIED INSTRUCTORS
+					</h2>
+					<p className="max-w-3xl mx-auto text-gray-300 mb-12">
+						Our Certified instructors have passed through our
+						rigorous process of physical and mental testing to
+						represent Gym Jones wherever they coach. They embrace
+						traditional ideas, and continue to create and implement
+						new ones. They are experienced, creative, inquisitive
+						and experts in their fields. Meet a certified instructor
+						in your area.
+					</p>
+
+					<div className="relative">
+						<div className="flex overflow-x-auto gap-6 pb-6 justify-center">
+							<InstructorCard
+								name="MO NAYAL"
+								location="COLUMBUS OHIO"
+								image="/placeholder.svg?height=400&width=400"
+							/>
+							<InstructorCard
+								name="THE OTHER LADY"
+								location="COLUMBUS OHIO"
+								image="/placeholder.svg?height=400&width=400"
+							/>
+						</div>
+					</div>
+					<Link href="/trainers">
+						<Button className="mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
+							SEE ALL INSTRUCTORS
+						</Button>
+					</Link>
 				</div>
 			</section>
 		</div>
@@ -216,38 +295,40 @@ export default function Home() {
 
 function InstructorCard({ name, location, image }) {
 	return (
-		<div className="min-w-[300px] group cursor-pointer">
-			<div className="relative aspect-square mb-4">
+		<div className="min-w-[300px] group cursor-pointer transform hover:scale-105 transition-all duration-300">
+			<div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
 				<Image
 					src={image}
 					alt={name}
 					fill
-					className="object-cover transition-opacity group-hover:opacity-75"
+					className="object-cover transition-all duration-500 group-hover:scale-110"
 				/>
 			</div>
-			<h3 className="font-bold text-lg">{name}</h3>
+			<h3 className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4]">
+				{name}
+			</h3>
 			<p className="text-gray-400">{location}</p>
 		</div>
 	);
 }
 
-function PricingCard({ title, price, description, features, icon }) {
-	return (
-		<div
-			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
-		>
-			<div className="flex items-center mb-4">
-				{icon}
-				<h3 className="font-bold text-lg ml-4">{title}</h3>
-			</div>
-			<p className="text-3xl font-bold mb-4">${price}/month</p>
-			<p className="text-white mb-4">{description}</p>
-			<ul className="list-disc list-inside">
-				{features.map((feature, index) => (
-					<li key={index}>{feature}</li>
-				))}
-			</ul>
-			<Button className="mt-4 bg-white text-[#0283C0]">SIGN UP</Button>
-		</div>
-	);
-}
+// function PricingCard({ title, price, description, features, icon }) {
+// 	return (
+// 		<div
+// 			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
+// 		>
+// 			<div className="flex items-center mb-4">
+// 				{icon}
+// 				<h3 className="font-bold text-lg ml-4">{title}</h3>
+// 			</div>
+// 			<p className="text-3xl font-bold mb-4">${price}/month</p>
+// 			<p className="text-white mb-4">{description}</p>
+// 			<ul className="list-disc list-inside">
+// 				{features.map((feature, index) => (
+// 					<li key={index}>{feature}</li>
+// 				))}
+// 			</ul>
+// 			<Button className="mt-4 bg-white text-[#0283C0]">SIGN UP</Button>
+// 		</div>
+// 	);
+// }
