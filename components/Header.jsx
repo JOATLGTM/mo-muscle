@@ -20,19 +20,13 @@ const Header = () => {
 
 					<div className="hidden md:flex items-center space-x-8">
 						<Link
-							href="#"
-							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
-						>
-							ABOUT US
-						</Link>
-						<Link
 							href="/trainers"
 							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 						>
 							TRAINERS
 						</Link>
 						<Link
-							href="#"
+							href="/services"
 							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 						>
 							SERVICES
