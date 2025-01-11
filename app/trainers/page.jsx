@@ -25,7 +25,7 @@ export default function TrainersPage() {
 			// video: "/placeholder-video.mp4",
 		},
 		{
-			name: "Brie",
+			name: "Brie Miller",
 			role: "Fitness Trainer",
 			description:
 				"Brie brings tranquility to our high-intensity environment. With her 200-hour fitness training, she helps our members find strength and courage.",

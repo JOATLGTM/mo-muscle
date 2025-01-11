@@ -316,7 +316,7 @@ export default function Home() {
 								image="/mo_2.jpeg"
 							/>
 							<InstructorCard
-								name="BRIE"
+								name="BRIE MILLER"
 								location="COLUMBUS OHIO"
 								image="/brie.jpeg"
 							/>
