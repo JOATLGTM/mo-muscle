@@ -13,6 +13,7 @@ export function PricingCard({
 	icon,
 	isPopular = false,
 	darkMode = true,
+	onSubscribe,
 }) {
 	const cardRef = useRef(null);
 
@@ -56,6 +57,7 @@ export function PricingCard({
 				))}
 			</ul>
 			<Button
+				onClick={onSubscribe}
 				className={`w-full ${"bg-white text-[#0283C0] hover:bg-gray-200"} transform hover:scale-105 transition-all duration-300`}
 			>
 				Choose This Plan

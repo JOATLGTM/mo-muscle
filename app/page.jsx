@@ -9,8 +9,11 @@ import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { loadStripe } from '@stripe/stripe-js';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Home() {
 	const trainWithRef = useRef(null);
@@ -79,6 +82,27 @@ export default function Home() {
 
 		return () => ctx.revert();
 	}, []);
+
+	const handleSubscription = async (priceId) => {
+		const stripe = await stripePromise;
+		if (!stripe) return;
+	
+		const response = await fetch('/api/create-checkout-session', {
+		  method: 'POST',
+		  headers: {
+			'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify({ priceId }),
+		});
+	
+		const { sessionId } = await response.json();
+		const result = await stripe.redirectToCheckout({ sessionId });
+	
+		if (result.error) {
+		  console.error(result.error.message);
+		}
+	  };
+	
 
 	return (
 		<div className="bg-black text-white">
@@ -203,9 +227,6 @@ export default function Home() {
 				{" "}
 				<div className="container mx-auto px-4">
 					<div className="text-center mb-8 md:mb-12">
-						<p className="text-[#DB4D4D] text-sm tracking-wider mb-2 md:mb-4">
-							PRICING PLAN
-						</p>
 						<h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 							Our Pricing Plan
 						</h2>
@@ -224,6 +245,7 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
+							onSubscribe={() => handleSubscription('price_1234567890')}
 						/>
 						<PricingCard
 							title="Standard Membership"
@@ -238,6 +260,7 @@ export default function Home() {
 							icon={<ChevronRight className="w-6 h-6" />}
 							isPopular
 							darkMode={false}
+							onSubscribe={() => handleSubscription('price_0987654321')} 
 						/>
 						<PricingCard
 							title="Ultimate Membership"
@@ -251,6 +274,7 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
+							onSubscribe={() => handleSubscription('price_1357924680')} // Replace with actual Stripe Price ID
 						/>
 					</div>
 				</div>

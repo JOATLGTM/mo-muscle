@@ -20,6 +20,12 @@ const Header = () => {
 
 					<div className="hidden md:flex items-center space-x-8">
 						<Link
+							href="/"
+							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+						>
+							HOME
+						</Link>
+						<Link
 							href="/trainers"
 							className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 						>
@@ -32,9 +38,16 @@ const Header = () => {
 							SERVICES
 						</Link>
 
-						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
-							START TRAINING
-						</Button>
+						<Link href="/login">
+							<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+								LOGIN
+							</Button>
+						</Link>
+						<Link href="/register">
+							<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+								REGISTER
+							</Button>
+						</Link>
 					</div>
 				</nav>
 			</div>
