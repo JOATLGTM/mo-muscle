@@ -18,18 +18,18 @@ export default function TrainersPage() {
 	const trainers = [
 		{
 			name: "Mo Nayal",
-			role: "Head Trainer",
+			role: "Fitness Trainer",
 			description:
 				"Mo is our head trainer with over 10 years of experience in strength and conditioning. He specializes in powerlifting and functional fitness.",
-			image: "/IMG_3383.jpeg",
+			image: "/mo_1.jpeg",
 			// video: "/placeholder-video.mp4",
 		},
 		{
-			name: "Sarah Johnson",
-			role: "Yoga Instructor",
+			name: "Brie",
+			role: "Fitness Trainer",
 			description:
-				"Sarah brings tranquility to our high-intensity environment. With her 200-hour yoga teacher training, she helps our members find balance and flexibility.",
-			image: "/IMG_3383.jpeg",
+				"Brie brings tranquility to our high-intensity environment. With her 200-hour fitness training, she helps our members find strength and courage.",
+			image: "/brie.jpeg",
 			// video: "/placeholder-video.mp4",
 		},
 	];
@@ -97,6 +97,13 @@ export default function TrainersPage() {
 				ref={headerRef}
 				className="relative min-h-screen flex items-center justify-center overflow-hidden"
 			>
+				<Image
+					src="/both.jpeg"
+					alt="two traineres posing together"
+					fill
+					className="object-cover brightness-50"
+					priority
+				/>
 				<div className="absolute inset-0">
 					<div className="bg-shape absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
 					<div className="bg-shape absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
@@ -112,6 +119,26 @@ export default function TrainersPage() {
 					</p>
 				</div>
 			</section>
+
+			{/* <section
+				ref={headerRef}
+				className="relative min-h-screen flex items-center justify-center overflow-hidden"
+			>
+				<div className="absolute inset-0">
+					<div className="bg-shape absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
+					<div className="bg-shape absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
+				</div>
+				<div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
+				<div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+					<h1 className="hero-text text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						OUR TRAINERS
+					</h1>
+					<p className="hero-text text-xl md:text-2xl mb-12 text-gray-300">
+						Meet the experts who will guide your fitness journey and
+						push you beyond your limits
+					</p>
+				</div>
+			</section> */}
 
 			{/* Trainers Section */}
 			<section

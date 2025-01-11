@@ -313,12 +313,12 @@ export default function Home() {
 							<InstructorCard
 								name="MO NAYAL"
 								location="COLUMBUS OHIO"
-								image="/placeholder.svg?height=400&width=400"
+								image="/mo_2.jpeg"
 							/>
 							<InstructorCard
-								name="THE OTHER LADY"
+								name="BRIE"
 								location="COLUMBUS OHIO"
-								image="/placeholder.svg?height=400&width=400"
+								image="/brie.jpeg"
 							/>
 						</div>
 					</div>
