@@ -83,25 +83,25 @@ export default function Home() {
 		return () => ctx.revert();
 	}, []);
 
-	const handleSubscription = async (priceId) => {
-		const stripe = await stripePromise;
-		if (!stripe) return;
+	// const handleSubscription = async (priceId) => {
+	// 	const stripe = await stripePromise;
+	// 	if (!stripe) return;
 
-		const response = await fetch("/api/create-checkout-session", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ priceId }),
-		});
+	// 	const response = await fetch("/api/create-checkout-session", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({ priceId }),
+	// 	});
 
-		const { sessionId } = await response.json();
-		const result = await stripe.redirectToCheckout({ sessionId });
+	// 	const { sessionId } = await response.json();
+	// 	const result = await stripe.redirectToCheckout({ sessionId });
 
-		if (result.error) {
-			console.error(result.error.message);
-		}
-	};
+	// 	if (result.error) {
+	// 		console.error(result.error.message);
+	// 	}
+	// };
 
 	return (
 		<div className="bg-black text-white">
@@ -244,9 +244,9 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							onSubscribe={() =>
-								handleSubscription("price_1234567890")
-							}
+							// onSubscribe={() =>
+							// 	handleSubscription("price_1234567890")
+							// }
 						/>
 						<PricingCard
 							title="Standard Membership"
@@ -261,9 +261,9 @@ export default function Home() {
 							icon={<ChevronRight className="w-6 h-6" />}
 							isPopular
 							darkMode={false}
-							onSubscribe={() =>
-								handleSubscription("price_0987654321")
-							}
+							// onSubscribe={() =>
+							// 	handleSubscription("price_0987654321")
+							// }
 						/>
 						<PricingCard
 							title="Ultimate Membership"
@@ -277,9 +277,9 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							onSubscribe={() =>
-								handleSubscription("price_1357924680")
-							} // Replace with actual Stripe Price ID
+							// onSubscribe={() =>
+							// 	handleSubscription("price_1357924680")
+							// }
 						/>
 					</div>
 				</div>
