@@ -198,35 +198,6 @@ export default function ServicesPage() {
 					/>
 				</div>
 			</section>
-
-			{/* CTA Section */}
-			<section
-				ref={ctaRef}
-				className="py-24 bg-gradient-to-br from-[#0283C0] via-[#026a9c] to-[#015a84] text-white text-center relative overflow-hidden"
-			>
-				<div className="absolute inset-0">
-					<div className="absolute inset-0 bg-black opacity-50"></div>
-					<div className="absolute inset-0 bg-gradient-to-br from-[#0283C0] to-[#03a9f4] opacity-50"></div>
-				</div>
-				<div className="container mx-auto px-4 relative z-10">
-					<h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-						Ready to{" "}
-						<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#03a9f4] to-[#0283C0] animate-text-shimmer">
-							Transform
-						</span>{" "}
-						Your Life?
-					</h2>
-					<p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-gray-200">
-						Join Mo Muscle today and start your journey towards a
-						stronger, healthier you. Our expert trainers are ready
-						to guide you every step of the way.
-					</p>
-					<Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-						GET STARTED NOW
-					</Button>
-				</div>
-				<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent"></div>
-			</section>
 		</div>
 	);
 }
