@@ -231,16 +231,17 @@ export default function Home() {
 						</h2>
 					</div>
 
-					<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
 						<PricingCard
-							title="Basic Membership"
-							price="19"
-							description="This category typically offers access to the gym's facilities and equipment."
+							title="3 Months Plan"
+							price="39"
+							duration="/ session"
+							description="As low as $39 per session for a 3-month commitment."
 							features={[
-								"12 trainings",
-								"Free shower & lockers",
-								"Personal yoga mat",
-								"Free parking",
+								"Personalized workout plan",
+								"Weekly check-ins",
+								"Access to gym facilities",
+								"Nutritional guidance",
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
@@ -249,14 +250,15 @@ export default function Home() {
 							// }
 						/>
 						<PricingCard
-							title="Standard Membership"
-							price="39"
-							description="This category typically offers access to the gym's facilities and equipment."
+							title="6 Months Plan"
+							price="35"
+							duration="/ session"
+							description="As low as $35 per session for a 6-month commitment."
 							features={[
-								"12 trainings",
-								"Free shower & lockers",
-								"Personal yoga mat",
-								"Free parking",
+								"All features of 3 Months Plan",
+								"Bi-weekly progress assessments",
+								"Customized meal plans",
+								"Priority scheduling",
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							isPopular
@@ -266,20 +268,40 @@ export default function Home() {
 							// }
 						/>
 						<PricingCard
-							title="Ultimate Membership"
-							price="69"
-							description="This category typically offers access to the gym's facilities and equipment."
+							title="12 Months Plan"
+							price="32"
+							duration="/ session"
+							description="As low as $32 per session for a 12-month commitment."
 							features={[
-								"12 trainings",
-								"Free shower & lockers",
-								"Personal yoga mat",
-								"Free parking",
+								"All features of 6 Months Plan",
+								"Monthly one-on-one coaching",
+								"Access to exclusive workshops",
+								"Personalized supplement advice",
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
 							// onSubscribe={() =>
 							// 	handleSubscription("price_1357924680")
 							// }
+						/>
+						<PricingCard
+							title="Online Coaching"
+							price="50"
+							duration="/ week"
+							description="Comprehensive online coaching program for $50 per week."
+							features={[
+								"Tailored workout program",
+								"Customized meal plans",
+								"Access to Mo Muscle app",
+								"24/7 coach communication",
+								"Video exercise instructions",
+								"Progress tracking",
+							]}
+							icon={<ChevronRight className="w-6 h-6" />}
+							darkMode={false}
+							onSubscribe={() =>
+								handleSubscription("price_online")
+							} // Replace with actual Stripe Price ID
 						/>
 					</div>
 				</div>

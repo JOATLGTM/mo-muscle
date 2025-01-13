@@ -101,7 +101,7 @@ export default function TrainersPage() {
 					src="/both.jpeg"
 					alt="two traineres posing together"
 					fill
-					className="object-cover brightness-50"
+					className="object-cover"
 					priority
 				/>
 				<div className="absolute inset-0">

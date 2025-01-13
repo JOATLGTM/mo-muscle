@@ -17,43 +17,61 @@ export default function ServicesPage() {
 
 	const services = [
 		{
-			title: "1 Month Training",
-			price: "$19",
-			duration: "1 month",
+			title: "3 Months Plan",
+			price: "$39",
+			duration: "per session",
 			description:
-				"Get started with our basic training package. Perfect for those looking to kickstart their fitness journey.",
+				"Get started with our 3-month training package. Perfect for those looking to kickstart their fitness journey.",
 			features: [
+				"As low as $39 per session",
 				"Personalized workout plan",
 				"Weekly check-ins",
-				"Access to our mobile app",
-				"Email support",
+				"Access to gym facilities",
+				"Nutritional guidance",
 			],
 		},
 		{
-			title: "3 Month Transformation",
-			price: "$49",
-			duration: "3 months",
+			title: "6 Months Plan",
+			price: "$35",
+			duration: "per session",
 			description:
-				"Take your fitness to the next level with our comprehensive 3-month package.",
+				"Take your fitness to the next level with our comprehensive 6-month package.",
 			features: [
-				"Everything in 1 Month Training",
-				"Customized meal plan",
-				"Bi-weekly video consultations",
-				"Access to exclusive workout videos",
+				"As low as $35 per session",
+				"All features of 3 Months Plan",
+				"Bi-weekly progress assessments",
+				"Customized meal plans",
+				"Priority scheduling",
 			],
 		},
 		{
-			title: "6 Month Elite Program",
-			price: "$75",
-			duration: "6 months",
+			title: "12 Months Plan",
+			price: "$32",
+			duration: "per session",
 			description:
 				"For those serious about long-term results. Our most comprehensive package for maximum results.",
 			features: [
-				"Everything in 3 Month Transformation",
-				"Monthly in-person training session",
-				"24/7 chat support",
-				"Quarterly fitness assessments",
-				"Customized supplement recommendations",
+				"As low as $32 per session",
+				"All features of 6 Months Plan",
+				"Monthly one-on-one coaching",
+				"Access to exclusive workshops",
+				"Personalized supplement advice",
+			],
+		},
+		{
+			title: "Online Coaching",
+			price: "$50",
+			duration: "per week",
+			description:
+				"Transform your fitness from anywhere with our comprehensive online coaching program.",
+			features: [
+				"$50 per week",
+				"Tailored workout program",
+				"Customized meal plans",
+				"Access to Mo Muscle app",
+				"24/7 coach communication",
+				"Video exercise instructions",
+				"Progress tracking",
 			],
 		},
 	];
@@ -157,44 +175,58 @@ export default function ServicesPage() {
 			<section ref={detailsRef} className="py-24 bg-black">
 				<div className="container mx-auto px-4">
 					<DetailSection
-						title="1 Month Training - $19"
-						description="Our 1 Month Training program is designed to kickstart your fitness journey. For just $19, you'll get a comprehensive introduction to our training methodology and personalized guidance to help you achieve your initial fitness goals."
+						title="3 Months Plan - As low as $39 per session"
+						description="Our 3 Months Plan is designed to kickstart your fitness journey. For as low as $39 per session, you'll get a comprehensive introduction to our training methodology and personalized guidance to help you achieve your initial fitness goals."
 						features={[
-							"Initial fitness assessment to determine your starting point",
-							"Customized workout plan tailored to your fitness level and goals",
+							"Personalized workout plan tailored to your fitness level and goals",
 							"Weekly check-ins with a certified trainer to track progress and adjust your plan",
+							"Access to our state-of-the-art gym facilities",
+							"Nutritional guidance to support your fitness journey",
 							"Access to our mobile app with exercise demonstrations and tracking tools",
-							"Email support for any questions or concerns throughout the month",
 						]}
 						image="/placeholder.svg?height=600&width=800"
 					/>
 
 					<DetailSection
-						title="3 Month Transformation - $49"
-						description="Take your fitness to the next level with our 3 Month Transformation program. At $49 per month, this package offers a more comprehensive approach to your fitness journey, including nutrition guidance to maximize your results."
+						title="6 Months Plan - As low as $35 per session"
+						description="Take your fitness to the next level with our 6 Months Plan. At as low as $35 per session, this package offers a more comprehensive approach to your fitness journey, including advanced training techniques and nutrition strategies."
 						features={[
-							"All features of the 1 Month Training program",
-							"Customized meal plan designed by our nutrition experts",
-							"Bi-weekly video consultations with your personal trainer",
+							"All features of the 3 Months Plan",
+							"Bi-weekly progress assessments to fine-tune your training",
+							"Customized meal plans designed by our nutrition experts",
+							"Priority scheduling for gym sessions and trainer consultations",
 							"Access to exclusive workout videos and challenges",
-							"Progress tracking with before and after photos and measurements",
 						]}
 						image="/placeholder.svg?height=600&width=800"
 						reverse
 					/>
 
 					<DetailSection
-						title="6 Month Elite Program - $75"
-						description="Our 6 Month Elite Program is designed for those who are serious about achieving long-term, sustainable results. At $75 per month, this comprehensive package provides you with the ultimate support and resources for your fitness transformation."
+						title="12 Months Plan - As low as $32 per session"
+						description="Our 12 Months Plan is designed for those who are serious about achieving long-term, sustainable results. At as low as $32 per session, this comprehensive package provides you with the ultimate support and resources for your fitness transformation."
 						features={[
-							"All features of the 3 Month Transformation program",
-							"Monthly in-person training session with a senior trainer",
-							"24/7 chat support for immediate assistance and motivation",
+							"All features of the 6 Months Plan",
+							"Monthly one-on-one coaching sessions with a senior trainer",
+							"Access to exclusive Mo Muscle workshops and seminars",
+							"Personalized supplement recommendations based on your goals and body composition",
 							"Quarterly fitness assessments to track your progress in detail",
-							"Customized supplement recommendations based on your goals and body composition",
-							"Access to exclusive Mo Muscle events and workshops",
 						]}
 						image="/placeholder.svg?height=600&width=800"
+					/>
+
+					<DetailSection
+						title="Online Coaching - $50 per week"
+						description="Transform your fitness from anywhere with our comprehensive Online Coaching program. For $50 per week, you'll receive personalized guidance and support to achieve your fitness goals, no matter where you are."
+						features={[
+							"Tailored workout program updated weekly",
+							"Customized meal plans to support your fitness goals",
+							"Access to the Mo Muscle app for workout tracking and progress monitoring",
+							"24/7 communication with our expert coaches",
+							"Video instructions on how to perform exercises correctly",
+							"Detailed progress tracking and regular check-ins",
+						]}
+						image="/placeholder.svg?height=600&width=800"
+						reverse
 					/>
 				</div>
 			</section>
@@ -211,7 +243,7 @@ function ServiceCard({ service }) {
 			<p className="text-4xl font-bold mb-2">
 				{service.price}
 				<span className="text-xl font-normal text-gray-400">
-					/{service.duration}
+					{service.duration}
 				</span>
 			</p>
 			<p className="text-gray-400 mb-6">{service.description}</p>
@@ -261,7 +293,8 @@ function DetailSection({
 					{title}
 				</h3>
 				<p className="text-gray-300 mb-6">{description}</p>
-				<ul className="space-y-2">
+				<ul className="space-y-2 mb-6">
+					{" "}
 					{features.map((feature, index) => (
 						<li key={index} className="flex items-start">
 							<svg
@@ -282,6 +315,9 @@ function DetailSection({
 						</li>
 					))}
 				</ul>
+				<Button className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
+					Choose This Plan
+				</Button>
 			</div>
 			<div className="w-full md:w-1/2">
 				<Image
