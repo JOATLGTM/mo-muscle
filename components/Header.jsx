@@ -1,30 +1,39 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const pathname = usePathname();
+
+	useEffect(() => {
+		setIsMenuOpen(false);
+	}, [pathname]);
 
 	const toggleMenu = () => {
-		setIsMenuOpen(!isMenuOpen);
+		setIsMenuOpen((prev) => !prev);
 	};
 
 	return (
 		<header className="absolute top-0 left-0 right-0 z-50">
-			<div className="container mx-auto px-4 overflow-x-hidden">
-				<nav className="flex items-center justify-between h-24 py-4">
-					<Link href="/" className="relative w-48 h-8">
-						<Image
-							src="/badge-logo-white.png"
-							alt="Mo Muscle"
-							fill
-							className="object-contain"
-							priority
-						/>
-					</Link>
+			<div className="container mx-auto px-4">
+				<nav className="flex items-center justify-between h-24">
+					<div className="flex-shrink-0">
+						<Link href="/" className="block">
+							<Image
+								src="/badge-logo-white.png"
+								alt="Mo Muscle"
+								width={192}
+								height={32}
+								className="w-48 h-8 object-contain"
+								priority
+							/>
+						</Link>
+					</div>
 
 					<div className="hidden md:flex flex-grow justify-center">
 						<div className="flex items-center space-x-8">
