@@ -38,10 +38,10 @@ const Header = () => {
 					<div className="hidden md:flex flex-grow justify-center">
 						<div className="flex items-center space-x-8">
 							<Link
-								href="#"
+								href="/"
 								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 							>
-								ABOUT US
+								HOME
 							</Link>
 							<Link
 								href="/trainers"
@@ -85,10 +85,10 @@ const Header = () => {
 					<div className="md:hidden bg-black/90 backdrop-blur-sm py-4 absolute left-0 right-0">
 						<div className="flex flex-col space-y-4 px-4">
 							<Link
-								href="#"
+								href="/"
 								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
 							>
-								ABOUT US
+								HOME
 							</Link>
 							<Link
 								href="/trainers"
