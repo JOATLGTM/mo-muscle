@@ -9,8 +9,6 @@ import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
-
 // import { loadStripe } from "stripe/stripe-js";
 
 gsap.registerPlugin(ScrollTrigger);
