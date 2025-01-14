@@ -9,6 +9,8 @@ import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+
 // import { loadStripe } from "stripe/stripe-js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -145,7 +147,7 @@ export default function Home() {
 						FIND THE PROBLEM, FIX THE PROBLEM
 					</p>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						TRAIN WITH MO
+						TRAIN WITH MOMUSCLE
 					</h2>
 					<p className="max-w-3xl mx-auto text-gray-600 mb-8 md:mb-12 text-sm md:text-base">
 						At MoMuscle, we believe in a personalized approach to
@@ -177,13 +179,15 @@ export default function Home() {
 							LEARN WITH US
 						</p>
 						<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-							MO MUSCLE TRAINING SERIES
+							WITH THE MO MUSCLE FAMILY
 						</h2>
 						<p className="text-gray-300 mb-6 md:mb-8 text-sm md:text-base">
-							Our trainers are dedicated professionals who
-							specialize in transforming your fitness journey.
-							With personalized training plans and unwavering
-							support, they help you achieve your goals.
+							Join the MoMuscle program and discover a community
+							that inspires and empowers you. Our trainers provide
+							personalized guidance while fostering a supportive
+							environment where you can connect with others, stay
+							motivated, and make steady progress toward your
+							fitness goals
 						</p>
 						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white self-start transform hover:scale-105 transition-all duration-300">
 							LEARN MORE
@@ -192,8 +196,12 @@ export default function Home() {
 				</div>
 			</section>
 
+			<div className="relative px-12">
+				<TestimonialCarousel />
+			</div>
+
 			{/* Our Company Section */}
-			<section
+			{/* <section
 				ref={companyRef}
 				className="py-12 md:py-24 text-center bg-white text-black"
 			>
@@ -214,14 +222,14 @@ export default function Home() {
 						LEARN MORE
 					</Button>
 				</div>
-			</section>
+			</section> */}
 
 			<ScrollingText />
 
 			{/* Pricing Section */}
 			<section
 				ref={pricingRef}
-				className="py-12 md:py-24 bg-white text-black"
+				className="py-6 md:py-24 bg-white text-black"
 			>
 				{" "}
 				<div className="container mx-auto px-4">
@@ -320,13 +328,13 @@ export default function Home() {
 						CERTIFIED INSTRUCTORS
 					</h2>
 					<p className="max-w-3xl mx-auto text-gray-300 mb-8 md:mb-12 text-sm md:text-base">
-						Our Certified instructors have passed through our
-						rigorous process of physical and mental testing to
-						represent Gym Jones wherever they coach. They embrace
-						traditional ideas, and continue to create and implement
-						new ones. They are experienced, creative, inquisitive
-						and experts in their fields. Meet a certified instructor
-						in your area.
+						Our Certified Instructors have undergone our rigorous
+						physical and mental testing process to proudly represent
+						MoMuscle wherever they coach. They honor time-tested
+						principles while continuously developing and applying
+						innovative techniques. Experienced, creative, and
+						experts in their fields, they are here to guide you.
+						Connect with a certified MoMuscle instructor today.
 					</p>
 
 					<div className="relative">

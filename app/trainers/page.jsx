@@ -20,7 +20,7 @@ export default function TrainersPage() {
 			name: "Mo Nayal",
 			role: "Fitness Trainer",
 			description:
-				"Mo is our head trainer with over 10 years of experience in strength and conditioning. He specializes in powerlifting and functional fitness.",
+				"Hi, I’m Mo Nayal, a passionate gym trainer with over 10 years of experience helping people crush their fitness goals. Born and raised in Ohio, I love blending proven techniques with fresh, exciting workouts to keep training effective and fun. My mission is simple: help you get stronger, healthier, and confident—while making fitness a lifestyle you love. Let’s get started!",
 			image: "/mo_1.jpeg",
 			// video: "/placeholder-video.mp4",
 		},
@@ -28,7 +28,7 @@ export default function TrainersPage() {
 			name: "Brie Miller",
 			role: "Fitness Trainer",
 			description:
-				"Brie brings tranquility to our high-intensity environment. With her 200-hour fitness training, she helps our members find strength and courage.",
+				"Hi, I’m Brie Miller, a passionate gym trainer with over 10 years of experience, dedicated to helping women feel strong, confident, and empowered. Born and raised in Ohio, I’m all about creating a supportive, fun environment where women can crush their fitness goals and celebrate their strength. Let’s build a fitness journey that inspires you inside and out!",
 			image: "/brie.jpeg",
 			// video: "/placeholder-video.mp4",
 		},

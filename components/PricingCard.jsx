@@ -36,13 +36,6 @@ export function PricingCard({
 			ref={cardRef}
 			className={`rounded-2xl p-8 transform hover:scale-105 transition-all duration-300 flex flex-col h-full  bg-gradient-to-br from-[#0283C0] to-[#026a9c] text-white`}
 		>
-			<div className="mb-6">
-				<div
-					className={`inline-block rounded-lg p-3 bg-white text-[#0283C0]`}
-				>
-					{icon}
-				</div>
-			</div>
 			<h3 className="text-2xl font-bold mb-2">{title}</h3>
 			<div className="mb-4">
 				<span className="text-5xl font-bold">${price}</span>
@@ -53,7 +46,7 @@ export function PricingCard({
 				{features.map((feature, index) => (
 					<li key={index} className="flex items-center gap-3">
 						<Check className="w-5 h-5 text-white" />
-						<span className={"text-white"}>{feature}</span>
+						<span className="text-white italic">{feature}</span>
 					</li>
 				))}
 			</ul>

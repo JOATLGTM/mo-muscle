@@ -289,14 +289,17 @@ function DetailSection({
 			} items-center gap-12 py-16 border-b border-gray-800`}
 		>
 			<div className="w-full md:w-1/2">
-				<h3 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4]">
-					{title}
+				<h3 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer relative inline-block tracking-tight font-helvetica uppercase">
+					{title.split(" - ")[0]}
+					<span className="font-playfair normal-case text-2xl md:text-3xl italic ml-2">
+						- {title.split(" - ")[1]}
+					</span>
 				</h3>
 				<p className="text-gray-300 mb-6">{description}</p>
 				<ul className="space-y-2 mb-6">
 					{" "}
 					{features.map((feature, index) => (
-						<li key={index} className="flex items-start">
+						<li key={index} className="flex items-start italic">
 							<svg
 								className="w-6 h-6 mr-2 text-green-500 flex-shrink-0"
 								fill="none"
