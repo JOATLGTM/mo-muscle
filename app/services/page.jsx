@@ -165,9 +165,6 @@ export default function ServicesPage() {
 						Transform your body and mind with our tailored training
 						programs
 					</p>
-					<Button className="hero-text bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105">
-						Start Your Journey
-					</Button>
 				</div>
 			</section>
 
