@@ -194,10 +194,6 @@ export default function Home() {
 				</div>
 			</section>
 
-			<div className="relative px-12">
-				<TestimonialCarousel />
-			</div>
-
 			{/* Our Company Section */}
 			{/* <section
 				ref={companyRef}
