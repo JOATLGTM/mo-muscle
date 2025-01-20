@@ -84,8 +84,11 @@ export default function TrainerCard({ trainer, reverse = false }) {
 					{trainer.name}
 				</h3>
 				<p className="text-2xl text-gray-400 mb-6">{trainer.role}</p>
-				<p className="text-gray-300 text-lg leading-relaxed">
-					{trainer.description}
+				<p
+					dangerouslySetInnerHTML={{ __html: trainer.description }}
+					className="text-gray-300 text-lg leading-relaxed"
+				>
+					{/* {trainer.description} */}
 				</p>
 			</div>
 		</div>
