@@ -9,6 +9,7 @@ import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TestimonialCarousel from "@/components/TestimonialCaruousel";
 // import { loadStripe } from "stripe/stripe-js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,6 +22,7 @@ export default function Home() {
 	const companyRef = useRef(null);
 	const pricingRef = useRef(null);
 	const instructorsRef = useRef(null);
+	const testimonialRef = useRef(null);
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -75,6 +77,17 @@ export default function Home() {
 				duration: 1,
 				scrollTrigger: {
 					trigger: instructorsRef.current,
+					start: "top 80%",
+				},
+			});
+
+			// Testimonial Section Animation
+			gsap.from(testimonialRef.current, {
+				opacity: 0,
+				y: 100,
+				duration: 1,
+				scrollTrigger: {
+					trigger: testimonialRef.current,
 					start: "top 80%",
 				},
 			});
@@ -194,29 +207,20 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Our Company Section */}
-			{/* <section
-				ref={companyRef}
-				className="py-12 md:py-24 text-center bg-white text-black"
+			{/* Testimonial Section */}
+			<section
+				ref={testimonialRef}
+				className="py-24 bg-gradient-to-b from-gray-900 to-black"
 			>
 				<div className="container mx-auto px-4">
-					<p className="text-sm tracking-wider mb-4 md:mb-8 text-[#0283C0]">
-						THE FIRST RULE OF ANY PHYSICAL TRAINING
-					</p>
-					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						THE FORM
+					<h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						What Our Members Say
 					</h2>
-					<p className="max-w-3xl mx-auto text-gray-600 mb-8 md:mb-12 text-sm md:text-base">
-						Mo Muscle is a collective of insanely dedicated and
-						hard-working people interested in self-improvement and
-						elite physical and mental performance. We don't like
-						talking about ourselves, but we'll do our best.
-					</p>
-					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
-						LEARN MORE
-					</Button>
+					<div className="relative px-12">
+						<TestimonialCarousel />
+					</div>
 				</div>
-			</section> */}
+			</section>
 
 			<ScrollingText />
 
