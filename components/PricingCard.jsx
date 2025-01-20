@@ -13,23 +13,14 @@ export function PricingCard({
 	icon,
 	isPopular = false,
 	darkMode = true,
-	onSubscribe,
+	stripeLink,
 	duration,
 }) {
 	const cardRef = useRef(null);
 
-	// useEffect(() => {
-	// 	gsap.from(cardRef.current, {
-	// 		y: 50,
-	// 		opacity: 0,
-	// 		duration: 1,
-	// 		ease: "power3.out",
-	// 		scrollTrigger: {
-	// 			trigger: cardRef.current,
-	// 			start: "top 100%",
-	// 		},
-	// 	});
-	// }, []);
+	const handleCheckout = () => {
+		window.location.href = stripeLink;
+	};
 
 	return (
 		<div
@@ -51,7 +42,7 @@ export function PricingCard({
 				))}
 			</ul>
 			<Button
-				onClick={onSubscribe}
+				onClick={handleCheckout}
 				className={`w-full mt-auto ${"bg-white text-[#0283C0] hover:bg-gray-200"} transform hover:scale-105 transition-all duration-300 text-sm md:text-base py-2 md:py-3`}
 			>
 				Choose This Plan

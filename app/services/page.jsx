@@ -182,6 +182,7 @@ export default function ServicesPage() {
 							"Access to our mobile app with exercise demonstrations and tracking tools",
 						]}
 						image="/placeholder.svg?height=600&width=800"
+						stripeLink="https://buy.stripe.com/test_6oEcNI6Z03eJges4gi"
 					/>
 
 					<DetailSection
@@ -196,6 +197,7 @@ export default function ServicesPage() {
 						]}
 						image="/placeholder.svg?height=600&width=800"
 						reverse
+						stripeLink="https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
 					/>
 
 					<DetailSection
@@ -224,6 +226,7 @@ export default function ServicesPage() {
 						]}
 						image="/placeholder.svg?height=600&width=800"
 						reverse
+						stripeLink="https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
 					/>
 				</div>
 			</section>
@@ -278,7 +281,12 @@ function DetailSection({
 	features,
 	image,
 	reverse = false,
+	stripeLink,
 }) {
+	const handleCheckout = () => {
+		window.location.href = stripeLink;
+	};
+
 	return (
 		<div
 			className={`detail-section flex flex-col ${
@@ -315,7 +323,10 @@ function DetailSection({
 						</li>
 					))}
 				</ul>
-				<Button className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
+				<Button
+					className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300"
+					onClick={handleCheckout}
+				>
 					Choose This Plan
 				</Button>
 			</div>

@@ -10,11 +10,8 @@ import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialCarousel from "@/components/TestimonialCaruousel";
-// import { loadStripe } from "stripe/stripe-js";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Home() {
 	const trainWithRef = useRef(null);
@@ -23,98 +20,6 @@ export default function Home() {
 	const pricingRef = useRef(null);
 	const instructorsRef = useRef(null);
 	const testimonialRef = useRef(null);
-
-	useEffect(() => {
-		const ctx = gsap.context(() => {
-			// Train With Section Animation
-			gsap.from(trainWithRef.current, {
-				opacity: 0,
-				y: 100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: trainWithRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Seminar Section Animation
-			gsap.from(seminarRef.current, {
-				opacity: 0,
-				x: -100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: seminarRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Company Section Animation
-			gsap.from(companyRef.current, {
-				opacity: 0,
-				y: 100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: companyRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Pricing Section Animation
-			gsap.from(pricingRef.current, {
-				opacity: 0,
-				y: 100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: pricingRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Instructors Section Animation
-			gsap.from(instructorsRef.current, {
-				opacity: 0,
-				x: 100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: instructorsRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Testimonial Section Animation
-			gsap.from(testimonialRef.current, {
-				opacity: 0,
-				y: 100,
-				duration: 1,
-				scrollTrigger: {
-					trigger: testimonialRef.current,
-					start: "top 80%",
-				},
-			});
-		});
-
-		return () => ctx.revert();
-	}, []);
-
-	// const handleSubscription = async (priceId) => {
-	// 	const stripe = await stripePromise;
-	// 	if (!stripe) return;
-
-	// 	const response = await fetch("/api/create-checkout-session", {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 		body: JSON.stringify({ priceId }),
-	// 	});
-
-	// 	const { sessionId } = await response.json();
-	// 	const result = await stripe.redirectToCheckout({ sessionId });
-
-	// 	if (result.error) {
-	// 		console.error(result.error.message);
-	// 	}
-	// };
 
 	return (
 		<div className="bg-black text-white">
@@ -251,9 +156,9 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							// onSubscribe={() =>
-							// 	handleSubscription("price_1234567890")
-							// }
+							stripeLink={
+								"https://buy.stripe.com/test_6oEcNI6Z03eJges4gi"
+							}
 						/>
 						<PricingCard
 							title="6 Months Plan"
@@ -269,9 +174,9 @@ export default function Home() {
 							icon={<ChevronRight className="w-6 h-6" />}
 							isPopular
 							darkMode={false}
-							// onSubscribe={() =>
-							// 	handleSubscription("price_0987654321")
-							// }
+							stripeLink={
+								"https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
+							}
 						/>
 						<PricingCard
 							title="12 Months Plan"
@@ -286,7 +191,7 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							// onSubscribe={() =>
+							// stripeLink={() =>
 							// 	handleSubscription("price_1357924680")
 							// }
 						/>
@@ -305,9 +210,9 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							onSubscribe={() =>
-								handleSubscription("price_online")
-							} // Replace with actual Stripe Price ID
+							stripeLink={
+								"https://buy.stripe.com/test_00g4hcgzA4iNe6k7sw"
+							}
 						/>
 					</div>
 				</div>
