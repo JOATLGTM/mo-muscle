@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { gsap } from "gsap";
+import { useRouter } from "next/navigation";
 
 export function PricingCard({
 	title,
@@ -16,10 +16,15 @@ export function PricingCard({
 	stripeLink,
 	duration,
 }) {
+	const router = useRouter();
 	const cardRef = useRef(null);
 
 	const handleCheckout = () => {
-		window.location.href = stripeLink;
+		if (stripeLink) {
+			window.location.href = stripeLink;
+		} else {
+			router.push("/contact");
+		}
 	};
 
 	return (

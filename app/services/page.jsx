@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -14,67 +15,6 @@ export default function ServicesPage() {
 	const servicesRef = useRef(null);
 	const detailsRef = useRef(null);
 	const ctaRef = useRef(null);
-
-	const services = [
-		{
-			title: "3 Months Plan",
-			price: "$39",
-			duration: "per session",
-			description:
-				"Get started with our 3-month training package. Perfect for those looking to kickstart their fitness journey.",
-			features: [
-				"As low as $39 per session",
-				"Personalized workout plan",
-				"Weekly check-ins",
-				"Access to gym facilities",
-				"Nutritional guidance",
-			],
-		},
-		{
-			title: "6 Months Plan",
-			price: "$35",
-			duration: "per session",
-			description:
-				"Take your fitness to the next level with our comprehensive 6-month package.",
-			features: [
-				"As low as $35 per session",
-				"All features of 3 Months Plan",
-				"Bi-weekly progress assessments",
-				"Customized meal plans",
-				"Priority scheduling",
-			],
-		},
-		{
-			title: "12 Months Plan",
-			price: "$32",
-			duration: "per session",
-			description:
-				"For those serious about long-term results. Our most comprehensive package for maximum results.",
-			features: [
-				"As low as $32 per session",
-				"All features of 6 Months Plan",
-				"Monthly one-on-one coaching",
-				"Access to exclusive workshops",
-				"Personalized supplement advice",
-			],
-		},
-		{
-			title: "Online Coaching",
-			price: "$50",
-			duration: "per week",
-			description:
-				"Transform your fitness from anywhere with our comprehensive online coaching program.",
-			features: [
-				"$50 per week",
-				"Tailored workout program",
-				"Customized meal plans",
-				"Access to Mo Muscle app",
-				"24/7 coach communication",
-				"Video exercise instructions",
-				"Progress tracking",
-			],
-		},
-	];
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -182,7 +122,6 @@ export default function ServicesPage() {
 							"Access to our mobile app with exercise demonstrations and tracking tools",
 						]}
 						image="/placeholder.svg?height=600&width=800"
-						stripeLink="https://buy.stripe.com/test_6oEcNI6Z03eJges4gi"
 					/>
 
 					<DetailSection
@@ -197,7 +136,6 @@ export default function ServicesPage() {
 						]}
 						image="/placeholder.svg?height=600&width=800"
 						reverse
-						stripeLink="https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
 					/>
 
 					<DetailSection
@@ -226,51 +164,22 @@ export default function ServicesPage() {
 						]}
 						image="/placeholder.svg?height=600&width=800"
 						reverse
-						stripeLink="https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
+						stripeLink="https://buy.stripe.com/00g15C37qf2vgjSdQU"
+					/>
+
+					<DetailSection
+						title="Online Coaching - $5 per week"
+						description="Transform your fitness from anywhere with our comprehensive Online Coaching program. For $5 per week, you'll receive personalized workout plan"
+						features={[
+							"Tailored workout program updated weekly",
+							"Access to the Mo Muscle app for workout tracking and progress monitoring",
+							"Video instructions on how to perform exercises correctly",
+						]}
+						image="/placeholder.svg?height=600&width=800"
+						stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
 					/>
 				</div>
 			</section>
-		</div>
-	);
-}
-
-function ServiceCard({ service }) {
-	return (
-		<div className="service-card bg-gray-800 rounded-lg p-6 flex flex-col h-full transform hover:scale-105 transition-all duration-300 shadow-lg">
-			<h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4]">
-				{service.title}
-			</h3>
-			<p className="text-4xl font-bold mb-2">
-				{service.price}
-				<span className="text-xl font-normal text-gray-400">
-					{service.duration}
-				</span>
-			</p>
-			<p className="text-gray-400 mb-6">{service.description}</p>
-			<ul className="space-y-2 mb-6 flex-grow">
-				{service.features.map((feature, index) => (
-					<li key={index} className="flex items-center">
-						<svg
-							className="w-5 h-5 mr-2 text-green-500"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M5 13l4 4L19 7"
-							></path>
-						</svg>
-						{feature}
-					</li>
-				))}
-			</ul>
-			<Button className="mt-auto w-full bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
-				Choose Plan
-			</Button>
 		</div>
 	);
 }
@@ -283,8 +192,13 @@ function DetailSection({
 	reverse = false,
 	stripeLink,
 }) {
+	const router = useRouter();
 	const handleCheckout = () => {
-		window.location.href = stripeLink;
+		if (stripeLink) {
+			window.location.href = stripeLink;
+		} else {
+			router.push("/contact");
+		}
 	};
 
 	return (

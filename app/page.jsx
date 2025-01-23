@@ -142,7 +142,7 @@ export default function Home() {
 						</h2>
 					</div>
 
-					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 						<PricingCard
 							title="3 Months Plan"
 							price="39"
@@ -156,9 +156,6 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							stripeLink={
-								"https://buy.stripe.com/test_6oEcNI6Z03eJges4gi"
-							}
 						/>
 						<PricingCard
 							title="6 Months Plan"
@@ -174,9 +171,6 @@ export default function Home() {
 							icon={<ChevronRight className="w-6 h-6" />}
 							isPopular
 							darkMode={false}
-							stripeLink={
-								"https://buy.stripe.com/test_3cs294abcbLf9Q4fZ1"
-							}
 						/>
 						<PricingCard
 							title="12 Months Plan"
@@ -191,10 +185,9 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							// stripeLink={() =>
-							// 	handleSubscription("price_1357924680")
-							// }
 						/>
+					</div>
+					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mt-7">
 						<PricingCard
 							title="Online Coaching"
 							price="50"
@@ -210,9 +203,20 @@ export default function Home() {
 							]}
 							icon={<ChevronRight className="w-6 h-6" />}
 							darkMode={false}
-							stripeLink={
-								"https://buy.stripe.com/test_00g4hcgzA4iNe6k7sw"
-							}
+							stripeLink="https://buy.stripe.com/00g15C37qf2vgjSdQU"
+						/>
+						<PricingCard
+							title="Online Coaching"
+							price="5"
+							duration="/ week"
+							description="Basic online coaching program for $5 per week."
+							features={[
+								"Tailored workout program",
+								"Access to Mo Muscle app",
+							]}
+							icon={<ChevronRight className="w-6 h-6" />}
+							darkMode={false}
+							stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
 						/>
 					</div>
 				</div>
