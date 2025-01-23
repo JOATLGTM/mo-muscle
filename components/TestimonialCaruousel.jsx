@@ -56,7 +56,7 @@ export default function TestimonialCarousel() {
 			opts={{
 				align: "start",
 				loop: true,
-				slidesToScroll: 4,
+				slidesToScroll: 1,
 				dragFree: true,
 			}}
 			className="w-full max-w-7xl mx-auto"
