@@ -63,10 +63,10 @@ export default function Home() {
 						FIND THE PROBLEM, FIX THE PROBLEM
 					</p>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						TRAIN WITH MOMUSCLE
+						TRAIN WITH MO MUSCLE
 					</h2>
 					<p className="max-w-3xl mx-auto text-gray-600 mb-8 md:mb-12 text-sm md:text-base">
-						At MoMuscle, we believe in a personalized approach to
+						At Mo Muscle, we believe in a personalized approach to
 						fitness. Our trainers guide you through each step,
 						ensuring you achieve your physical goals effectively.
 					</p>
@@ -98,7 +98,7 @@ export default function Home() {
 							WITH THE MO MUSCLE FAMILY
 						</h2>
 						<p className="text-gray-300 mb-6 md:mb-8 text-sm md:text-base">
-							Join the MoMuscle program and discover a community
+							Join the Mo Muscle program and discover a community
 							that inspires and empowers you. Our trainers provide
 							personalized guidance while fostering a supportive
 							environment where you can connect with others, stay
@@ -237,11 +237,11 @@ export default function Home() {
 					<p className="max-w-3xl mx-auto text-gray-300 mb-8 md:mb-12 text-sm md:text-base">
 						Our Certified Instructors have undergone our rigorous
 						physical and mental testing process to proudly represent
-						MoMuscle wherever they coach. They honor time-tested
+						Mo Muscle wherever they coach. They honor time-tested
 						principles while continuously developing and applying
 						innovative techniques. Experienced, creative, and
 						experts in their fields, they are here to guide you.
-						Connect with a certified MoMuscle instructor today.
+						Connect with a certified Mo Muscle instructor today.
 					</p>
 
 					<div className="relative">
