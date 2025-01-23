@@ -12,19 +12,25 @@ import {
 } from "@/components/ui/select";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 export default function ContactPage() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [service, setService] = useState("");
-	const [isFormValid, setIsFormValid] = useState(false);
+	const [errors, setErrors] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		service: "",
+	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitMessage, setSubmitMessage] = useState("");
 
 	const formRef = useRef(null);
 	const searchParams = useSearchParams();
+	const router = useRouter();
 
 	useEffect(() => {
 		const plan = searchParams.get("plan");
@@ -32,12 +38,6 @@ export default function ContactPage() {
 			setService(plan);
 		}
 	}, [searchParams]);
-
-	useEffect(() => {
-		setIsFormValid(
-			name !== "" && email !== "" && phone !== "" && service !== ""
-		);
-	}, [name, email, phone, service]);
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -60,8 +60,49 @@ export default function ContactPage() {
 		return () => ctx.revert();
 	}, []);
 
+	const validateForm = () => {
+		let isValid = true;
+		const newErrors = {
+			name: "",
+			email: "",
+			phone: "",
+			service: "",
+		};
+
+		if (name.trim() === "") {
+			newErrors.name = "Name is required";
+			isValid = false;
+		}
+
+		if (email.trim() === "") {
+			newErrors.email = "Email is required";
+			isValid = false;
+		} else if (!/\S+@\S+\.\S+/.test(email)) {
+			newErrors.email = "Email is invalid";
+			isValid = false;
+		}
+
+		if (phone.trim() === "") {
+			newErrors.phone = "Phone number is required";
+			isValid = false;
+		} else if (!/^\d{10}$/.test(phone.replace(/\D/g, ""))) {
+			newErrors.phone = "Phone number must be 10 digits";
+			isValid = false;
+		}
+
+		if (service === "") {
+			newErrors.service = "Please select a plan";
+			isValid = false;
+		}
+
+		setErrors(newErrors);
+		return isValid;
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (!validateForm()) return;
+
 		setIsSubmitting(true);
 		setSubmitMessage("");
 
@@ -75,13 +116,7 @@ export default function ContactPage() {
 			});
 
 			if (response.ok) {
-				setSubmitMessage(
-					"Thank you for your submission. We'll be in touch soon!"
-				);
-				setName("");
-				setEmail("");
-				setPhone("");
-				setService("");
+				router.push("/success");
 			} else {
 				setSubmitMessage(
 					"There was an error submitting the form. Please try again."
@@ -93,6 +128,13 @@ export default function ContactPage() {
 			);
 		} finally {
 			setIsSubmitting(false);
+		}
+	};
+
+	const handlePhoneChange = (e) => {
+		const value = e.target.value.replace(/\D/g, "");
+		if (value.length <= 10) {
+			setPhone(value);
 		}
 	};
 
@@ -113,12 +155,18 @@ export default function ContactPage() {
 					<div className="form-input">
 						<Input
 							type="text"
-							placeholder="Name"
+							placeholder="Full Name"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
-							required
-							className="w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300"
+							className={`w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300 ${
+								errors.name ? "border-red-500" : ""
+							}`}
 						/>
+						{errors.name && (
+							<p className="text-red-500 text-sm mt-1">
+								{errors.name}
+							</p>
+						)}
 					</div>
 					<div className="form-input">
 						<Input
@@ -126,27 +174,39 @@ export default function ContactPage() {
 							placeholder="Email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							required
-							className="w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300"
+							className={`w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300 ${
+								errors.email ? "border-red-500" : ""
+							}`}
 						/>
+						{errors.email && (
+							<p className="text-red-500 text-sm mt-1">
+								{errors.email}
+							</p>
+						)}
 					</div>
 					<div className="form-input">
 						<Input
 							type="tel"
-							placeholder="Phone Number"
+							placeholder="Phone Number (10 digits)"
 							value={phone}
-							onChange={(e) => setPhone(e.target.value)}
-							required
-							className="w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300"
+							onChange={handlePhoneChange}
+							className={`w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300 ${
+								errors.phone ? "border-red-500" : ""
+							}`}
 						/>
+						{errors.phone && (
+							<p className="text-red-500 text-sm mt-1">
+								{errors.phone}
+							</p>
+						)}
 					</div>
 					<div className="form-input">
-						<Select
-							onValueChange={setService}
-							value={service}
-							required
-						>
-							<SelectTrigger className="w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300">
+						<Select onValueChange={setService} value={service}>
+							<SelectTrigger
+								className={`w-full bg-gray-700 text-white border-gray-600 focus:border-[#0283C0] transition-all duration-300 ${
+									errors.service ? "border-red-500" : ""
+								}`}
+							>
 								<SelectValue placeholder="Select a plan" />
 							</SelectTrigger>
 							<SelectContent>
@@ -161,6 +221,11 @@ export default function ContactPage() {
 								</SelectItem>
 							</SelectContent>
 						</Select>
+						{errors.service && (
+							<p className="text-red-500 text-sm mt-1">
+								{errors.service}
+							</p>
+						)}
 					</div>
 					<div className="flex justify-between items-center space-x-4">
 						<Link href="/" className="w-1/2">
@@ -174,7 +239,7 @@ export default function ContactPage() {
 						</Link>
 						<Button
 							type="submit"
-							disabled={!isFormValid || isSubmitting}
+							disabled={isSubmitting}
 							className="w-1/2 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:from-[#026a9c] hover:to-[#0283C0] transition-all duration-300"
 						>
 							{isSubmitting ? "Submitting..." : "Submit"}

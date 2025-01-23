@@ -10,23 +10,16 @@ export async function POST(req) {
 			port: 587,
 			secure: false,
 			auth: {
-				user: process.env.NEXT_PUBLIC_EMAIL_USER,
-				pass: process.env.NEXT_PUBLIC_MAIL_PASS,
+				user: process.env.EMAIL_USER,
+				pass: process.env.MAIL_PASS,
 			},
 		});
 
-		// const mailOptions = {
-		// 	from: process.env.NEXT_PUBLIC_EMAIL_USER,
-		// 	to: "christopher.vo.h@gmail.com",
-		// 	subject: "New Contact Form Submission",
-		// 	text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}`,
-		// };
-
 		const mailOptions = {
-			from: process.env.EMAIL_USER, // Use the sender's email from env
-			to: "christopher.vo.h@gmail.com",
+			from: email,
+			to: process.env.EMAIL_USER,
 			subject: "New Contact Form Submission",
-			text: `hey this worked. finally`,
+			text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}`,
 		};
 
 		await transporter.sendMail(mailOptions);
