@@ -142,7 +142,7 @@ export default function Home() {
 						</h2>
 					</div>
 
-					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 						<PricingCard
 							title="3 Months Plan"
 							price="39"
@@ -187,7 +187,7 @@ export default function Home() {
 							darkMode={false}
 						/>
 					</div>
-					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mt-7">
+					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mt-7">
 						<PricingCard
 							title="Online Coaching"
 							price="50"
