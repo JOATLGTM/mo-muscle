@@ -47,14 +47,14 @@ const Footer = () => {
 					</p>
 					<div className="flex space-x-4">
 						<Link
-							href="#"
+							href="https://www.facebook.com/momuscle20"
 							className="text-gray-400 hover:text-white"
 							aria-label="Facebook"
 						>
 							<Facebook className="w-5 h-5" />
 						</Link>
 						<Link
-							href="#"
+							href="https://www.instagram.com/momuscle20/"
 							className="text-gray-400 hover:text-white"
 							aria-label="Instagram"
 						>
