@@ -11,13 +11,13 @@ const Footer = () => {
 					<address className="space-y-2 text-gray-400 not-italic">
 						<p>3675 Park Mill Run Dr</p>
 						<p>Hilliard, OH 43026</p>
-						<p>(123)456-7890</p>
+						<p>(614)357-8780</p>
 						<p>
 							<a
-								href="mailto:yomomma@gmail.com"
+								href="mailto:trainmomuscle@gmail.com"
 								className="hover:text-white"
 							>
-								yomomma@gmail.com
+								trainmomuscle@gmail.com
 							</a>
 						</p>
 					</address>
