@@ -121,7 +121,7 @@ export default function ServicesPage() {
 							"Nutritional guidance to support your fitness journey",
 							"Access to our mobile app with exercise demonstrations and tracking tools",
 						]}
-						image="/placeholder.svg?height=600&width=800"
+						image="/squat.jpg"
 					/>
 
 					<DetailSection
@@ -134,7 +134,7 @@ export default function ServicesPage() {
 							"Priority scheduling for gym sessions and trainer consultations",
 							"Access to exclusive workout videos and challenges",
 						]}
-						image="/placeholder.svg?height=600&width=800"
+						image="/bench.jpg"
 						reverse
 					/>
 
@@ -148,7 +148,7 @@ export default function ServicesPage() {
 							"Personalized supplement recommendations based on your goals and body composition",
 							"Quarterly fitness assessments to track your progress in detail",
 						]}
-						image="/placeholder.svg?height=600&width=800"
+						image="/405_deadlift.jpg"
 					/>
 
 					<DetailSection
@@ -162,7 +162,7 @@ export default function ServicesPage() {
 							"Video instructions on how to perform exercises correctly",
 							"Detailed progress tracking and regular check-ins",
 						]}
-						image="/placeholder.svg?height=600&width=800"
+						image="/online_coaching_2.jpg"
 						reverse
 						stripeLink="https://buy.stripe.com/00g15C37qf2vgjSdQU"
 					/>
@@ -175,7 +175,7 @@ export default function ServicesPage() {
 							"Access to the Mo Muscle app for workout tracking and progress monitoring",
 							"Video instructions on how to perform exercises correctly",
 						]}
-						image="/placeholder.svg?height=600&width=800"
+						image="/online_coaching.jpg"
 						stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
 					/>
 				</div>
