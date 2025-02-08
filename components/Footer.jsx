@@ -43,7 +43,7 @@ const Footer = () => {
 			<div className="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800">
 				<div className="flex justify-between items-center">
 					<p className="text-gray-400">
-						© 2025 Mo Muscles. All rights reserved
+						© 2025 Mo Muscle. All rights reserved
 					</p>
 					<div className="flex space-x-4">
 						<Link

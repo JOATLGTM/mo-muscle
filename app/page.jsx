@@ -10,6 +10,7 @@ import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialCarousel from "@/components/TestimonialCaruousel";
+import Head from "next/head";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,19 @@ export default function Home() {
 	const pricingRef = useRef(null);
 	const instructorsRef = useRef(null);
 	const testimonialRef = useRef(null);
+
+	useEffect(() => {
+		// Dynamically add the script tag to the head
+		const script = document.createElement("script");
+		script.src = "https://static.elfsight.com/platform/platform.js";
+		script.async = true;
+		document.head.appendChild(script);
+
+		// Clean up the script on unmount
+		return () => {
+			document.head.removeChild(script);
+		};
+	}, []);
 
 	return (
 		<div className="bg-black text-white">
@@ -43,13 +57,9 @@ export default function Home() {
 						width={400}
 						height={200}
 					/>
-					{/* <h1 className="text-6xl font-bold mb-4">MO MUSCLES</h1> */}
 					<p className="text-xl mb-8">
-						WELCOME TO THE OFFICIAL SITE OF MO MUSCLES
+						WELCOME TO THE OFFICIAL SITE OF MO MUSCLE
 					</p>
-					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white px-8">
-						TRAIN WITH US
-					</Button>
 				</div>
 			</section>
 
@@ -70,9 +80,6 @@ export default function Home() {
 						fitness. Our trainers guide you through each step,
 						ensuring you achieve your physical goals effectively.
 					</p>
-					<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
-						TRAIN WITH US
-					</Button>
 				</div>
 			</section>
 
@@ -105,26 +112,25 @@ export default function Home() {
 							motivated, and make steady progress toward your
 							fitness goals
 						</p>
-						<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white self-start transform hover:scale-105 transition-all duration-300">
-							LEARN MORE
-						</Button>
 					</div>
 				</div>
 			</section>
 
 			{/* Testimonial Section */}
-			<section
-				ref={testimonialRef}
-				className="py-24 bg-gradient-to-b from-gray-900 to-black"
-			>
-				<div className="container mx-auto px-4">
+			<section ref={testimonialRef} className="py-12 bg-white">
+				<div
+					class="elfsight-app-88d2e0fd-0af7-448d-ad90-643f857f8de3"
+					data-elfsight-app-lazy
+				></div>
+
+				{/* <div className="container mx-auto px-4">
 					<h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 						What Our Members Say
 					</h2>
 					<div className="relative px-12">
 						<TestimonialCarousel />
 					</div>
-				</div>
+				</div> */}
 			</section>
 
 			<ScrollingText />

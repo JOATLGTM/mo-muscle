@@ -7,6 +7,7 @@ import TrainerCard from "@/components/TrainerCard";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -180,9 +181,11 @@ export default function TrainersPage() {
 						journey to peak physical and mental performance. Join Mo
 						Muscle today and unlock your true potential.
 					</p>
-					<Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-						BEGIN YOUR JOURNEY
-					</Button>
+					<Link href="/services">
+						<Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+							BEGIN YOUR JOURNEY
+						</Button>
+					</Link>
 				</div>
 				<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent"></div>
 			</section>
