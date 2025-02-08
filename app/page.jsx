@@ -89,7 +89,7 @@ export default function Home() {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 container mx-auto px-4 items-center">
 					<div className="relative aspect-square overflow-hidden rounded-lg shadow-2xl">
 						<Image
-							src="/IMG_8380.JPG"
+							src="/family.jpeg"
 							alt="Mo Muscle Team"
 							fill
 							className="object-cover transform hover:scale-110 transition-all duration-500"
