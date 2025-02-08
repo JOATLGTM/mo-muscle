@@ -35,7 +35,22 @@ const Header = () => {
 						</Link>
 					</div>
 
-					<div className="hidden md:flex flex-grow justify-center">
+					<div className="hidden md:flex flex-shrink-0 invisible">
+						<div className="flex items-center space-x-4">
+							<Link href="/login">
+								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+									LOGIN
+								</Button>
+							</Link>
+							<Link href="/register">
+								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
+									REGISTER
+								</Button>
+							</Link>
+						</div>
+					</div>
+					{/* hidden md:flex flex-grow justify-center */}
+					<div className="hidden md:flex flex-shrink-0">
 						<div className="flex items-center space-x-8">
 							<Link
 								href="/"
@@ -54,21 +69,6 @@ const Header = () => {
 								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
 							>
 								SERVICES
-							</Link>
-						</div>
-					</div>
-
-					<div className="hidden md:flex flex-shrink-0">
-						<div className="flex items-center space-x-4">
-							<Link href="/login">
-								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
-									LOGIN
-								</Button>
-							</Link>
-							<Link href="/register">
-								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
-									REGISTER
-								</Button>
 							</Link>
 						</div>
 					</div>

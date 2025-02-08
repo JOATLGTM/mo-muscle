@@ -9,9 +9,7 @@ import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TestimonialCarousel from "@/components/TestimonialCaruousel";
-import Head from "next/head";
-
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
@@ -119,7 +117,7 @@ export default function Home() {
 			{/* Testimonial Section */}
 			<section ref={testimonialRef} className="py-12 bg-white">
 				<div
-					class="elfsight-app-88d2e0fd-0af7-448d-ad90-643f857f8de3"
+					className="elfsight-app-88d2e0fd-0af7-448d-ad90-643f857f8de3"
 					data-elfsight-app-lazy
 				></div>
 
@@ -134,6 +132,10 @@ export default function Home() {
 			</section>
 
 			<ScrollingText />
+
+			<section className="relative pt-16 md:pt-12 pb-20 overflow-hidden flex items-center">
+				<TestimonialCarousel />
+			</section>
 
 			{/* Pricing Section */}
 			<section
