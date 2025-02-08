@@ -236,9 +236,6 @@ export default function Home() {
 				className="py-12 md:py-24 text-center bg-black text-white"
 			>
 				<div className="container mx-auto px-4">
-					<p className="text-sm tracking-wider mb-2 md:mb-4 text-[#0283C0]">
-						FIND A COACH
-					</p>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 						CERTIFIED INSTRUCTORS
 					</h2>
