@@ -178,6 +178,57 @@ body {
 		background-position: 0% 50%;
 	}
 }
+
+/* Custom Gradient Text */
+@layer utilities {
+	.text-gradient {
+		background: linear-gradient(270deg, #0283c0, #03a9f4);
+		background-clip: text;
+		color: transparent;
+	}
+}
+
+/* Glassmorphism effect for cards and containers */
+.glassmorphism {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animation for shimmering text */
+@keyframes textShimmer {
+	0% {
+		background-position: 200% 0%;
+	}
+	50% {
+		background-position: -200% 0%;
+	}
+	100% {
+		background-position: 200% 0%;
+	}
+}
+
+.animate-text-shimmer {
+	animation: textShimmer 3s ease-in-out infinite;
+	background-size: 200% auto;
+}
+
+/* Hover Effect for scaling */
+.hover-lift {
+	transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+	transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+} */
+
 /* 
 @layer base {
   * {

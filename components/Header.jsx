@@ -70,6 +70,12 @@ const Header = () => {
 							>
 								SERVICES
 							</Link>
+							<Link
+								href="/blog"
+								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+							>
+								BLOG
+							</Link>
 						</div>
 					</div>
 
