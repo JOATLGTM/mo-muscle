@@ -40,7 +40,6 @@ export default function BlogPage() {
 						<p className="text-center text-gray-300">Loading...</p>
 					) : (
 						data.map((item) => {
-							console.log(item.image === undefined);
 							return (
 								<div
 									key={item.id}
@@ -66,6 +65,10 @@ export default function BlogPage() {
 									<h3 className="text-2xl font-playfair text-gradient mb-4 mt-4">
 										{item.title}
 									</h3>
+									{/* Render the date below the title */}
+									<p className="text-sm text-gray-400 mb-4">
+										{item.date}
+									</p>
 									<p className="text-sm text-gray-300">
 										{item.description}
 									</p>

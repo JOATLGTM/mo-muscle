@@ -9,6 +9,7 @@ export default function AddItemForm() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [image, setImage] = useState(null); // Optional image
+	const [date, setDate] = useState(""); // State to store the date
 	const [data, setData] = useState([]);
 	const [imageName, setImageName] = useState(""); // State to store the file name
 
@@ -38,17 +39,19 @@ export default function AddItemForm() {
 		// Create a reference to the "items" path in the database
 		const itemRef = ref(db, "items/" + Date.now()); // Using timestamp as ID for uniqueness
 
-		// Add a new item with title, description, and image URL (if an image is uploaded)
+		// Add a new item with title, description, image URL (if an image is uploaded), and date
 		await set(itemRef, {
 			title,
 			description,
 			image: image ? image.name : null, // Optional image field
+			date, // Save the date
 		});
 
 		// Reset form fields
 		setTitle("");
 		setDescription("");
 		setImage(null);
+		setDate(""); // Reset the date field
 
 		fetchData();
 	};
@@ -81,6 +84,11 @@ export default function AddItemForm() {
 						onChange={(e) => setDescription(e.target.value)}
 						required
 					/>
+					<input
+						type="date"
+						value={date}
+						onChange={(e) => setDate(e.target.value)}
+					/>
 					<div className="file-upload">
 						<input type="file" onChange={handleFileChange} />
 					</div>
@@ -108,6 +116,11 @@ export default function AddItemForm() {
 									<p className="text-white">
 										{item.description}
 									</p>
+
+									<h3 className="font-playfair text-xl">
+										Date
+									</h3>
+									<p>{item.date}</p>
 									<h3 className="font-playfair text-xl">
 										Image
 									</h3>
