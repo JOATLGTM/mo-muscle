@@ -39,27 +39,39 @@ export default function BlogPage() {
 					{data.length === 0 ? (
 						<p className="text-center text-gray-300">Loading...</p>
 					) : (
-						data.map((item) => (
-							<div
-								key={item.id}
-								className="relative bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-300"
-							>
-								<div className="absolute inset-0 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] opacity-20 rounded-lg"></div>
-								{/* <Image
-									src={item.image} // Fallback image if image is missing
-									alt={item.title}
-									className="w-full h-64 object-cover rounded-lg mb-6"
-									height={300}
-									width={500}
-								/> */}
-								<h3 className="text-2xl font-playfair text-gradient mb-4">
-									{item.title}
-								</h3>
-								<p className="text-sm text-gray-300">
-									{item.description}
-								</p>
-							</div>
-						))
+						data.map((item) => {
+							console.log(item.image === undefined);
+							return (
+								<div
+									key={item.id}
+									className="relative bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
+								>
+									<div className="absolute inset-0 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] opacity-20 rounded-lg"></div>
+									{/* {item.image && (
+									<Image
+										src={item.image} // Fallback image if image is missing
+										alt={item.title}
+										className="w-full h-64 object-cover rounded-lg mb-6"
+										height={300}
+										width={500}
+									/>
+								)} */}
+									{item.image !== undefined && (
+										<img
+											src={item.image}
+											alt={item.title}
+											className="rounded-lg"
+										/>
+									)}
+									<h3 className="text-2xl font-playfair text-gradient mb-4 mt-4">
+										{item.title}
+									</h3>
+									<p className="text-sm text-gray-300">
+										{item.description}
+									</p>
+								</div>
+							);
+						})
 					)}
 				</div>
 			</div>
