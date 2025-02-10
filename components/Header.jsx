@@ -22,7 +22,7 @@ const Header = () => {
 		<header className="absolute top-0 left-0 right-0 z-50">
 			<div className="container mx-auto px-4">
 				<nav className="flex items-center justify-between h-24">
-					<div className="flex-shrink-0">
+					<div className="flex-shrink-0 hidden md:block">
 						<Link href="/" className="block">
 							<Image
 								src="/badge-logo-white.png"
@@ -35,21 +35,6 @@ const Header = () => {
 						</Link>
 					</div>
 
-					<div className="hidden md:flex flex-shrink-0 invisible">
-						<div className="flex items-center space-x-4">
-							<Link href="/login">
-								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
-									LOGIN
-								</Button>
-							</Link>
-							<Link href="/register">
-								<Button className="bg-[#0283C0] hover:bg-[#026a9c] text-white">
-									REGISTER
-								</Button>
-							</Link>
-						</div>
-					</div>
-					{/* hidden md:flex flex-grow justify-center */}
 					<div className="hidden md:flex flex-shrink-0">
 						<div className="flex items-center space-x-8">
 							<Link
@@ -79,7 +64,8 @@ const Header = () => {
 						</div>
 					</div>
 
-					<div className="md:hidden">
+					{/* Mobile hamburger button */}
+					<div className="md:hidden absolute right-4">
 						<button onClick={toggleMenu} className="text-white">
 							{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
 						</button>
@@ -108,18 +94,12 @@ const Header = () => {
 							>
 								SERVICES
 							</Link>
-							<div className="flex flex-col space-y-2 px-4">
-								<Link href="/login">
-									<Button className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white">
-										LOGIN
-									</Button>
-								</Link>
-								<Link href="/register">
-									<Button className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white">
-										REGISTER
-									</Button>
-								</Link>
-							</div>
+							<Link
+								href="/blog"
+								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
+							>
+								BLOG
+							</Link>
 						</div>
 					</div>
 				)}

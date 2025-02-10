@@ -32,7 +32,7 @@ export default function BlogPage() {
 	return (
 		<section className="bg-black text-white py-16 px-4">
 			<div className="container mx-auto">
-				<h1 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
+				<h1 className="text-4xl font-bold text-center m-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 					Blog
 				</h1>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -45,7 +45,7 @@ export default function BlogPage() {
 									key={item.id}
 									className="relative bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
 								>
-									<div className="absolute inset-0 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] opacity-20 rounded-lg"></div>
+									<div className="absolute inset-0 bg-gradient-to-r opacity-20 rounded-lg"></div>
 									{/* {item.image && (
 									<Image
 										src={item.image} // Fallback image if image is missing

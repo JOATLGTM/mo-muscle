@@ -12,39 +12,58 @@ import {
 
 const testimonials = [
 	{
-		name: "Sarah Johnson",
-		image: "/transformation/amir.jpg",
-	},
-	{
-		name: "Mike Thompson",
+		name: "client-transformation",
 		image: "/transformation/client1.jpg",
 	},
 	{
-		name: "Emily Rodriguez",
+		name: "client-transformation",
 		image: "/transformation/client2.jpg",
 	},
 	{
-		name: "David Chen",
+		name: "client-transformation",
 		image: "/transformation/client3.jpg",
 	},
 	{
-		name: "Lisa Patel",
+		name: "client-transformation",
 		image: "/transformation/client4.jpg",
 	},
 	{
-		name: "Tom Jackson",
+		name: "client-transformation",
 		image: "/transformation/client5.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client6.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client7.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client8.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client9.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client10.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client11.jpg",
+	},
+	{
+		name: "client-transformation",
+		image: "/transformation/client12.jpg",
 	},
 ];
 
 export default function TestimonialCarousel() {
 	return (
 		<div className="w-full max-w-7xl mx-auto">
-			{/* Title above the carousel */}
-			{/* <h2 className="hero-text text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer text-center">
-				CLIENT TRANSFORMATIONS
-			</h2> */}
-
 			<div className="text-center mb-8 md:mb-12">
 				<h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 					CLIENT TRANSFORMATIONS
