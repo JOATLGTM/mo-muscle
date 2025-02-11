@@ -10,6 +10,8 @@ import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import Schedule from "@/components/Schedule";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
@@ -60,7 +62,6 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
-
 			{/* Train With Gym Mo Section */}
 			<section
 				ref={trainWithRef}
@@ -80,7 +81,6 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
-
 			{/* Seminar Section */}
 			<section
 				ref={seminarRef}
@@ -113,7 +113,6 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-
 			{/* Testimonial Section */}
 			<section ref={testimonialRef} className="py-12 bg-white">
 				<div
@@ -130,20 +129,17 @@ export default function Home() {
 					</div>
 				</div> */}
 			</section>
-
 			<ScrollingText />
-
 			<section className="relative pt-16 md:pt-12 pb-20 overflow-hidden flex items-center">
 				<TestimonialCarousel />
 			</section>
-
 			{/* Pricing Section */}
-			<section
+			{/* <section
 				ref={pricingRef}
 				className="py-6 md:py-24 bg-white text-black"
-			>
-				{" "}
-				<div className="container mx-auto px-4">
+			> */}{" "}
+			<Schedule />
+			{/* <div className="container mx-auto px-4">
 					<div className="text-center mb-8 md:mb-12">
 						<h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
 							Our Pricing Plan
@@ -227,9 +223,8 @@ export default function Home() {
 							stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
 						/>
 					</div>
-				</div>
-			</section>
-
+				</div> */}
+			{/* </section> */}
 			{/* Certified Instructors Section */}
 			<section
 				ref={instructorsRef}
