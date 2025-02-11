@@ -1,258 +1,285 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+	ChevronRight,
+	Calendar,
+	Dumbbell,
+	Zap,
+	Timer,
+	Heart,
+	Utensils,
+	FileWarning,
+	Shield,
+	Smile,
+	DollarSign,
+	FingerprintIcon as Fist,
+	Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+const tabs = [
+	{
+		id: "individualized",
+		label: "INDIVIDUALIZED TRAINING",
+		title: "ALL WORKOUTS MADE FOR YOU-",
+		subtitle: "INDIVIDUALIZED TRAINING",
+		content:
+			"Your health and well-being at the top of our priority list. Our individualized programs will be designed to help you achieve optimal performance, stay injury free and improve your quality of life while showing the results you're looking for.",
+	},
+	{
+		id: "total-body",
+		label: "TOTAL BODY WORKOUTS",
+		title: "RELY ON SOUL, MIND, AND HEART WITH",
+		subtitle: "TOTAL BODY WORKOUTS",
+		content:
+			"Our total-body training programs minimize the use of machines to maximize the use of the body. At CFP, however, complete success is not measured in the number of reps achieved or results visualized on the scale. It encompasses your mental well-being - to help break barriers and plateaus both in and out of the gym.",
+	},
+	{
+		id: "semi-private",
+		label: "SEMI-PRIVATE WORKOUTS",
+		title: "YOU ARE NOT IN THIS ALONE-",
+		subtitle: "SEMI-PRIVATE WORKOUTS",
+		content:
+			"SEMI-PRIVATE WORKOUTS offer the perfect balance of a private gym experience and the camaraderie of working out with others. Enjoy the cost efficiency of a group setting while still receiving personalized, hands-on training from our expert trainer.",
+	},
+];
+
+const elements = [
+	{ icon: Calendar, label: "AGE" },
+	{ icon: Dumbbell, label: "STRENGTH" },
+	{ icon: Zap, label: "POWER" },
+	{ icon: Timer, label: "SPEED" },
+	{ icon: Heart, label: "AEROBIC\nCAPACITY" },
+	{ icon: Utensils, label: "NUTRITION\nINTAKE" },
+	{ icon: FileWarning, label: "INJURY\nHISTORY" },
+	{ icon: Shield, label: "PHYSICAL\nLIMITS" },
+];
+
+const benefits = [
+	{ icon: Smile, label: "HAVE FUN" },
+	{ icon: DollarSign, label: "SAVE MONEY" },
+	{ icon: Fist, label: "COMPETITION" },
+	{ icon: Users, label: "FIND COMMUNITY" },
+];
+
+const workoutImages = [
+	"/placeholder.svg?height=300&width=300",
+	"/placeholder.svg?height=300&width=300",
+	"/placeholder.svg?height=300&width=300",
+	"/placeholder.svg?height=300&width=300",
+	"/placeholder.svg?height=300&width=300",
+];
 
 export default function ServicesPage() {
-	const headerRef = useRef(null);
-	const servicesRef = useRef(null);
-	const detailsRef = useRef(null);
-	const ctaRef = useRef(null);
-
-	useEffect(() => {
-		const ctx = gsap.context(() => {
-			gsap.from(".hero-text", {
-				y: 100,
-				opacity: 0,
-				stagger: 0.2,
-				duration: 1,
-				ease: "power3.out",
-				delay: 0.5,
-			});
-
-			// Animated background shapes
-			gsap.to(".bg-shape", {
-				rotation: 360,
-				transformOrigin: "center center",
-				repeat: -1,
-				duration: 20,
-				ease: "none",
-			});
-
-			// Services section animation
-			gsap.from(".service-card", {
-				opacity: 0,
-				y: 100,
-				stagger: 0.3,
-				duration: 1,
-				ease: "power3.out",
-				scrollTrigger: {
-					trigger: servicesRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// Details section animation
-			gsap.from(".detail-section", {
-				opacity: 0,
-				y: 50,
-				stagger: 0.3,
-				duration: 1,
-				ease: "power3.out",
-				scrollTrigger: {
-					trigger: detailsRef.current,
-					start: "top 80%",
-				},
-			});
-
-			// CTA section animation
-			gsap.from(ctaRef.current, {
-				opacity: 0,
-				y: 50,
-				duration: 1,
-				ease: "power3.out",
-				scrollTrigger: {
-					trigger: ctaRef.current,
-					start: "top 80%",
-				},
-			});
-		});
-
-		return () => ctx.revert();
-	}, []);
+	const [activeTab, setActiveTab] = useState("individualized");
 
 	return (
-		<div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white min-h-screen overflow-hidden">
+		<div className="min-h-screen bg-black">
 			{/* Hero Section */}
-			<section
-				ref={headerRef}
-				className="relative min-h-screen flex items-center justify-center overflow-hidden"
-			>
-				<div className="absolute inset-0">
-					<div className="bg-shape absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
-					<div className="bg-shape absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
+			<section className="relative h-[600px] flex items-center">
+				<div className="absolute inset-0 bg-cover bg-center">
+					<Image
+						src="/service_hero.jpg"
+						alt="Clean empty gym"
+						fill
+						className="object-cover brightness-50"
+						priority
+					/>{" "}
 				</div>
-				<Image
-					src="/deadlift.jpg"
-					alt="Gym equipment"
-					fill
-					className="object-cover"
-					priority
-				/>
-				<div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
-				<div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-					<h1 className="hero-text text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						OUR SERVICES
-					</h1>
-					<p className="hero-text text-xl md:text-2xl mb-12 text-gray-300">
-						Transform your body and mind with our tailored training
-						programs
-					</p>
+				<div className="relative container mx-auto px-4">
+					<div className="max-w-2xl">
+						<h2 className="text-white text-xl mb-4">
+							GET STARTED ON YOUR JOURNEY WITH
+						</h2>
+						<h1 className="text-white text-6xl font-bold leading-tight mb-8">
+							THE COMPLETE
+							<br />
+							FITNESS PROGRAMS
+						</h1>
+						<Link href="/contact">
+							<Button className="bg-[#F5A623] hover:bg-[#d88f1a] text-white px-8 py-6 text-xl">
+								JOIN NOW
+								<ChevronRight className="ml-2 h-6 w-6" />
+							</Button>
+						</Link>
+					</div>
 				</div>
 			</section>
 
-			{/* Detailed Sections */}
-			<section ref={detailsRef} className="py-24 bg-black">
+			{/* Content Section */}
+			<section className="bg-white py-16">
 				<div className="container mx-auto px-4">
-					<DetailSection
-						title="3 Months Plan - As low as $39 per session"
-						description="Our 3 Months Plan is designed to kickstart your fitness journey. For as low as $39 per session, you'll get a comprehensive introduction to our training methodology and personalized guidance to help you achieve your initial fitness goals."
-						features={[
-							"Personalized workout plan tailored to your fitness level and goals",
-							"Weekly check-ins with a certified trainer to track progress and adjust your plan",
-							"Access to our state-of-the-art gym facilities",
-							"Nutritional guidance to support your fitness journey",
-							"Access to our mobile app with exercise demonstrations and tracking tools",
-						]}
-						image="/squat.jpg"
-					/>
+					<div className="flex flex-col md:flex-row gap-8">
+						{/* Tabs */}
+						<div className="w-full md:w-1/3">
+							<div className="space-y-4">
+								{tabs.map((tab) => (
+									<button
+										key={tab.id}
+										onClick={() => setActiveTab(tab.id)}
+										className={`w-full text-left px-6 py-4 rounded transition-colors ${
+											activeTab === tab.id
+												? "bg-[rgb(2,131,192)] text-white"
+												: "bg-white text-[rgb(2,131,192)] hover:bg-gray-100"
+										}`}
+									>
+										<span className="flex items-center">
+											{tab.label}
+											<ChevronRight className="ml-auto h-5 w-5" />
+										</span>
+									</button>
+								))}
+							</div>
+						</div>
 
-					<DetailSection
-						title="6 Months Plan - As low as $35 per session"
-						description="Take your fitness to the next level with our 6 Months Plan. At as low as $35 per session, this package offers a more comprehensive approach to your fitness journey, including advanced training techniques and nutrition strategies."
-						features={[
-							"All features of the 3 Months Plan",
-							"Bi-weekly progress assessments to fine-tune your training",
-							"Customized meal plans designed by our nutrition experts",
-							"Priority scheduling for gym sessions and trainer consultations",
-							"Access to exclusive workout videos and challenges",
-						]}
-						image="/bench.jpg"
-						reverse
-					/>
+						{/* Content */}
+						<div className="w-full md:w-2/3">
+							<AnimatePresence mode="wait">
+								<motion.div
+									key={activeTab}
+									initial={{ opacity: 0, x: 20 }}
+									animate={{ opacity: 1, x: 0 }}
+									exit={{ opacity: 0, x: -20 }}
+									transition={{ duration: 0.3 }}
+								>
+									{tabs.map(
+										(tab) =>
+											tab.id === activeTab && (
+												<div key={tab.id}>
+													<h2 className="text-4xl font-bold text-[rgb(2,131,192)] mb-2">
+														{tab.title}
+													</h2>
+													<h3 className="text-4xl font-bold text-[#66A1FF] mb-6">
+														{tab.subtitle}
+													</h3>
+													<p className="text-gray-700 mb-12">
+														{tab.content}
+													</p>
 
-					<DetailSection
-						title="12 Months Plan - As low as $32 per session"
-						description="Our 12 Months Plan is designed for those who are serious about achieving long-term, sustainable results. At as low as $32 per session, this comprehensive package provides you with the ultimate support and resources for your fitness transformation."
-						features={[
-							"All features of the 6 Months Plan",
-							"Monthly one-on-one coaching sessions with a senior trainer",
-							"Access to exclusive Mo Muscle workshops and seminars",
-							"Personalized supplement recommendations based on your goals and body composition",
-							"Quarterly fitness assessments to track your progress in detail",
-						]}
-						image="/405_deadlift.jpg"
-					/>
+													{tab.id ===
+														"individualized" && (
+														<>
+															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
+																THE
+																INDIVIDUALIZATION
+																ELEMENTS
+															</h4>
+															<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+																{elements.map(
+																	(
+																		element,
+																		index
+																	) => (
+																		<div
+																			key={
+																				index
+																			}
+																			className="flex flex-col items-center text-center"
+																		>
+																			<div className="w-20 h-20 bg-[rgb(2,131,192)] rounded-lg flex items-center justify-center mb-4">
+																				<element.icon className="h-10 w-10 text-white" />
+																			</div>
+																			<span className="text-[rgb(2,131,192)] font-bold whitespace-pre-line">
+																				{
+																					element.label
+																				}
+																			</span>
+																		</div>
+																	)
+																)}
+															</div>
+														</>
+													)}
 
-					<DetailSection
-						title="Online Coaching - $50 per week"
-						description="Transform your fitness from anywhere with our comprehensive Online Coaching program. For $50 per week, you'll receive personalized guidance and support to achieve your fitness goals, no matter where you are."
-						features={[
-							"Tailored workout program updated weekly",
-							"Customized meal plans to support your fitness goals",
-							"Access to the Mo Muscle app for workout tracking and progress monitoring",
-							"24/7 communication with our expert coaches",
-							"Video instructions on how to perform exercises correctly",
-							"Detailed progress tracking and regular check-ins",
-						]}
-						image="/online_coaching_2.jpg"
-						reverse
-						stripeLink="https://buy.stripe.com/00g15C37qf2vgjSdQU"
-					/>
+													{tab.id ===
+														"total-body" && (
+														<>
+															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
+																VIEW OUR
+																WORKOUTS
+															</h4>
+															<div className="flex overflow-x-auto space-x-4 mb-8">
+																{workoutImages.map(
+																	(
+																		src,
+																		index
+																	) => (
+																		<div
+																			key={
+																				index
+																			}
+																			className="flex-shrink-0"
+																		>
+																			<Image
+																				src={
+																					src ||
+																					"/placeholder.svg"
+																				}
+																				alt={`Workout ${
+																					index +
+																					1
+																				}`}
+																				width={
+																					300
+																				}
+																				height={
+																					300
+																				}
+																				className="rounded-lg"
+																			/>
+																		</div>
+																	)
+																)}
+															</div>
+														</>
+													)}
 
-					<DetailSection
-						title="Online Coaching - $5 per week"
-						description="Transform your fitness from anywhere with our comprehensive Online Coaching program. For $5 per week, you'll receive personalized workout plan"
-						features={[
-							"Tailored workout program updated weekly",
-							"Access to the Mo Muscle app for workout tracking and progress monitoring",
-							"Video instructions on how to perform exercises correctly",
-						]}
-						image="/online_coaching.jpg"
-						stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
-					/>
+													{tab.id ===
+														"semi-private" && (
+														<>
+															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
+																BENEFITS OF
+																WORKING TOGETHER
+															</h4>
+															<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+																{benefits.map(
+																	(
+																		benefit,
+																		index
+																	) => (
+																		<div
+																			key={
+																				index
+																			}
+																			className="flex flex-col items-center text-center"
+																		>
+																			<div className="w-20 h-20 bg-[rgb(2,131,192)] rounded-lg flex items-center justify-center mb-4">
+																				<benefit.icon className="h-10 w-10 text-white" />
+																			</div>
+																			<span className="text-[rgb(2,131,192)] font-bold">
+																				{
+																					benefit.label
+																				}
+																			</span>
+																		</div>
+																	)
+																)}
+															</div>
+														</>
+													)}
+												</div>
+											)
+									)}
+								</motion.div>
+							</AnimatePresence>
+						</div>
+					</div>
 				</div>
 			</section>
-		</div>
-	);
-}
-
-function DetailSection({
-	title,
-	description,
-	features,
-	image,
-	reverse = false,
-	stripeLink,
-}) {
-	const router = useRouter();
-	const handleCheckout = () => {
-		if (stripeLink) {
-			window.location.href = stripeLink;
-		} else {
-			router.push("/contact");
-		}
-	};
-
-	return (
-		<div
-			className={`detail-section flex flex-col ${
-				reverse ? "md:flex-row-reverse" : "md:flex-row"
-			} items-center gap-12 py-16 border-b border-gray-800`}
-		>
-			<div className="w-full md:w-1/2">
-				<h3 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer relative inline-block tracking-tight font-helvetica uppercase">
-					{title.split(" - ")[0]}
-					<span className="font-playfair normal-case text-2xl md:text-3xl italic ml-2">
-						- {title.split(" - ")[1]}
-					</span>
-				</h3>
-				<p className="text-gray-300 mb-6">{description}</p>
-				<ul className="space-y-2 mb-6">
-					{" "}
-					{features.map((feature, index) => (
-						<li key={index} className="flex items-start italic">
-							<svg
-								className="w-6 h-6 mr-2 text-green-500 flex-shrink-0"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									d="M5 13l4 4L19 7"
-								></path>
-							</svg>
-							<span>{feature}</span>
-						</li>
-					))}
-				</ul>
-				<Button
-					className="w-full bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300"
-					onClick={handleCheckout}
-				>
-					Choose This Plan
-				</Button>
-			</div>
-			<div className="w-full md:w-1/2">
-				<Image
-					src={image}
-					alt={title}
-					width={800}
-					height={600}
-					className="rounded-lg shadow-lg"
-				/>
-			</div>
 		</div>
 	);
 }

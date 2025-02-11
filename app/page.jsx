@@ -133,6 +133,48 @@ export default function Home() {
 			<section className="relative pt-16 md:pt-12 pb-20 overflow-hidden flex items-center">
 				<TestimonialCarousel />
 			</section>
+			<ScrollingText />
+			<section
+				ref={instructorsRef}
+				className="py-12 md:py-24 text-center bg-black text-white"
+			>
+				<div className="container mx-auto px-4">
+					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
+						CERTIFIED INSTRUCTORS
+					</h2>
+					<p className="max-w-3xl mx-auto text-gray-300 mb-8 md:mb-12 text-sm md:text-base">
+						Our Certified Instructors have undergone our rigorous
+						physical and mental testing process to proudly represent
+						Mo Muscle wherever they coach. They honor time-tested
+						principles while continuously developing and applying
+						innovative techniques. Experienced, creative, and
+						experts in their fields, they are here to guide you.
+						Connect with a certified Mo Muscle instructor today.
+					</p>
+
+					<div className="relative">
+						<div className="flex flex-col md:flex-row overflow-x-auto gap-6 pb-6 justify-center">
+							{" "}
+							<InstructorCard
+								name="MO NAYAL"
+								location="COLUMBUS OHIO"
+								image="/mo_2.jpeg"
+							/>
+							<InstructorCard
+								name="BRIE MILLER"
+								location="COLUMBUS OHIO"
+								image="/brie.jpeg"
+							/>
+						</div>
+					</div>
+					<Link href="/trainers">
+						<Button className="mt-8 md:mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
+							{" "}
+							SEE ALL INSTRUCTORS
+						</Button>
+					</Link>
+				</div>
+			</section>
 			{/* Pricing Section */}
 			{/* <section
 				ref={pricingRef}
@@ -226,47 +268,6 @@ export default function Home() {
 				</div> */}
 			{/* </section> */}
 			{/* Certified Instructors Section */}
-			<section
-				ref={instructorsRef}
-				className="py-12 md:py-24 text-center bg-black text-white"
-			>
-				<div className="container mx-auto px-4">
-					<h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						CERTIFIED INSTRUCTORS
-					</h2>
-					<p className="max-w-3xl mx-auto text-gray-300 mb-8 md:mb-12 text-sm md:text-base">
-						Our Certified Instructors have undergone our rigorous
-						physical and mental testing process to proudly represent
-						Mo Muscle wherever they coach. They honor time-tested
-						principles while continuously developing and applying
-						innovative techniques. Experienced, creative, and
-						experts in their fields, they are here to guide you.
-						Connect with a certified Mo Muscle instructor today.
-					</p>
-
-					<div className="relative">
-						<div className="flex flex-col md:flex-row overflow-x-auto gap-6 pb-6 justify-center">
-							{" "}
-							<InstructorCard
-								name="MO NAYAL"
-								location="COLUMBUS OHIO"
-								image="/mo_2.jpeg"
-							/>
-							<InstructorCard
-								name="BRIE MILLER"
-								location="COLUMBUS OHIO"
-								image="/brie.jpeg"
-							/>
-						</div>
-					</div>
-					<Link href="/trainers">
-						<Button className="mt-8 md:mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
-							{" "}
-							SEE ALL INSTRUCTORS
-						</Button>
-					</Link>
-				</div>
-			</section>
 		</div>
 	);
 }
