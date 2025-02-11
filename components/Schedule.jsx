@@ -187,7 +187,6 @@ export default function ScheduleSection() {
 
 				if (response.ok) {
 					setIsSuccess(true);
-					router.push("/success");
 				} else {
 					setIsSuccess(false);
 					alert(
@@ -283,311 +282,321 @@ export default function ScheduleSection() {
 										Congratulations!
 									</h2>
 									<p className="text-gray-600 mb-8">
-										Thank you for submitting your
-										information. We'll be in touch with you
-										shortly to start your fitness journey!
+										Thank you for signing up. We will
+										contact you shortly to discuss your
+										fitness journey.
 									</p>
 									<Button
 										onClick={handleClose}
 										className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90"
 									>
-										Close
+										Return Home
 									</Button>
 								</motion.div>
 							) : (
 								<>
-									{currentStep <= questions.length - 1 ? (
-										<>
-											<div className="mb-8 mt-4">
-												<div className="h-2 w-full bg-gray-200 rounded-full">
-													<div
-														className="h-2 bg-[rgb(2,131,192)] rounded-full transition-all duration-300"
-														style={{
-															width: `${
-																((currentStep +
-																	1) /
-																	(questions.length +
-																		1)) *
-																100
-															}%`,
-														}}
-													/>
+									<>
+										{currentStep <= questions.length - 1 ? (
+											<>
+												<div className="mb-8 mt-4">
+													<div className="h-2 w-full bg-gray-200 rounded-full">
+														<div
+															className="h-2 bg-[rgb(2,131,192)] rounded-full transition-all duration-300"
+															style={{
+																width: `${
+																	((currentStep +
+																		1) /
+																		(questions.length +
+																			1)) *
+																	100
+																}%`,
+															}}
+														/>
+													</div>
+													<div className="mt-2 text-sm text-gray-600">
+														Question{" "}
+														{currentStep + 1} of{" "}
+														{questions.length}
+													</div>
 												</div>
-												<div className="mt-2 text-sm text-gray-600">
-													Question {currentStep + 1}{" "}
-													of {questions.length}
-												</div>
-											</div>
 
-											<AnimatePresence mode="wait">
-												<motion.div
-													key={currentStep}
-													initial={{
-														opacity: 0,
-														x: 20,
-													}}
-													animate={{
-														opacity: 1,
-														x: 0,
-													}}
-													exit={{
-														opacity: 0,
-														x: -20,
-													}}
-													className="space-y-6"
-												>
-													<h2 className="text-2xl font-bold text-gray-900 mb-4">
-														{
-															questions[
-																currentStep
-															].question
-														}
-													</h2>
-													{questions[currentStep]
-														.subtext && (
-														<p className="text-gray-600 -mt-2 mb-4">
+												<AnimatePresence mode="wait">
+													<motion.div
+														key={currentStep}
+														initial={{
+															opacity: 0,
+															x: 20,
+														}}
+														animate={{
+															opacity: 1,
+															x: 0,
+														}}
+														exit={{
+															opacity: 0,
+															x: -20,
+														}}
+														className="space-y-6"
+													>
+														<h2 className="text-2xl font-bold text-gray-900 mb-4">
 															{
 																questions[
 																	currentStep
-																].subtext
+																].question
 															}
-														</p>
-													)}
+														</h2>
+														{questions[currentStep]
+															.subtext && (
+															<p className="text-gray-600 -mt-2 mb-4">
+																{
+																	questions[
+																		currentStep
+																	].subtext
+																}
+															</p>
+														)}
 
-													{questions[currentStep]
-														.type === "radio" && (
-														<RadioGroup
-															value={
-																formData[
-																	questions[
-																		currentStep
-																	].id
-																]
-															}
-															onValueChange={(
-																value
-															) =>
-																handleChange(
-																	questions[
-																		currentStep
-																	].id,
+														{questions[currentStep]
+															.type ===
+															"radio" && (
+															<RadioGroup
+																value={
+																	formData[
+																		questions[
+																			currentStep
+																		].id
+																	]
+																}
+																onValueChange={(
 																	value
-																)
-															}
-															className="space-y-4"
-														>
-															{questions[
-																currentStep
-															].options.map(
-																(option) => (
-																	<div
-																		key={
-																			option.value
-																		}
-																		className="flex items-center"
-																	>
-																		<RadioGroupItem
-																			value={
+																) =>
+																	handleChange(
+																		questions[
+																			currentStep
+																		].id,
+																		value
+																	)
+																}
+																className="space-y-4"
+															>
+																{questions[
+																	currentStep
+																].options.map(
+																	(
+																		option
+																	) => (
+																		<div
+																			key={
 																				option.value
 																			}
-																			id={`${questions[currentStep].id}-${option.value}`}
-																			className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
-																		/>
-																		<Label
-																			htmlFor={`${questions[currentStep].id}-${option.value}`}
-																			className="ml-2 text-lg text-gray-700"
+																			className="flex items-center"
 																		>
-																			{
-																				option.label
-																			}
-																		</Label>
-																	</div>
-																)
-															)}
-														</RadioGroup>
-													)}
+																			<RadioGroupItem
+																				value={
+																					option.value
+																				}
+																				id={`${questions[currentStep].id}-${option.value}`}
+																				className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
+																			/>
+																			<Label
+																				htmlFor={`${questions[currentStep].id}-${option.value}`}
+																				className="ml-2 text-lg text-gray-700"
+																			>
+																				{
+																					option.label
+																				}
+																			</Label>
+																		</div>
+																	)
+																)}
+															</RadioGroup>
+														)}
 
-													{questions[currentStep]
-														.type ===
-														"checkbox" && (
-														<div className="space-y-4">
-															{questions[
-																currentStep
-															].options.map(
-																(option) => (
-																	<div
-																		key={
-																			option.value
-																		}
-																		className="flex items-center"
-																	>
-																		<Checkbox
-																			id={`${questions[currentStep].id}-${option.value}`}
-																			checked={formData[
-																				questions[
-																					currentStep
-																				]
-																					.id
-																			].includes(
+														{questions[currentStep]
+															.type ===
+															"checkbox" && (
+															<div className="space-y-4">
+																{questions[
+																	currentStep
+																].options.map(
+																	(
+																		option
+																	) => (
+																		<div
+																			key={
 																				option.value
-																			)}
-																			onCheckedChange={(
-																				checked
-																			) => {
-																				const currentValues =
-																					formData[
-																						questions[
-																							currentStep
-																						]
-																							.id
-																					];
-																				const newValues =
-																					checked
-																						? [
-																								...currentValues,
-																								option.value,
-																						  ]
-																						: currentValues.filter(
-																								(
-																									v
-																								) =>
-																									v !==
-																									option.value
-																						  );
-																				handleChange(
+																			}
+																			className="flex items-center"
+																		>
+																			<Checkbox
+																				id={`${questions[currentStep].id}-${option.value}`}
+																				checked={formData[
 																					questions[
 																						currentStep
 																					]
-																						.id,
-																					newValues
-																				);
-																			}}
-																			className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
-																		/>
-																		<Label
-																			htmlFor={`${questions[currentStep].id}-${option.value}`}
-																			className="ml-2 text-lg text-gray-700"
-																		>
-																			{
-																				option.label
-																			}
-																		</Label>
-																	</div>
-																)
-															)}
-														</div>
-													)}
-												</motion.div>
-											</AnimatePresence>
-										</>
-									) : (
-										<motion.div
-											initial={{ opacity: 0 }}
-											animate={{ opacity: 1 }}
-											className="space-y-6"
-										>
-											<h2 className="text-2xl font-bold text-center text-gray-900">
-												Contact Us
-											</h2>
-											<p className="text-center text-gray-600">
-												We are looking forward to
-												helping with your physical
-												training. Please fill in the
-												form so we can contact you.
-											</p>
-											<div className="space-y-4">
-												{/* Full Name Input */}
-												<Input
-													type="text"
-													placeholder="Full Name"
-													value={formData.fullName}
-													onChange={(e) =>
-														handleChange(
-															"fullName",
-															e.target.value
-														)
-													}
-													className="w-full text-black"
-												/>
-												{errors.fullName && (
-													<p className="text-red-500 text-sm">
-														{errors.fullName}
-													</p>
-												)}
-
-												{/* Email Input */}
-												<Input
-													type="email"
-													placeholder="Your Email"
-													value={formData.email}
-													onChange={(e) =>
-														handleChange(
-															"email",
-															e.target.value
-														)
-													}
-													className="w-full text-black"
-												/>
-												{errors.email && (
-													<p className="text-red-500 text-sm">
-														{errors.email}
-													</p>
-												)}
-
-												{/* Phone Input */}
-												<Input
-													type="tel"
-													placeholder="Your Phone Number"
-													value={formData.phone}
-													onChange={(e) =>
-														handleChange(
-															"phone",
-															e.target.value
-														)
-													}
-													className="w-full text-black"
-												/>
-												{errors.phone && (
-													<p className="text-red-500 text-sm">
-														{errors.phone}
-													</p>
-												)}
-											</div>
-										</motion.div>
-									)}
-
-									<div className="flex justify-between mt-8">
-										<Button
-											type="button"
-											variant="outline"
-											onClick={handlePrevious}
-											disabled={currentStep === 0}
-											className="flex items-center text-black"
-										>
-											<ChevronLeft className="mr-2 h-4 w-4" />
-											Previous
-										</Button>
-
-										{currentStep >= questions.length ? (
-											<Button
-												onClick={handleSubmit}
-												className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90"
-											>
-												Submit
-											</Button>
+																						.id
+																				].includes(
+																					option.value
+																				)}
+																				onCheckedChange={(
+																					checked
+																				) => {
+																					const currentValues =
+																						formData[
+																							questions[
+																								currentStep
+																							]
+																								.id
+																						];
+																					const newValues =
+																						checked
+																							? [
+																									...currentValues,
+																									option.value,
+																							  ]
+																							: currentValues.filter(
+																									(
+																										v
+																									) =>
+																										v !==
+																										option.value
+																							  );
+																					handleChange(
+																						questions[
+																							currentStep
+																						]
+																							.id,
+																						newValues
+																					);
+																				}}
+																				className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
+																			/>
+																			<Label
+																				htmlFor={`${questions[currentStep].id}-${option.value}`}
+																				className="ml-2 text-lg text-gray-700"
+																			>
+																				{
+																					option.label
+																				}
+																			</Label>
+																		</div>
+																	)
+																)}
+															</div>
+														)}
+													</motion.div>
+												</AnimatePresence>
+											</>
 										) : (
-											<Button
-												onClick={handleNext}
-												disabled={
-													!isCurrentQuestionAnswered()
-												}
-												className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90 flex items-center"
+											<motion.div
+												initial={{ opacity: 0 }}
+												animate={{ opacity: 1 }}
+												className="space-y-6"
 											>
-												Next
-												<ChevronRight className="ml-2 h-4 w-4" />
-											</Button>
+												<h2 className="text-2xl font-bold text-center text-gray-900">
+													Contact Us
+												</h2>
+												<p className="text-center text-gray-600">
+													We are looking forward to
+													helping with your physical
+													training. Please fill in the
+													form so we can contact you.
+												</p>
+												<div className="space-y-4">
+													{/* Full Name Input */}
+													<Input
+														type="text"
+														placeholder="Full Name"
+														value={
+															formData.fullName
+														}
+														onChange={(e) =>
+															handleChange(
+																"fullName",
+																e.target.value
+															)
+														}
+														className="w-full text-black"
+													/>
+													{errors.fullName && (
+														<p className="text-red-500 text-sm">
+															{errors.fullName}
+														</p>
+													)}
+
+													{/* Email Input */}
+													<Input
+														type="email"
+														placeholder="Your Email"
+														value={formData.email}
+														onChange={(e) =>
+															handleChange(
+																"email",
+																e.target.value
+															)
+														}
+														className="w-full text-black"
+													/>
+													{errors.email && (
+														<p className="text-red-500 text-sm">
+															{errors.email}
+														</p>
+													)}
+
+													{/* Phone Input */}
+													<Input
+														type="tel"
+														placeholder="Your Phone Number"
+														value={formData.phone}
+														onChange={(e) =>
+															handleChange(
+																"phone",
+																e.target.value
+															)
+														}
+														className="w-full text-black"
+													/>
+													{errors.phone && (
+														<p className="text-red-500 text-sm">
+															{errors.phone}
+														</p>
+													)}
+												</div>
+											</motion.div>
 										)}
-									</div>
+
+										<div className="flex justify-between mt-8">
+											<Button
+												type="button"
+												variant="outline"
+												onClick={handlePrevious}
+												disabled={currentStep === 0}
+												className="flex items-center text-black"
+											>
+												<ChevronLeft className="mr-2 h-4 w-4" />
+												Previous
+											</Button>
+
+											{currentStep >= questions.length ? (
+												<Button
+													onClick={handleSubmit}
+													className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90"
+												>
+													Submit
+												</Button>
+											) : (
+												<Button
+													onClick={handleNext}
+													disabled={
+														!isCurrentQuestionAnswered()
+													}
+													className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90 flex items-center"
+												>
+													Next
+													<ChevronRight className="ml-2 h-4 w-4" />
+												</Button>
+											)}
+										</div>
+									</>
 								</>
 							)}
 						</div>
