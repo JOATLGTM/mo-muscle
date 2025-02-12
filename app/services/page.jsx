@@ -18,10 +18,6 @@ import {
 	Utensils,
 	FileWarning,
 	Shield,
-	Smile,
-	DollarSign,
-	FingerprintIcon as Fist,
-	Users,
 	X,
 	CheckCircle2,
 	Leaf,
@@ -81,19 +77,14 @@ const nutritionElements = [
 	{ icon: Droplet, label: "HYDRATION" },
 ];
 
-const benefits = [
-	{ icon: Smile, label: "HAVE FUN" },
-	{ icon: DollarSign, label: "SAVE MONEY" },
-	{ icon: Fist, label: "COMPETITION" },
-	{ icon: Users, label: "FIND COMMUNITY" },
-];
-
-const workoutImages = [
-	"/placeholder.svg?height=300&width=300",
-	"/placeholder.svg?height=300&width=300",
-	"/placeholder.svg?height=300&width=300",
-	"/placeholder.svg?height=300&width=300",
-	"/placeholder.svg?height=300&width=300",
+const workoutVideos = [
+	"/videos/video1.mp4",
+	"/videos/video2.mp4",
+	"/videos/video3.mp4",
+	"/videos/video4.mp4",
+	"/videos/video5.mp4",
+	"/videos/video6.mp4",
+	"/videos/video7.mp4",
 ];
 
 export default function ServicesPage() {
@@ -116,6 +107,9 @@ export default function ServicesPage() {
 		email: "",
 		phone: "",
 	});
+	const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+	const [currentVideo, setCurrentVideo] = useState(null);
+	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const questions = [
 		{
@@ -283,6 +277,38 @@ export default function ServicesPage() {
 			: Boolean(currentValue);
 	};
 
+	const goToNext = () => {
+		setCurrentIndex((prevIndex) => (prevIndex + 1) % workoutVideos.length);
+	};
+
+	// Navigate to the previous set of 4 videos, wrapping around the entire list
+	const goToPrevious = () => {
+		setCurrentIndex(
+			(prevIndex) =>
+				(prevIndex - 1 + workoutVideos.length) % workoutVideos.length
+		);
+	};
+
+	// Function to slice the workoutVideos array to show 4 at a time, ensuring loop
+	const currentVideosToShow = [
+		workoutVideos[(currentIndex + 0) % workoutVideos.length],
+		workoutVideos[(currentIndex + 1) % workoutVideos.length],
+		workoutVideos[(currentIndex + 2) % workoutVideos.length],
+		workoutVideos[(currentIndex + 3) % workoutVideos.length],
+	];
+
+	// Function to handle opening the modal
+	const openVideoModal = (video) => {
+		setCurrentVideo(video);
+		setIsVideoModalOpen(true);
+	};
+
+	// Function to handle closing the modal
+	const closeVideoModal = () => {
+		setCurrentVideo(null);
+		setIsVideoModalOpen(false);
+	};
+
 	return (
 		<div className="min-h-screen bg-black">
 			{/* Hero Section */}
@@ -408,39 +434,109 @@ export default function ServicesPage() {
 																VIEW OUR
 																WORKOUTS
 															</h4>
-															<div className="flex overflow-x-auto space-x-4 mb-8">
-																{workoutImages.map(
-																	(
-																		src,
-																		index
-																	) => (
-																		<div
-																			key={
-																				index
-																			}
-																			className="flex-shrink-0"
-																		>
-																			<Image
-																				src={
-																					src ||
-																					"/placeholder.svg"
+															<div className="relative">
+																<div className="flex overflow-x-auto space-x-4 mb-8 transition-all duration-500 ease-in-out">
+																	<button
+																		onClick={
+																			goToPrevious
+																		}
+																		className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+																	>
+																		&#8592;
+																	</button>
+																	{currentVideosToShow.map(
+																		(
+																			video,
+																			index
+																		) => (
+																			<div
+																				key={
+																					index
 																				}
-																				alt={`Workout ${
-																					index +
-																					1
-																				}`}
-																				width={
-																					300
-																				}
-																				height={
-																					300
-																				}
-																				className="rounded-lg"
-																			/>
-																		</div>
-																	)
-																)}
+																				className="flex-shrink-0 w-72 h-72"
+																			>
+																				<button
+																					onClick={() =>
+																						openVideoModal(
+																							video
+																						)
+																					}
+																				>
+																					<div className="relative w-full h-full bg-gray-200 rounded-lg">
+																						<video
+																							src={
+																								video
+																							}
+																							alt={`Workout Video ${
+																								currentIndex +
+																								index +
+																								1
+																							}`}
+																							width={
+																								300
+																							}
+																							height={
+																								300
+																							}
+																							className="rounded-lg object-cover"
+																							muted
+																							loop
+																						/>
+																						<div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold">
+																							Play
+																							Video
+																						</div>
+																					</div>
+																				</button>
+																			</div>
+																		)
+																	)}
+																	<button
+																		onClick={
+																			goToNext
+																		}
+																		className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+																	>
+																		&#8594;
+																	</button>
+																</div>
 															</div>
+
+															{/* Modal */}
+															{isVideoModalOpen && (
+																<div
+																	className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+																	onClick={
+																		closeVideoModal
+																	}
+																>
+																	<div
+																		className="relative w-3/4 max-w-2xl bg-white rounded-lg p-4"
+																		onClick={(
+																			e
+																		) =>
+																			e.stopPropagation()
+																		}
+																	>
+																		<video
+																			src={
+																				currentVideo
+																			}
+																			controls
+																			className="w-full h-auto rounded-lg"
+																			autoPlay
+																		/>
+																		<button
+																			onClick={
+																				closeVideoModal
+																			}
+																			className="absolute top-2 right-2 text-white text-2xl font-bold"
+																		>
+																			X
+																		</button>
+																	</div>
+																</div>
+															)}
 														</>
 													)}
 
