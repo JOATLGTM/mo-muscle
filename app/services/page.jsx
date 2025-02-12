@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Slider from "react-slick"; // Import React Slick
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -28,6 +29,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import VideoCarousel from "@/components/VideoCarousel";
 
 const tabs = [
 	{
@@ -430,113 +432,7 @@ export default function ServicesPage() {
 													{tab.id ===
 														"online-coaching" && (
 														<>
-															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
-																VIEW OUR
-																WORKOUTS
-															</h4>
-															<div className="relative">
-																<div className="flex overflow-x-auto space-x-4 mb-8 transition-all duration-500 ease-in-out">
-																	<button
-																		onClick={
-																			goToPrevious
-																		}
-																		className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-																	>
-																		&#8592;
-																	</button>
-																	{currentVideosToShow.map(
-																		(
-																			video,
-																			index
-																		) => (
-																			<div
-																				key={
-																					index
-																				}
-																				className="flex-shrink-0 w-72 h-72"
-																			>
-																				<button
-																					onClick={() =>
-																						openVideoModal(
-																							video
-																						)
-																					}
-																				>
-																					<div className="relative w-full h-full bg-gray-200 rounded-lg">
-																						<video
-																							src={
-																								video
-																							}
-																							alt={`Workout Video ${
-																								currentIndex +
-																								index +
-																								1
-																							}`}
-																							width={
-																								300
-																							}
-																							height={
-																								300
-																							}
-																							className="rounded-lg object-cover"
-																							muted
-																							loop
-																						/>
-																						<div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold">
-																							Play
-																							Video
-																						</div>
-																					</div>
-																				</button>
-																			</div>
-																		)
-																	)}
-																	<button
-																		onClick={
-																			goToNext
-																		}
-																		className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-																	>
-																		&#8594;
-																	</button>
-																</div>
-															</div>
-
-															{/* Modal */}
-															{isVideoModalOpen && (
-																<div
-																	className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-																	onClick={
-																		closeVideoModal
-																	}
-																>
-																	<div
-																		className="relative w-3/4 max-w-2xl bg-white rounded-lg p-4"
-																		onClick={(
-																			e
-																		) =>
-																			e.stopPropagation()
-																		}
-																	>
-																		<video
-																			src={
-																				currentVideo
-																			}
-																			controls
-																			className="w-full h-auto rounded-lg"
-																			autoPlay
-																		/>
-																		<button
-																			onClick={
-																				closeVideoModal
-																			}
-																			className="absolute top-2 right-2 text-white text-2xl font-bold"
-																		>
-																			X
-																		</button>
-																	</div>
-																</div>
-															)}
+															<VideoCarousel />
 														</>
 													)}
 
