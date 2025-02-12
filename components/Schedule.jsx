@@ -273,7 +273,7 @@ export default function ScheduleSection() {
 								<motion.div
 									initial={{ opacity: 0, scale: 0.95 }}
 									animate={{ opacity: 1, scale: 1 }}
-									className="text-center py-12"
+									className="text-center"
 								>
 									<div className="mb-6 flex justify-center">
 										<CheckCircle2 className="h-16 w-16 text-green-500" />

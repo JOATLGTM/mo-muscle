@@ -24,34 +24,39 @@ import {
 	Users,
 	X,
 	CheckCircle2,
+	Leaf,
+	Flame,
+	Scale,
+	Apple,
+	Droplet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const tabs = [
 	{
-		id: "individualized",
-		label: "INDIVIDUALIZED TRAINING",
-		title: "ALL WORKOUTS MADE FOR YOU-",
-		subtitle: "INDIVIDUALIZED TRAINING",
+		id: "in-person",
+		label: "IN PERSON COACHING",
+		title: "PERSONALIZED ATTENTION WITH",
+		subtitle: "IN PERSON COACHING",
 		content:
-			"Your health and well-being at the top of our priority list. Our individualized programs will be designed to help you achieve optimal performance, stay injury free and improve your quality of life while showing the results you're looking for.",
+			"Get hands-on guidance and support from expert trainers in a fully equipped fitness facility.",
 	},
 	{
-		id: "total-body",
-		label: "TOTAL BODY WORKOUTS",
-		title: "RELY ON SOUL, MIND, AND HEART WITH",
-		subtitle: "TOTAL BODY WORKOUTS",
+		id: "online-coaching",
+		label: "ONLINE COACHING",
+		title: "TRAIN WHEREVER YOU ARE WITH",
+		subtitle: "ONLINE COACHING",
 		content:
-			"Our total-body training programs minimize the use of machines to maximize the use of the body. At CFP, however, complete success is not measured in the number of reps achieved or results visualized on the scale. It encompasses your mental well-being - to help break barriers and plateaus both in and out of the gym.",
+			"Access personalized training programs and guidance from the comfort of your own home, with regular check-ins and support from your coach.",
 	},
 	{
-		id: "semi-private",
-		label: "SEMI-PRIVATE WORKOUTS",
-		title: "YOU ARE NOT IN THIS ALONE-",
-		subtitle: "SEMI-PRIVATE WORKOUTS",
+		id: "nutrition",
+		label: "NUTRITION COACHING",
+		title: "FUEL YOUR SUCCESS WITH",
+		subtitle: "NUTRITION COACHING",
 		content:
-			"SEMI-PRIVATE WORKOUTS offer the perfect balance of a private gym experience and the camaraderie of working out with others. Enjoy the cost efficiency of a group setting while still receiving personalized, hands-on training from our expert trainer.",
+			"Receive a customized nutrition plan that complements your training program, with ongoing support to help you achieve your health and fitness goals.",
 	},
 ];
 
@@ -64,6 +69,16 @@ const elements = [
 	{ icon: Utensils, label: "NUTRITION\nINTAKE" },
 	{ icon: FileWarning, label: "INJURY\nHISTORY" },
 	{ icon: Shield, label: "PHYSICAL\nLIMITS" },
+];
+
+const nutritionElements = [
+	{ icon: Utensils, label: "BALANCED DIET" },
+	{ icon: Heart, label: "HEALTHY HEART" },
+	{ icon: Leaf, label: "MICRONUTRIENTS" },
+	{ icon: Flame, label: "ENERGY LEVELS" },
+	{ icon: Scale, label: "WEIGHT MANAGEMENT" },
+	{ icon: Apple, label: "NATURAL INGREDIENTS" },
+	{ icon: Droplet, label: "HYDRATION" },
 ];
 
 const benefits = [
@@ -82,7 +97,7 @@ const workoutImages = [
 ];
 
 export default function ServicesPage() {
-	const [activeTab, setActiveTab] = useState("individualized");
+	const [activeTab, setActiveTab] = useState("in-person");
 	const [showModal, setShowModal] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
 	const [isSuccess, setIsSuccess] = useState(false);
@@ -352,8 +367,7 @@ export default function ServicesPage() {
 														{tab.content}
 													</p>
 
-													{tab.id ===
-														"individualized" && (
+													{tab.id === "in-person" && (
 														<>
 															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
 																THE
@@ -388,7 +402,7 @@ export default function ServicesPage() {
 													)}
 
 													{tab.id ===
-														"total-body" && (
+														"online-coaching" && (
 														<>
 															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
 																VIEW OUR
@@ -430,31 +444,29 @@ export default function ServicesPage() {
 														</>
 													)}
 
-													{tab.id ===
-														"semi-private" && (
+													{tab.id === "nutrition" && (
 														<>
 															<h4 className="text-2xl font-bold text-[#F5A623] mb-8">
-																BENEFITS OF
-																WORKING TOGETHER
+																ESSENTIAL
+																NUTRITIONAL
+																ELEMENTS
 															</h4>
 															<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-																{benefits.map(
+																{nutritionElements.map(
 																	(
-																		benefit,
+																		element,
 																		index
 																	) => (
 																		<div
-																			key={
-																				index
-																			}
+																			key={`${element}-${index}`}
 																			className="flex flex-col items-center text-center"
 																		>
 																			<div className="w-20 h-20 bg-[rgb(2,131,192)] rounded-lg flex items-center justify-center mb-4">
-																				<benefit.icon className="h-10 w-10 text-white" />
+																				<element.icon className="h-10 w-10 text-white" />
 																			</div>
 																			<span className="text-[rgb(2,131,192)] font-bold">
 																				{
-																					benefit.label
+																					element.label
 																				}
 																			</span>
 																		</div>
@@ -488,7 +500,7 @@ export default function ServicesPage() {
 							<motion.div
 								initial={{ opacity: 0, scale: 0.95 }}
 								animate={{ opacity: 1, scale: 1 }}
-								className="text-center py-12"
+								className="text-center"
 							>
 								<div className="mb-6 flex justify-center">
 									<CheckCircle2 className="h-16 w-16 text-green-500" />

@@ -291,24 +291,3 @@ function InstructorCard({ name, location, image }) {
 		</div>
 	);
 }
-
-// function PricingCard({ title, price, description, features, icon }) {
-// 	return (
-// 		<div
-// 			className={`border border-gray-200 rounded-lg p-6 shadow-md bg-[#0283C0] text-white`}
-// 		>
-// 			<div className="flex items-center mb-4">
-// 				{icon}
-// 				<h3 className="font-bold text-lg ml-4">{title}</h3>
-// 			</div>
-// 			<p className="text-3xl font-bold mb-4">${price}/month</p>
-// 			<p className="text-white mb-4">{description}</p>
-// 			<ul className="list-disc list-inside">
-// 				{features.map((feature, index) => (
-// 					<li key={index}>{feature}</li>
-// 				))}
-// 			</ul>
-// 			<Button className="mt-4 bg-white text-[#0283C0]">SIGN UP</Button>
-// 		</div>
-// 	);
-// }
