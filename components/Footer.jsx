@@ -46,20 +46,22 @@ const Footer = () => {
 						© 2025 Mo Muscle. All rights reserved
 					</p>
 					<div className="flex space-x-4">
-						<Link
+						<a
 							href="https://www.facebook.com/momuscle20"
+							target="_blank"
 							className="text-gray-400 hover:text-white"
 							aria-label="Facebook"
 						>
 							<Facebook className="w-5 h-5" />
-						</Link>
-						<Link
+						</a>
+						<a
 							href="https://www.instagram.com/momuscle20/"
+							target="_blank"
 							className="text-gray-400 hover:text-white"
 							aria-label="Instagram"
 						>
 							<Instagram className="w-5 h-5" />
-						</Link>
+						</a>
 					</div>
 				</div>
 			</div>
