@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase"; // Firebase initialization
 import { ref, get } from "firebase/database"; // Realtime Database functions
-import Image from "next/image";
 
 export default function BlogPage() {
 	const [data, setData] = useState([]); // State to store data from Firebase
@@ -40,21 +39,29 @@ export default function BlogPage() {
 						<p className="text-center text-gray-300">Loading...</p>
 					) : (
 						data.map((item) => {
+							// Split the string into parts
+							const [year, month, day] = item.date.split("-");
+
+							// Create a new Date object with the correct local time
+							const date = new Date(year, month - 1, day); // Month is 0-indexed in JavaScript
+
+							// Format the date as "Month Day, Year"
+							const options = {
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							};
+							const formattedDate = date.toLocaleDateString(
+								"en-US",
+								options
+							);
+
 							return (
 								<div
 									key={item.id}
 									className="relative bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
 								>
 									<div className="absolute inset-0 bg-gradient-to-r opacity-20 rounded-lg"></div>
-									{/* {item.image && (
-									<Image
-										src={item.image} // Fallback image if image is missing
-										alt={item.title}
-										className="w-full h-64 object-cover rounded-lg mb-6"
-										height={300}
-										width={500}
-									/>
-								)} */}
 									{item.image !== undefined && (
 										<img
 											src={item.image}
@@ -67,7 +74,7 @@ export default function BlogPage() {
 									</h3>
 									{/* Render the date below the title */}
 									<p className="text-sm text-gray-400 mb-4">
-										{item.date}
+										{formattedDate}
 									</p>
 									<p className="text-sm text-gray-300">
 										{item.description}
