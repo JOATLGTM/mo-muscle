@@ -103,6 +103,7 @@ export default function ServicesPage() {
 		fullName: "",
 		email: "",
 		phone: "",
+		trainerPreference: "", // Added field for the trainer preference
 	});
 	const [errors, setErrors] = useState({
 		fullName: "",
@@ -163,6 +164,16 @@ export default function ServicesPage() {
 			options: [
 				{ value: "in-person", label: "In person" },
 				{ value: "online", label: "Online" },
+			],
+		},
+		{
+			id: "trainerPreference",
+			question: "Who do you want to train with?", // New question for trainer preference
+			type: "radio",
+			options: [
+				{ value: "mo-nayal", label: "Mo Nayal" },
+				{ value: "brie-miller", label: "Brie Miller" },
+				{ value: "no-preference", label: "No Preference" },
 			],
 		},
 	];

@@ -12,6 +12,7 @@ export async function POST(req) {
 			fullName,
 			email,
 			phone,
+			trainerPreference,
 		} = await req.json();
 
 		const transporter = nodemailer.createTransport({
@@ -26,9 +27,12 @@ export async function POST(req) {
 
 		const mailOptions = {
 			from: email,
-			to: process.env.EMAIL_USER,
+			to:
+				trainerPreference === "mo-nayal" || "no-preference"
+					? process.env.EMAIL_USER
+					: process.env.EMAIL_USER_2,
 			subject: "New Contact Form Submission",
-			text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nhasCoach: ${hasCoach}\nworkoutDays: ${workoutDays}\ngoals: ${goals}\nneedsMealPlan: ${needsMealPlan}\nhasCoach: ${hasCoach}\n`,
+			text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nhasCoach: ${hasCoach}\nworkoutDays: ${workoutDays}\ngoals: ${goals}\nneedsMealPlan: ${needsMealPlan}\ntrainerPreference: ${trainerPreference}\ncoachingPreference: ${coachingPreference}\nhasCoach: ${hasCoach}\n`,
 		};
 
 		await transporter.sendMail(mailOptions);

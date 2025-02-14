@@ -50,6 +50,7 @@ export default function ScheduleSection() {
 		goals: [],
 		needsMealPlan: "",
 		coachingPreference: "",
+		trainerPreference: "", // Added field for the trainer preference
 		fullName: "",
 		email: "",
 		phone: "",
@@ -59,7 +60,6 @@ export default function ScheduleSection() {
 		email: "",
 		phone: "",
 	});
-	const router = useRouter();
 
 	const questions = [
 		{
@@ -111,6 +111,16 @@ export default function ScheduleSection() {
 			options: [
 				{ value: "in-person", label: "In person" },
 				{ value: "online", label: "Online" },
+			],
+		},
+		{
+			id: "trainerPreference",
+			question: "Who do you want to train with?", // New question for trainer preference
+			type: "radio",
+			options: [
+				{ value: "mo-nayal", label: "Mo Nayal" },
+				{ value: "brie-miller", label: "Brie Miller" },
+				{ value: "no-preference", label: "No Preference" },
 			],
 		},
 	];
@@ -212,6 +222,7 @@ export default function ScheduleSection() {
 			goals: [],
 			needsMealPlan: "",
 			coachingPreference: "",
+			trainerPreference: "", // Reset the trainer preference
 			fullName: "",
 			email: "",
 			phone: "",
@@ -481,6 +492,51 @@ export default function ScheduleSection() {
 																		</div>
 																	)
 																)}
+															</div>
+														)}
+
+														{/* Dropdown input for trainer preference */}
+														{questions[currentStep]
+															.type ===
+															"dropdown" && (
+															<div className="space-y-4">
+																<select
+																	value={
+																		formData.trainerPreference
+																	}
+																	onChange={(
+																		e
+																	) =>
+																		handleChange(
+																			"trainerPreference",
+																			e
+																				.target
+																				.value
+																		)
+																	}
+																	className="w-full p-2 border border-gray-300 rounded"
+																>
+																	{questions[
+																		currentStep
+																	].options.map(
+																		(
+																			option
+																		) => (
+																			<option
+																				key={
+																					option.value
+																				}
+																				value={
+																					option.value
+																				}
+																			>
+																				{
+																					option.label
+																				}
+																			</option>
+																		)
+																	)}
+																</select>
 															</div>
 														)}
 													</motion.div>
