@@ -155,16 +155,20 @@ export default function Home() {
 					<div className="relative">
 						<div className="flex flex-col md:flex-row overflow-x-auto gap-6 pb-6 justify-center">
 							{" "}
-							<InstructorCard
-								name="MO NAYAL"
-								location="COLUMBUS OHIO"
-								image="/mo_2.jpeg"
-							/>
-							<InstructorCard
-								name="BRIE MILLER"
-								location="COLUMBUS OHIO"
-								image="/brie.jpeg"
-							/>
+							<Link href="/trainers">
+								<InstructorCard
+									name="MO NAYAL"
+									location="COLUMBUS OHIO"
+									image="/mo_2.jpeg"
+								/>
+							</Link>
+							<Link href="/trainers">
+								<InstructorCard
+									name="BRIE MILLER"
+									location="COLUMBUS OHIO"
+									image="/brie.jpeg"
+								/>
+							</Link>
 						</div>
 					</div>
 					<Link href="/trainers">

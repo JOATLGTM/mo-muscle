@@ -1,8 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/lib/firebase"; // Firebase initialization
-import { ref, set, get } from "firebase/database"; // Realtime Database functions
+import {
+	db,
+	storage,
+	storageRef,
+	uploadBytesResumable,
+	getDownloadURL,
+} from "@/lib/firebase"; // Firebase initialization
+import { ref, get, set } from "firebase/database"; // Realtime Database functions
 import "./editblog.css";
 
 export default function AddItemForm() {
@@ -12,6 +18,8 @@ export default function AddItemForm() {
 	const [date, setDate] = useState(""); // State to store the date
 	const [data, setData] = useState([]);
 	const [imageName, setImageName] = useState(""); // State to store the file name
+	const [uploading, setUploading] = useState(false); // To track the upload state
+	const [error, setError] = useState(null); // To store any upload error
 
 	// Fetch existing data from Realtime Database
 	const fetchData = async () => {
@@ -23,29 +31,60 @@ export default function AddItemForm() {
 				id: key,
 				...items[key],
 			}));
-			setData(itemsArray);
+			setData(itemsArray); // Set the data state with the fetched items
 		} else {
 			console.log("No data available");
 		}
 	};
 
 	useEffect(() => {
-		fetchData();
+		fetchData(); // Fetch data when component mounts
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setUploading(true); // Start the upload process
 
 		// Create a reference to the "items" path in the database
 		const itemRef = ref(db, "items/" + Date.now()); // Using timestamp as ID for uniqueness
 
+		// If an image is uploaded, upload to Firebase Storage and get the download URL
+		let imageURL = null;
+
+		if (image) {
+			try {
+				// Create a storage reference for the image in Firebase Storage
+				const imageRef = storageRef(storage, "images/" + imageName);
+
+				// Upload the image to Firebase Storage
+				const uploadTask = uploadBytesResumable(imageRef, image);
+
+				// Wait for the upload to complete and get the download URL
+				await uploadTask;
+
+				// Once upload completes, get the image URL
+				imageURL = await getDownloadURL(uploadTask.snapshot.ref);
+				console.log("File uploaded successfully, URL:", imageURL);
+			} catch (error) {
+				setError(error.message);
+				setUploading(false);
+				return; // Stop further execution if upload fails
+			}
+		}
+
 		// Add a new item with title, description, image URL (if an image is uploaded), and date
-		await set(itemRef, {
-			title,
-			description,
-			image: image ? image.name : null, // Optional image field
-			date, // Save the date
-		});
+		try {
+			await set(itemRef, {
+				title,
+				description,
+				image: imageURL, // Save the full URL, not just the name
+				date, // Save the date
+			});
+		} catch (error) {
+			setError("Error saving data: " + error.message);
+			setUploading(false);
+			return;
+		}
 
 		// Reset form fields
 		setTitle("");
@@ -53,7 +92,9 @@ export default function AddItemForm() {
 		setImage(null);
 		setDate(""); // Reset the date field
 
+		// Fetch updated data
 		fetchData();
+		setUploading(false); // Reset uploading state
 	};
 
 	const handleFileChange = (e) => {
@@ -92,8 +133,12 @@ export default function AddItemForm() {
 					<div className="file-upload">
 						<input type="file" onChange={handleFileChange} />
 					</div>
-					<button type="submit">Add Item</button>
+					<button type="submit" disabled={uploading}>
+						{uploading ? "Uploading..." : "Add Item"}
+					</button>
 				</form>
+
+				{error && <p style={{ color: "red" }}>Error: {error}</p>}
 
 				<section className="blog-list">
 					<h2>Blog Items</h2>
@@ -126,7 +171,7 @@ export default function AddItemForm() {
 									</h3>
 									{item.image ? (
 										<img
-											src={item.image}
+											src={item.image} // Image URL from Firebase Storage
 											alt={item.title}
 											className="rounded-lg"
 										/>
