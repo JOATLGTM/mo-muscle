@@ -237,6 +237,8 @@ export default function ServicesPage() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		console.log(formData);
 		if (validateForm()) {
 			// If validation is successful, proceed with the form submission logic
 			try {

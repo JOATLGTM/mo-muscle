@@ -15,22 +15,31 @@ export async function POST(req) {
 			trainerPreference,
 		} = await req.json();
 
+		let emailUser =
+			trainerPreference === "brie-miller"
+				? process.env.EMAIL_USER_2
+				: process.env.EMAIL_USER;
+		let emailPass =
+			trainerPreference === "brie-miller"
+				? process.env.MAIL_PASS_2
+				: process.env.MAIL_PASS;
+
+		console.log(`trainerPreference `, trainerPreference);
+		console.log(emailUser, emailPass);
+
 		const transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",
 			port: 587,
 			secure: false,
 			auth: {
-				user: process.env.EMAIL_USER,
-				pass: process.env.MAIL_PASS,
+				user: emailUser,
+				pass: emailPass,
 			},
 		});
 
 		const mailOptions = {
 			from: email,
-			to:
-				trainerPreference === "mo-nayal" || "no-preference"
-					? process.env.EMAIL_USER
-					: process.env.EMAIL_USER_2,
+			to: emailUser,
 			subject: "New Contact Form Submission",
 			text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nhasCoach: ${hasCoach}\nworkoutDays: ${workoutDays}\ngoals: ${goals}\nneedsMealPlan: ${needsMealPlan}\ntrainerPreference: ${trainerPreference}\ncoachingPreference: ${coachingPreference}\nhasCoach: ${hasCoach}\n`,
 		};
