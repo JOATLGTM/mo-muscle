@@ -16,6 +16,7 @@ import {
 	Users,
 	X,
 	CheckCircle2,
+	Bandage,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -37,6 +38,12 @@ const reasons = [
 		title: "Supportive Community",
 		description:
 			"Become part of a motivated community that encourages and supports each other throughout their fitness journey.",
+	},
+	{
+		icon: Bandage,
+		title: "Prevent Injury",
+		description:
+			"Our expert trainers focus on proper form and recovery techniques to minimize injury risk and help you bounce back faster.",
 	},
 ];
 
@@ -245,7 +252,7 @@ export default function ScheduleSection() {
 					<h2 className="text-4xl font-bold mb-12">
 						WHY TRAIN WITH US
 					</h2>
-					<div className="grid md:grid-cols-3 gap-8 mb-12">
+					<div className="grid md:grid-cols-4 gap-8 mb-12">
 						{reasons.map((reason, index) => (
 							<div
 								key={index}
