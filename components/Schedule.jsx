@@ -39,12 +39,6 @@ const reasons = [
 		description:
 			"Become part of a motivated community that encourages and supports each other throughout their fitness journey.",
 	},
-	{
-		icon: Bandage,
-		title: "Prevent Injury",
-		description:
-			"Our expert trainers focus on proper form and recovery techniques to minimize injury risk and help you bounce back faster.",
-	},
 ];
 
 export default function ScheduleSection() {
@@ -100,6 +94,7 @@ export default function ScheduleSection() {
 				{ value: "tone-up", label: "Tone up" },
 				{ value: "get-stronger", label: "Get stronger" },
 				{ value: "become-healthier", label: "Become healthier" },
+				{ value: "injury", label: "Prevent Injury" },
 			],
 		},
 		{
@@ -252,7 +247,7 @@ export default function ScheduleSection() {
 					<h2 className="text-4xl font-bold mb-12">
 						WHY TRAIN WITH US
 					</h2>
-					<div className="grid md:grid-cols-4 gap-8 mb-12">
+					<div className="grid md:grid-cols-3 gap-16 mb-12">
 						{reasons.map((reason, index) => (
 							<div
 								key={index}

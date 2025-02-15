@@ -146,6 +146,7 @@ export default function ServicesPage() {
 				{ value: "tone-up", label: "Tone up" },
 				{ value: "get-stronger", label: "Get stronger" },
 				{ value: "become-healthier", label: "Become healthier" },
+				{ value: "injury", label: "Prevent Injury" },
 			],
 		},
 		{
