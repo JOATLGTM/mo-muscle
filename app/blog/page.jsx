@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "@/lib/firebase"; // Firebase initialization
 import { ref, get } from "firebase/database"; // Realtime Database functions
 
@@ -18,7 +17,19 @@ export default function BlogPage() {
 				id: key,
 				...items[key],
 			}));
-			setData(itemsArray); // Update state with fetched data
+
+			// Sort the items by date (most recent first)
+			const sortedItems = itemsArray.sort((a, b) => {
+				const [yearA, monthA, dayA] = a.date.split("-");
+				const [yearB, monthB, dayB] = b.date.split("-");
+
+				const dateA = new Date(yearA, monthA - 1, dayA);
+				const dateB = new Date(yearB, monthB - 1, dayB);
+
+				return dateB - dateA; // Sort in descending order
+			});
+
+			setData(sortedItems); // Update state with sorted data
 		} else {
 			console.log("No data available");
 		}
