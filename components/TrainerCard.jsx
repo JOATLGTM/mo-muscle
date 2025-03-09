@@ -62,7 +62,7 @@ export default function TrainerCard({ trainer, reverse = false }) {
 				<div className="aspect-[3/4] relative">
 					<Image
 						src={trainer.image}
-						alt={trainer.name}
+						alt={`Mo Nayal - ${trainer.name} is a Fitness Trainer at Mo Muscle`}
 						fill
 						className="object-cover"
 					/>

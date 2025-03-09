@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Link from "next/link";
+import Head from "next/head";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -93,6 +94,46 @@ export default function TrainersPage() {
 
 	return (
 		<div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white min-h-screen overflow-hidden">
+			<Head>
+				<title>Meet the Trainers | Mo Muscle</title>
+				<meta
+					name="description"
+					content="Meet the Mo Muscle trainers, experts in fitness and strength who will guide you to your peak physical potential. Personal training both online and in person."
+				/>
+				<meta name="robots" content="index, follow" />
+				<meta
+					property="og:title"
+					content="Meet the Trainers | Mo Muscle"
+				/>
+				<meta
+					property="og:description"
+					content="Join Mo Muscle and work with top trainers to reach your fitness goals. We offer online and in-person coaching."
+				/>
+				<meta property="og:image" content="/path-to-image.jpg" />
+				<meta
+					property="og:url"
+					content="https://www.momuscle.com/trainers"
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Person",
+							name: "Mo Nayal",
+							role: "Fitness Trainer",
+							description:
+								"Experienced trainer specializing in muscle gain and fat loss.",
+							image: "https://www.momuscle.com/mo_1.jpeg",
+							url: "https://www.momuscle.com/trainers/mo-nayal",
+							sameAs: [
+								"https://www.instagram.com/MoMuscle",
+								"https://www.linkedin.com/in/MoMuscle",
+							],
+						}),
+					}}
+				/>
+			</Head>
 			{/* Hero Section */}
 			<section
 				ref={headerRef}
@@ -163,7 +204,7 @@ export default function TrainersPage() {
 					</p>
 					<Link href="/services">
 						<Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-							BEGIN YOUR JOURNEY
+							START PERSONAL TRAINING TODAY
 						</Button>
 					</Link>
 				</div>

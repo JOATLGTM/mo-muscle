@@ -3,9 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
-import { PricingCard } from "@/components/PricingCard";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,11 +36,48 @@ export default function Home() {
 
 	return (
 		<div className="bg-black text-white">
+			<Head>
+				<title>
+					Mo Muscle - Personalized Fitness Coaching Online & In-Person
+				</title>
+				<meta
+					name="description"
+					content="Join Mo Muscle for personalized fitness coaching in person or online. Achieve your fitness goals with expert guidance."
+				/>
+				<meta name="robots" content="index, follow" />
+				<meta
+					property="og:title"
+					content="Mo Muscle - Personalized Fitness Coaching"
+				/>
+				<meta
+					property="og:description"
+					content="Achieve your fitness goals with Mo Muscle, personalized online and in-person training."
+				/>
+				<meta property="og:image" content="/path-to-image.jpg" />
+				<meta property="og:url" content="https://www.momuscle.com" />
+				<link rel="canonical" href="https://www.momuscle.com" />
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Organization",
+							name: "Mo Muscle",
+							url: "https://www.momuscle.com",
+							logo: "https://www.momuscle.com/path-to-logo.jpg",
+							sameAs: [
+								"https://www.facebook.com/MoMuscle",
+								"https://www.instagram.com/MoMuscle",
+							],
+						}),
+					}}
+				/>
+			</Head>
 			{/* Hero Section */}
 			<section className="relative min-h-screen pt-16 md:pt-24 overflow-hidden">
 				<Image
 					src="/deadlift.jpg"
-					alt="Deadlift Exercise"
+					alt="Deadlift Exercise - Mo Muscle Trainer"
 					fill
 					className="object-cover brightness-50"
 					priority
@@ -52,14 +88,15 @@ export default function Home() {
 					</p>
 					<Image
 						src="/horizontal_logo_white.png"
-						alt="horizontal logo"
+						alt="Mo Muscle Logo"
 						className="object-cover brightness-50"
 						width={400}
 						height={200}
+						priority
 					/>
-					<p className="text-xl mb-8">
+					<h1 className="text-xl mb-8">
 						WELCOME TO THE OFFICIAL SITE OF MO MUSCLE
-					</p>
+					</h1>
 				</div>
 			</section>
 			{/* Train With Gym Mo Section */}
@@ -119,15 +156,6 @@ export default function Home() {
 					className="elfsight-app-88d2e0fd-0af7-448d-ad90-643f857f8de3"
 					data-elfsight-app-lazy
 				></div>
-
-				{/* <div className="container mx-auto px-4">
-					<h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-						What Our Members Say
-					</h2>
-					<div className="relative px-12">
-						<TestimonialCarousel />
-					</div>
-				</div> */}
 			</section>
 			<ScrollingText />
 			<section className="relative pt-16 md:pt-12 pb-20 overflow-hidden flex items-center">
@@ -174,104 +202,12 @@ export default function Home() {
 					<Link href="/trainers">
 						<Button className="mt-8 md:mt-12 bg-[#0283C0] hover:bg-[#026a9c] text-white transform hover:scale-105 transition-all duration-300">
 							{" "}
-							SEE ALL INSTRUCTORS
+							SEE ALL TRAINERS
 						</Button>
 					</Link>
 				</div>
 			</section>
-			{/* Pricing Section */}
-			{/* <section
-				ref={pricingRef}
-				className="py-6 md:py-24 bg-white text-black"
-			> */}{" "}
 			<Schedule />
-			{/* <div className="container mx-auto px-4">
-					<div className="text-center mb-8 md:mb-12">
-						<h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0283C0] to-[#03a9f4] animate-text-shimmer">
-							Our Pricing Plan
-						</h2>
-					</div>
-
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-						<PricingCard
-							title="3 Months Plan"
-							price="39"
-							duration="/ session"
-							description="As low as $39 per session for a 3-month commitment."
-							features={[
-								"Personalized workout plan",
-								"Weekly check-ins",
-								"Access to gym facilities",
-								"Nutritional guidance",
-							]}
-							icon={<ChevronRight className="w-6 h-6" />}
-							darkMode={false}
-						/>
-						<PricingCard
-							title="6 Months Plan"
-							price="35"
-							duration="/ session"
-							description="As low as $35 per session for a 6-month commitment."
-							features={[
-								"All features of 3 Months Plan",
-								"Bi-weekly progress assessments",
-								"Customized meal plans",
-								"Priority scheduling",
-							]}
-							icon={<ChevronRight className="w-6 h-6" />}
-							isPopular
-							darkMode={false}
-						/>
-						<PricingCard
-							title="12 Months Plan"
-							price="32"
-							duration="/ session"
-							description="As low as $32 per session for a 12-month commitment."
-							features={[
-								"All features of 6 Months Plan",
-								"Monthly one-on-one coaching",
-								"Access to exclusive workshops",
-								"Personalized supplement advice",
-							]}
-							icon={<ChevronRight className="w-6 h-6" />}
-							darkMode={false}
-						/>
-					</div>
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mt-7">
-						<PricingCard
-							title="Online Coaching"
-							price="50"
-							duration="/ week"
-							description="Comprehensive online coaching program for $50 per week."
-							features={[
-								"Tailored workout program",
-								"Customized meal plans",
-								"Access to Mo Muscle app",
-								"24/7 coach communication",
-								"Video exercise instructions",
-								"Progress tracking",
-							]}
-							icon={<ChevronRight className="w-6 h-6" />}
-							darkMode={false}
-							stripeLink="https://buy.stripe.com/00g15C37qf2vgjSdQU"
-						/>
-						<PricingCard
-							title="Online Coaching"
-							price="5"
-							duration="/ week"
-							description="Basic online coaching program for $5 per week."
-							features={[
-								"Tailored workout program",
-								"Access to Mo Muscle app",
-							]}
-							icon={<ChevronRight className="w-6 h-6" />}
-							darkMode={false}
-							stripeLink="https://buy.stripe.com/7sIcOkazS4nR9VueUZ"
-						/>
-					</div>
-				</div> */}
-			{/* </section> */}
-			{/* Certified Instructors Section */}
 		</div>
 	);
 }

@@ -2,36 +2,40 @@
 import React, { useState, useEffect } from "react";
 import { db } from "@/lib/firebase"; // Firebase initialization
 import { ref, get } from "firebase/database"; // Realtime Database functions
+import Head from "next/head";
 
 export default function BlogPage() {
 	const [data, setData] = useState([]); // State to store data from Firebase
 
 	// Fetch data from Firebase on component mount
 	const fetchData = async () => {
-		const dbRef = ref(db, "items"); // Reference to the "items" collection in Firebase
-		const snapshot = await get(dbRef);
+		try {
+			const dbRef = ref(db, "items"); // Reference to the "items" collection in Firebase
+			const snapshot = await get(dbRef);
 
-		if (snapshot.exists()) {
-			const items = snapshot.val();
-			const itemsArray = Object.keys(items).map((key) => ({
-				id: key,
-				...items[key],
-			}));
+			if (snapshot.exists()) {
+				const items = snapshot.val();
+				const itemsArray = Object.keys(items).map((key) => ({
+					id: key,
+					...items[key],
+				}));
 
-			// Sort the items by date (most recent first)
-			const sortedItems = itemsArray.sort((a, b) => {
-				const [yearA, monthA, dayA] = a.date.split("-");
-				const [yearB, monthB, dayB] = b.date.split("-");
+				// Sort the items by date (most recent first)
+				const sortedItems = itemsArray.sort((a, b) => {
+					const [yearA, monthA, dayA] = a.date.split("-");
+					const [yearB, monthB, dayB] = b.date.split("-");
 
-				const dateA = new Date(yearA, monthA - 1, dayA);
-				const dateB = new Date(yearB, monthB - 1, dayB);
+					const dateA = new Date(yearA, monthA - 1, dayA);
+					const dateB = new Date(yearB, monthB - 1, dayB);
 
-				return dateB - dateA; // Sort in descending order
-			});
+					return dateB - dateA; // Sort in descending order
+				});
 
-			setData(sortedItems); // Update state with sorted data
-		} else {
-			console.log("No data available");
+				setData(sortedItems); // Update state with sorted data
+			}
+		} catch (error) {
+			console.error("Error fetching data: ", error);
+			setData([]); // Handle error gracefully
 		}
 	};
 
@@ -41,6 +45,24 @@ export default function BlogPage() {
 
 	return (
 		<section className="bg-black text-white py-16 px-4">
+			<Head>
+				<title>Blog | Mo Muscle</title>
+				<meta
+					name="description"
+					content="Read the latest blog posts on fitness, nutrition, and training from Mo Muscle."
+				/>
+				<meta name="robots" content="index, follow" />
+				<meta property="og:title" content="Blog | Mo Muscle" />
+				<meta
+					property="og:description"
+					content="Explore fitness, training, and nutrition tips in our blog posts."
+				/>
+				<meta property="og:image" content="/path-to-image.jpg" />
+				<meta
+					property="og:url"
+					content="https://www.momuscle.com/blog"
+				/>
+			</Head>
 			<div className="container mx-auto">
 				<h1 className="text-4xl font-bold text-center m-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 					Blog

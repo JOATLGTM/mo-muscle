@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Slider from "react-slick"; // Import React Slick
+import Head from "next/head";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -327,12 +327,56 @@ export default function ServicesPage() {
 
 	return (
 		<div className="min-h-screen bg-black">
+			<Head>
+				<title>Fitness Programs & Coaching | Mo Muscle</title>
+				<meta
+					name="description"
+					content="Explore personalized fitness, nutrition, and online coaching programs to help you achieve your health and fitness goals at Mo Muscle."
+				/>
+				<meta name="robots" content="index, follow" />
+				<meta
+					property="og:title"
+					content="Fitness Programs & Coaching | Mo Muscle"
+				/>
+				<meta
+					property="og:description"
+					content="Join Mo Muscle and start your personalized fitness journey with expert coaching in person or online."
+				/>
+				<meta property="og:image" content="/images/hero-image.jpg" />
+				<meta
+					property="og:url"
+					content="https://www.momuscle.com/services"
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Service",
+							serviceType: "Personal Training",
+							provider: {
+								"@type": "Organization",
+								name: "Mo Muscle",
+								url: "https://www.momuscle.com",
+								logo: "https://www.momuscle.com/logo.jpg",
+							},
+							areaServed: "Columbus, Ohio",
+							offers: {
+								"@type": "Offer",
+								priceCurrency: "USD",
+								price: "50.00",
+								url: "https://www.momuscle.com/services",
+							},
+						}),
+					}}
+				/>
+			</Head>
 			{/* Hero Section */}
 			<section className="relative h-[600px] flex items-center">
 				<div className="absolute inset-0 bg-cover bg-center">
 					<Image
 						src="/service_hero.jpg"
-						alt="Clean empty gym"
+						alt="Clean empty gym interior showcasing fitness equipment at Mo Muscle"
 						fill
 						className="object-cover brightness-50"
 						priority
@@ -491,8 +535,21 @@ export default function ServicesPage() {
 				</div>
 			</section>
 
-			<Dialog open={showModal} onOpenChange={handleClose}>
+			<Dialog
+				open={showModal}
+				onOpenChange={handleClose}
+				aria-labelledby="modalTitle"
+				aria-describedby="modalDescription"
+			>
 				<DialogContent className="max-w-2xl p-0 bg-transparent border-none">
+					<h2 id="modalTitle" className="text-2xl">
+						Form Submission
+					</h2>
+					<p id="modalDescription">
+						Please fill out the form below to start your fitness
+						journey with Mo Muscle.
+					</p>
+
 					<div className="relative bg-white rounded-2xl shadow-xl p-8">
 						<button
 							onClick={handleClose}
@@ -740,9 +797,13 @@ export default function ServicesPage() {
 														)
 													}
 													className="w-full text-black"
+													aria-describedby="fullNameError"
 												/>
 												{errors.fullName && (
-													<p className="text-red-500 text-sm">
+													<p
+														id="fullNameError"
+														className="text-red-500 text-sm"
+													>
 														{errors.fullName}
 													</p>
 												)}

@@ -8,12 +8,22 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Mo Muscle",
-	description: "The start of your physical journey",
+	title: "Mo Muscle - Personalized Fitness Coaching Online & In-Person",
+	description:
+		"Join Mo Muscle for tailored fitness training in person or online. Start your fitness journey today with personalized coaching.",
 	icons: {
 		icon: "/icon.ico",
 		shortcut: "/icon.ico",
 		apple: "/icon.ico",
+	},
+	meta: {
+		robots: "index, follow",
+		author: "Mo Muscle",
+		"og:type": "website",
+		"og:title": "Mo Muscle",
+		"og:description":
+			"Join Mo Muscle for personalized fitness coaching in person or online.",
+		"og:image": "/icon.ico",
 	},
 };
 
