@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { ScrollingText } from "@/components/ScrollingText";
 import { gsap } from "gsap";
@@ -16,8 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
 	const trainWithRef = useRef(null);
 	const seminarRef = useRef(null);
-	const companyRef = useRef(null);
-	const pricingRef = useRef(null);
 	const instructorsRef = useRef(null);
 	const testimonialRef = useRef(null);
 
@@ -36,43 +33,6 @@ export default function Home() {
 
 	return (
 		<div className="bg-black text-white">
-			<Head>
-				<title>
-					Mo Muscle - Personalized Fitness Coaching Online & In-Person
-				</title>
-				<meta
-					name="description"
-					content="Join Mo Muscle for personalized fitness coaching in person or online. Achieve your fitness goals with expert guidance."
-				/>
-				<meta name="robots" content="index, follow" />
-				<meta
-					property="og:title"
-					content="Mo Muscle - Personalized Fitness Coaching"
-				/>
-				<meta
-					property="og:description"
-					content="Achieve your fitness goals with Mo Muscle, personalized online and in-person training."
-				/>
-				<meta property="og:image" content="/path-to-image.jpg" />
-				<meta property="og:url" content="https://www.momuscle.com" />
-				<link rel="canonical" href="https://www.momuscle.com" />
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify({
-							"@context": "https://schema.org",
-							"@type": "Organization",
-							name: "Mo Muscle",
-							url: "https://www.momuscle.com",
-							logo: "https://www.momuscle.com/path-to-logo.jpg",
-							sameAs: [
-								"https://www.facebook.com/MoMuscle",
-								"https://www.instagram.com/MoMuscle",
-							],
-						}),
-					}}
-				/>
-			</Head>
 			{/* Hero Section */}
 			<section className="relative min-h-screen pt-16 md:pt-24 overflow-hidden">
 				<Image

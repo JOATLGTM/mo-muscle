@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Head from "next/head";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -327,50 +326,6 @@ export default function ServicesPage() {
 
 	return (
 		<div className="min-h-screen bg-black">
-			<Head>
-				<title>Fitness Programs & Coaching | Mo Muscle</title>
-				<meta
-					name="description"
-					content="Explore personalized fitness, nutrition, and online coaching programs to help you achieve your health and fitness goals at Mo Muscle."
-				/>
-				<meta name="robots" content="index, follow" />
-				<meta
-					property="og:title"
-					content="Fitness Programs & Coaching | Mo Muscle"
-				/>
-				<meta
-					property="og:description"
-					content="Join Mo Muscle and start your personalized fitness journey with expert coaching in person or online."
-				/>
-				<meta property="og:image" content="/images/hero-image.jpg" />
-				<meta
-					property="og:url"
-					content="https://www.momuscle.com/services"
-				/>
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify({
-							"@context": "https://schema.org",
-							"@type": "Service",
-							serviceType: "Personal Training",
-							provider: {
-								"@type": "Organization",
-								name: "Mo Muscle",
-								url: "https://www.momuscle.com",
-								logo: "https://www.momuscle.com/logo.jpg",
-							},
-							areaServed: "Columbus, Ohio",
-							offers: {
-								"@type": "Offer",
-								priceCurrency: "USD",
-								price: "50.00",
-								url: "https://www.momuscle.com/services",
-							},
-						}),
-					}}
-				/>
-			</Head>
 			{/* Hero Section */}
 			<section className="relative h-[600px] flex items-center">
 				<div className="absolute inset-0 bg-cover bg-center">

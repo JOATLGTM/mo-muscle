@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "@/lib/firebase"; // Firebase initialization
 import { ref, get } from "firebase/database"; // Realtime Database functions
-import Head from "next/head";
 
 export default function BlogPage() {
 	const [data, setData] = useState([]); // State to store data from Firebase
@@ -45,24 +44,6 @@ export default function BlogPage() {
 
 	return (
 		<section className="bg-black text-white py-16 px-4">
-			<Head>
-				<title>Blog | Mo Muscle</title>
-				<meta
-					name="description"
-					content="Read the latest blog posts on fitness, nutrition, and training from Mo Muscle."
-				/>
-				<meta name="robots" content="index, follow" />
-				<meta property="og:title" content="Blog | Mo Muscle" />
-				<meta
-					property="og:description"
-					content="Explore fitness, training, and nutrition tips in our blog posts."
-				/>
-				<meta property="og:image" content="/path-to-image.jpg" />
-				<meta
-					property="og:url"
-					content="https://www.momuscle.com/blog"
-				/>
-			</Head>
 			<div className="container mx-auto">
 				<h1 className="text-4xl font-bold text-center m-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 					Blog
