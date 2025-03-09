@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -33,6 +34,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="bg-black">
 			<body className={`${inter.className} min-h-screen flex flex-col`}>
+				<Head>
+					<meta
+						name="google-site-verification"
+						content={"CCXgAcNqEOViudRmIXOpEYhaR9gzx07qfAH9GfGWlTA"}
+					/>
+				</Head>
 				<Header />
 				<main className="flex-1">{children}</main>
 				<Footer />
