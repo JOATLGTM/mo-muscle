@@ -24,6 +24,8 @@ export const metadata = {
 		"og:description":
 			"Join Mo Muscle for personalized fitness coaching in person or online.",
 		"og:image": "/icon.ico",
+		"google-site-verification":
+			"CCXgAcNqEOViudRmIXOpEYhaR9gzx07qfAH9GfGWlTA",
 	},
 };
 
