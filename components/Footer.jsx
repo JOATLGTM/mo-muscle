@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
@@ -24,7 +25,7 @@ const Footer = () => {
 				</div>
 
 				<div className="invisible hidden md:block">
-					<h3 className="text-sm font-bold mb-6">LINKS</h3>
+					{/* <h3 className="text-sm font-bold mb-6">LINKS</h3>
 					<nav className="space-y-2 text-gray-400">
 						<p>
 							<Link href="/terms" className="hover:text-white">
@@ -36,7 +37,7 @@ const Footer = () => {
 								PRIVACY
 							</Link>
 						</p>
-					</nav>
+					</nav> */}
 				</div>
 			</div>
 
@@ -51,16 +52,18 @@ const Footer = () => {
 							target="_blank"
 							className="text-gray-400 hover:text-white"
 							aria-label="Facebook"
+							rel="noopener noreferrer"
 						>
-							<Facebook className="w-5 h-5" />
+							<Facebook className="w-5 h-5" aria-hidden="true" />
 						</a>
 						<a
 							href="https://www.instagram.com/momuscle20/"
 							target="_blank"
 							className="text-gray-400 hover:text-white"
 							aria-label="Instagram"
+							rel="noopener noreferrer"
 						>
-							<Instagram className="w-5 h-5" />
+							<Instagram className="w-5 h-5" aria-hidden="true" />
 						</a>
 					</div>
 				</div>

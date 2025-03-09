@@ -16,9 +16,7 @@ import {
 	Users,
 	X,
 	CheckCircle2,
-	Bandage,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const reasons = [
 	{
@@ -248,20 +246,22 @@ export default function ScheduleSection() {
 						WHY TRAIN WITH US
 					</h2>
 					<div className="grid md:grid-cols-3 gap-16 mb-12">
-						{reasons.map((reason, index) => (
-							<div
-								key={index}
-								className="p-6 rounded-lg bg-white/10 backdrop-blur-sm"
-							>
-								<reason.icon className="w-12 h-12 mb-4 mx-auto" />
-								<h3 className="text-xl font-bold mb-2">
-									{reason.title}
-								</h3>
-								<p className="text-white/80">
-									{reason.description}
-								</p>
-							</div>
-						))}
+						{reasons.map(
+							({ icon: Icon, title, description }, index) => (
+								<div
+									key={index}
+									className="p-6 rounded-lg bg-white/10 backdrop-blur-sm"
+								>
+									<Icon className="w-12 h-12 mb-4 mx-auto" />
+									<h3 className="text-xl font-bold mb-2">
+										{title}
+									</h3>
+									<p className="text-white/80">
+										{description}
+									</p>
+								</div>
+							)
+						)}
 					</div>
 					<Button
 						onClick={() => setShowModal(true)}
@@ -271,6 +271,7 @@ export default function ScheduleSection() {
 					</Button>
 				</div>
 
+				{/* Modal with form */}
 				<Dialog open={showModal} onOpenChange={handleClose}>
 					<DialogContent className="max-w-2xl p-0 bg-transparent border-none">
 						<div className="relative bg-white rounded-2xl shadow-xl p-8">

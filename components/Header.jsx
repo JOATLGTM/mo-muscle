@@ -23,7 +23,11 @@ const Header = () => {
 			<div className="container mx-auto px-4">
 				<nav className="flex items-center justify-between h-24">
 					<div className="flex-shrink-0 hidden md:block">
-						<Link href="/" className="block">
+						<Link
+							href="/"
+							className="block"
+							aria-label="Go to home page"
+						>
 							<Image
 								src="/badge-logo-white.png"
 								alt="Mo Muscle"
@@ -39,25 +43,29 @@ const Header = () => {
 						<div className="flex items-center space-x-8">
 							<Link
 								href="/"
-								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-xs"
+								aria-label="Go to home page"
 							>
 								HOME
 							</Link>
 							<Link
 								href="/trainers"
-								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-xs"
+								aria-label="Go to trainers page"
 							>
 								TRAINERS
 							</Link>
 							<Link
 								href="/services"
-								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-xs"
+								aria-label="Go to services page"
 							>
 								SERVICES
 							</Link>
 							<Link
 								href="/blog"
-								className="text-white hover:text-gray-300 capitalize font-serif text-xs"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-xs"
+								aria-label="Go to blog page"
 							>
 								BLOG
 							</Link>
@@ -66,7 +74,11 @@ const Header = () => {
 
 					{/* Mobile hamburger button */}
 					<div className="md:hidden absolute right-4">
-						<button onClick={toggleMenu} className="text-white">
+						<button
+							onClick={toggleMenu}
+							className="text-white"
+							aria-label="Toggle navigation menu"
+						>
 							{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
 						</button>
 					</div>
@@ -78,25 +90,29 @@ const Header = () => {
 						<div className="flex flex-col space-y-4 px-4">
 							<Link
 								href="/"
-								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-sm px-4 py-2"
+								aria-label="Go to home page"
 							>
 								HOME
 							</Link>
 							<Link
 								href="/trainers"
-								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-sm px-4 py-2"
+								aria-label="Go to trainers page"
 							>
 								TRAINERS
 							</Link>
 							<Link
 								href="/services"
-								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-sm px-4 py-2"
+								aria-label="Go to services page"
 							>
 								SERVICES
 							</Link>
 							<Link
 								href="/blog"
-								className="text-white hover:text-gray-300 capitalize font-serif text-sm px-4 py-2"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-sm px-4 py-2"
+								aria-label="Go to blog page"
 							>
 								BLOG
 							</Link>
