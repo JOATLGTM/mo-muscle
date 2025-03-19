@@ -41,7 +41,7 @@ export async function POST(req) {
 			from: email,
 			to: emailUser,
 			subject: "New Contact Form Submission",
-			text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nhasCoach: ${hasCoach}\nworkoutDays: ${workoutDays}\ngoals: ${goals}\nneedsMealPlan: ${needsMealPlan}\ntrainerPreference: ${trainerPreference}\ncoachingPreference: ${coachingPreference}\nhasCoach: ${hasCoach}\n`,
+			text: `Name: ${fullName}\nEmail: ${email}\nPhone Number: ${phone}\nHave they had a coach before? ${hasCoach}\nHow many days they prefer working out: ${workoutDays}\nTheir list of goals: ${goals}\nDo they need a meal plan? ${needsMealPlan}\nTrainer Preference is: ${trainerPreference}\nCoaching Preference is: ${coachingPreference}\n`,
 		};
 
 		await transporter.sendMail(mailOptions);
