@@ -272,6 +272,13 @@ const Header = () => {
 							>
 								BLOG
 							</Link>
+							<Link
+								href="/whymomuscle"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-xs"
+								aria-label="Go to why mo muscle page"
+							>
+								WHY MO MUSCLE?
+							</Link>
 
 							<Button
 								onClick={() => setShowModal(true)}
@@ -325,6 +332,13 @@ const Header = () => {
 								aria-label="Go to blog page"
 							>
 								BLOG
+							</Link>
+							<Link
+								href="/whymomuscle"
+								className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize font-serif text-sm px-4 py-2"
+								aria-label="Go to why mo muscle page"
+							>
+								WHY MO MUSCLE?
 							</Link>
 							<Button
 								onClick={() => setShowModal(true)}

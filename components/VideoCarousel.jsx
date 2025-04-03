@@ -52,7 +52,7 @@ const VideoCarousel = () => {
 		nextArrow: (
 			<button
 				onClick={goToNext}
-				className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+				className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white p-2 rounded-full"
 			>
 				&#8594;
 			</button>
@@ -60,7 +60,7 @@ const VideoCarousel = () => {
 		prevArrow: (
 			<button
 				onClick={goToPrevious}
-				className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+				className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white p-2 rounded-full"
 			>
 				&#8592;
 			</button>
