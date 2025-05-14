@@ -1,15 +1,13 @@
 "use client";
-
-import { useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TrainerCard from "@/components/TrainerCard";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Link from "next/link";
-
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 export default function TrainersPage() {
 	const headerRef = useRef(null);
@@ -21,7 +19,7 @@ export default function TrainersPage() {
 			name: "Mo Nayal",
 			role: "Fitness Trainer",
 			description:
-				"Welcome to Mo Muscle, your gateway to a transformed, stronger, and healthier you. I’m Mo Nayal, the driving force behind this personal training venture, and I’m thrilled to extend a warm invitation to you.<br /><br />With over a decade of dedicated training experience and a specialization in muscle gain and fat loss, I’m here to guide you on your fitness journey. What sets me apart? I’ve been there myself, experiencing an incredible transformation that saw me gain a remarkable 80 pounds, turning my thin and skinny physique into a robust, muscular one. I know the ups and downs, the doubts, and the triumphs that come with such a journey, and I’m here to share my expertise with you.<br /><br />With a bachelor's degree in Public Health from The Ohio State University, I discovered my passion for creating impactful, one-on-one connections with individuals striving to improve their health. As a personal trainer, I blend my academic foundation with a hands-on approach, empowering clients to achieve their fitness goals and enhance their overall well-being.<br /><br />My approach combines the latest in scientific training techniques, personalized workout plans, and a focus on nutrition to help you reach your fitness aspirations. We’ll work together to sculpt your dream physique, boost your confidence, and uncover the strength you never knew you had.",
+				"Welcome to Mo Muscle, your gateway to a transformed, stronger, and healthier you. I'm Mo Nayal, the driving force behind this personal training venture, and I'm thrilled to extend a warm invitation to you.<br /><br />With over a decade of dedicated training experience and a specialization in muscle gain and fat loss, I'm here to guide you on your fitness journey. What sets me apart? I've been there myself, experiencing an incredible transformation that saw me gain a remarkable 80 pounds, turning my thin and skinny physique into a robust, muscular one. I know the ups and downs, the doubts, and the triumphs that come with such a journey, and I'm here to share my expertise with you.<br /><br />With a bachelor's degree in Public Health from The Ohio State University, I discovered my passion for creating impactful, one-on-one connections with individuals striving to improve their health. As a personal trainer, I blend my academic foundation with a hands-on approach, empowering clients to achieve their fitness goals and enhance their overall well-being.<br /><br />My approach combines the latest in scientific training techniques, personalized workout plans, and a focus on nutrition to help you reach your fitness aspirations. We'll work together to sculpt your dream physique, boost your confidence, and uncover the strength you never knew you had.",
 			image: "/mo_1.jpeg",
 			// video: "/placeholder-video.mp4",
 		},
@@ -29,7 +27,7 @@ export default function TrainersPage() {
 			name: "Brie Miller",
 			role: "Fitness Trainer",
 			description:
-				"Hi, I’m Brieanna Miller! I’m an ISSA-certified personal trainer and nutrition coach with a deep passion for helping others reach their full potential—both in and out of the gym.<br /><br />Born and raised in Hilliard, Ohio, I attended Bowling Green State University, where I earned my bachelor’s degree in Education. Prior to becoming a CPT I taught in a severe autism unit as an Intervention Specialist at the Elementary level. Teaching is my first love, and it has shaped my ability to guide others to achieve their goals.<br /><br />I’ve also experienced my own fitness journey, losing over 120 pounds and completely transforming my health and lifestyle. This personal transformation fuels my mission to inspire and support others on their paths to being strong and healthy.<br /><br />My mission is to combine my love for teaching with my expertise in fitness and nutrition to help people build healthier, stronger, and more confident versions of themselves. Whether in the classroom or the weight room, I’m dedicated to creating positive, lasting change.",
+				"Hi, I'm Brieanna Miller! I'm an ISSA-certified personal trainer and nutrition coach with a deep passion for helping others reach their full potential—both in and out of the gym.<br /><br />Born and raised in Hilliard, Ohio, I attended Bowling Green State University, where I earned my bachelor's degree in Education. Prior to becoming a CPT I taught in a severe autism unit as an Intervention Specialist at the Elementary level. Teaching is my first love, and it has shaped my ability to guide others to achieve their goals.<br /><br />I've also experienced my own fitness journey, losing over 120 pounds and completely transforming my health and lifestyle. This personal transformation fuels my mission to inspire and support others on their paths to being strong and healthy.<br /><br />My mission is to combine my love for teaching with my expertise in fitness and nutrition to help people build healthier, stronger, and more confident versions of themselves. Whether in the classroom or the weight room, I'm dedicated to creating positive, lasting change.",
 			image: "/brie.jpeg",
 			// video: "/placeholder-video.mp4",
 		},

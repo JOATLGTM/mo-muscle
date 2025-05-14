@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouter } from "next/navigation";
+import { db } from "@/lib/firebase";
+import { ref, get } from "firebase/database";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -56,7 +61,7 @@ const tabs = [
 		subtitle: "ONLINE COACHING",
 		content: `
   <p>Our online coaching program brings professional training to your home, gym, or on the go.</p>
-  <p>You’ll receive a personalized program tailored to your goals, lifestyle, and available equipment. Your coach will stay connected through regular check-ins, progress tracking, and video feedback.</p>
+  <p>You'll receive a personalized program tailored to your goals, lifestyle, and available equipment. Your coach will stay connected through regular check-ins, progress tracking, and video feedback.</p>
   <p>Benefits include:</p>
   <ul>
 	<li>- Workouts designed for your space (home, gym, or travel)</li>
@@ -76,7 +81,7 @@ const tabs = [
 		content: `
   <p>Training hard is only part of the equation—nutrition is the fuel that powers your progress.</p>
   <p>Our expert coaches craft personalized nutrition strategies that complement your training and lifestyle. Whether your goal is to lose fat, gain muscle, or feel more energized, we guide you with realistic and sustainable plans.</p>
-  <p>Here’s what we offer:</p>
+  <p>Here's what we offer:</p>
   <ul>
 	<li>- Customized meal plans based on your goals and preferences</li>
 	<li>- Guidance on macros, hydration, and food timing</li>
