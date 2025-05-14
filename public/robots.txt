@@ -1,6 +1,6 @@
 # Allow all crawlers
 User-agent: *
-Allow: /public/
+Allow: /
 
 # Sitemap location
 Sitemap: https://www.trainmomuscle.com/sitemap.xml
