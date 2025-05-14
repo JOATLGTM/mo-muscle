@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({ params }) {
 	// In a real implementation, fetch post data from your CMS or database
 	const post = {
 		title: "Sample Blog Post Title",
