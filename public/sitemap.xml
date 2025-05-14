@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.trainmomuscle.com/</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.trainmomuscle.com/whymomuscle</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.trainmomuscle.com/trainers</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.trainmomuscle.com/services</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.trainmomuscle.com/blog</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.trainmomuscle.com/whymomuscle</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.trainmomuscle.com/contact</loc>

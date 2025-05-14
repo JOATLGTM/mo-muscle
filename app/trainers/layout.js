@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Our Trainers - Mo Muscle",
+	title: "Mo Muscle Trainers | Expert Fitness Coaches & Personal Trainers",
 	description:
-		"Meet our expert trainers at Mo Muscle who will guide your fitness journey and push you beyond your limits.",
+		"Meet Mo Muscle's certified expert trainers who combine years of experience with personalized coaching. Get the motivation and expertise you need to achieve your fitness goals.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/trainers",
 	},

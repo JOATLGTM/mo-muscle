@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Why Mo Muscle - Personalized Fitness Training",
+	title: "Why Mo Muscle | Your Path to Fitness Success & Transformation",
 	description:
-		"Discover why Mo Muscle is your best choice for personalized fitness training and transformation.",
+		"Experience the Mo Muscle difference with our proven track record of success. Get personalized training, expert guidance, and a supportive community dedicated to your transformation.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/whymomuscle",
 	},
