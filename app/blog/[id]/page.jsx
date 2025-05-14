@@ -6,14 +6,14 @@ export async function generateMetadata({ params }) {
 	const post = {
 		title: "Sample Blog Post Title",
 		description:
-			"This is a sample blog post description that will be replaced with actual content.",
+			"Learn valuable fitness insights and expert tips from Mo Muscle. Discover practical advice, real-world examples, and actionable strategies to enhance your fitness journey.",
 		date: "2024-03-20",
 		author: "Mo Muscle",
 		image: "/blog-placeholder.jpg",
 	};
 
 	return {
-		title: `${post.title} | Mo Muscle Blog`,
+		title: `${post.title} | Mo Muscle Fitness Blog`,
 		description: post.description,
 		openGraph: {
 			title: post.title,

@@ -8,9 +8,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Mo Muscle | Personal Training & Fitness Coaching Services",
+	title: "Mo Muscle | Expert Personal Training & Fitness Coaching",
 	description:
-		"Transform your fitness journey with Mo Muscle's expert coaching. Get personalized training programs, nutrition guidance, and dedicated support both online and in-person.",
+		"Transform your fitness with Mo Muscle's expert coaching. Get personalized training programs, nutrition guidance, and dedicated support for your fitness goals.",
 	robots: "index, follow",
 	verification: {
 		google: "CCXgAcNqEOViudRmIXOpEYhaR9gzx07qfAH9GfGWlTA",
