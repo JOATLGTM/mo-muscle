@@ -18,13 +18,13 @@ export const metadata = {
 	openGraph: {
 		title: "Mo Muscle - Personalized Fitness Coaching",
 		description: "Mo Muscle - Personalized Fitness Coaching",
-		url: "https://trainmomuscle.com",
+		url: "https://www.trainmomuscle.com",
 		siteName: "Mo Muscle",
 		locale: "en_US",
 		type: "website",
 	},
 	alternates: {
-		canonical: "https://www.momuscle.com",
+		canonical: "https://www.trainmomuscle.com",
 	},
 };
 
