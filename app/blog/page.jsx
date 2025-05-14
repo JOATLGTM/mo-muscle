@@ -43,11 +43,24 @@ export default function BlogPage() {
 	}, []);
 
 	return (
-		<section className="bg-black text-white py-16 px-4">
-			<div className="container mx-auto">
-				<h1 className="text-4xl font-bold text-center m-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
+		<section className="bg-black text-white py-16 px-4 text-center">
+			<div className="container mx-auto py-16">
+				<h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 					Blog
-				</h1>
+				</h2>
+				<p className="text-xl md:text-2xl mb-8 text-gray-300 md:px-2">
+					Welcome to the Mo Muscle Blog — where we share more than
+					just workouts. Here, you'll find stories about community
+					events, behind-the-scenes moments, and how Mo Muscle
+					continues to uplift and inspire beyond the gym. From charity
+					drives to local outreach, we're building strength both
+					inside and outside the gym
+				</p>
+				<p className="text-lg text-gray-400 pb-16">
+					Explore how our community turns motivation into real
+					results—each story and event brings members one step closer
+					to becoming the strongest version of themselves.
+				</p>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{data.length === 0 ? (
 						<p className="text-center text-gray-300">Loading...</p>

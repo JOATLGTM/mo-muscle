@@ -73,8 +73,9 @@ export default function Home() {
 					</h2>
 					<p className="max-w-3xl mx-auto text-gray-600 mb-8 md:mb-12 text-sm md:text-base">
 						At Mo Muscle, we believe in a personalized approach to
-						fitness. Our trainers guide you through each step,
-						ensuring you achieve your physical goals effectively.
+						fitness. Our expert trainers guide you through each
+						step, ensuring you achieve your physical goals
+						efficiently and effectively
 					</p>
 				</div>
 			</section>
