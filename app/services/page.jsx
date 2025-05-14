@@ -36,24 +36,55 @@ const tabs = [
 		label: "IN PERSON COACHING",
 		title: "PERSONALIZED ATTENTION WITH",
 		subtitle: "IN PERSON COACHING",
-		content:
-			"Get hands-on guidance and support from expert trainers in a fully equipped fitness facility.",
+		content: `
+  <p>Get hands-on guidance and support from expert trainers in a fully equipped fitness facility.</p>
+  <p>Whether you're just beginning your fitness journey or pushing toward elite performance, our in-person coaching is personalized to fit your unique goals. We focus on form, function, and consistency—ensuring every rep counts.</p>
+  <p>Our coaches work with you to:</p>
+  <ul>
+	<li>- Customize your training plan based on strength, mobility, and goals</li>
+	<li>- Monitor your progress and adjust your workouts in real-time</li>
+	<li>- Prevent injury through correct form and safe training methods</li>
+	<li>- Motivate and keep you accountable for long-term results</li>
+  </ul>
+  <p>Join a supportive, results-driven environment and experience training that's as dynamic as your goals.</p>
+  `,
 	},
 	{
 		id: "online-coaching",
 		label: "ONLINE COACHING",
 		title: "TRAIN WHEREVER YOU ARE WITH",
 		subtitle: "ONLINE COACHING",
-		content:
-			"Access personalized training programs and guidance from the comfort of your own home, with regular check-ins and support from your coach.",
+		content: `
+  <p>Our online coaching program brings professional training to your home, gym, or on the go.</p>
+  <p>You’ll receive a personalized program tailored to your goals, lifestyle, and available equipment. Your coach will stay connected through regular check-ins, progress tracking, and video feedback.</p>
+  <p>Benefits include:</p>
+  <ul>
+	<li>- Workouts designed for your space (home, gym, or travel)</li>
+	<li>- Flexible scheduling and anytime access</li>
+	<li>- Weekly check-ins and progress reviews</li>
+	<li>- Video tutorials and exercise demos</li>
+	<li>- Real accountability from real coaches</li>
+  </ul>
+  <p>Wherever you are, we help you stay consistent and on track.</p>
+  `,
 	},
 	{
 		id: "nutrition",
 		label: "NUTRITION COACHING",
 		title: "FUEL YOUR SUCCESS WITH",
 		subtitle: "NUTRITION COACHING",
-		content:
-			"Receive a customized nutrition plan that complements your training program, with ongoing support to help you achieve your health and fitness goals.",
+		content: `
+  <p>Training hard is only part of the equation—nutrition is the fuel that powers your progress.</p>
+  <p>Our expert coaches craft personalized nutrition strategies that complement your training and lifestyle. Whether your goal is to lose fat, gain muscle, or feel more energized, we guide you with realistic and sustainable plans.</p>
+  <p>Here’s what we offer:</p>
+  <ul>
+	<li>- Customized meal plans based on your goals and preferences</li>
+	<li>- Guidance on macros, hydration, and food timing</li>
+	<li>- Strategies to support performance, recovery, and overall health</li>
+	<li>- Accountability check-ins to keep you consistent</li>
+  </ul>
+  <p>No fad diets. No guesswork. Just smart, supportive nutrition coaching that works.</p>
+  `,
 	},
 ];
 
@@ -404,9 +435,12 @@ export default function ServicesPage() {
 													<h3 className="text-4xl font-bold text-[#66A1FF] mb-6">
 														{tab.subtitle}
 													</h3>
-													<p className="text-gray-700 mb-12">
-														{tab.content}
-													</p>
+													<div
+														className="text-gray-700 mb-12 space-y-4"
+														dangerouslySetInnerHTML={{
+															__html: tab.content,
+														}}
+													/>
 
 													{tab.id === "in-person" && (
 														<>
