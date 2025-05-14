@@ -24,21 +24,7 @@ const Footer = () => {
 					</address>
 				</div>
 
-				<div className="invisible hidden md:block">
-					{/* <h3 className="text-sm font-bold mb-6">LINKS</h3>
-					<nav className="space-y-2 text-gray-400">
-						<p>
-							<Link href="/terms" className="hover:text-white">
-								TERMS OF SERVICE
-							</Link>
-						</p>
-						<p>
-							<Link href="/privacy" className="hover:text-white">
-								PRIVACY
-							</Link>
-						</p>
-					</nav> */}
-				</div>
+				<div className="invisible hidden md:block"></div>
 			</div>
 
 			<div className="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800">
