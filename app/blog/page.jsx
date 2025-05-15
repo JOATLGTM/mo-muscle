@@ -45,9 +45,9 @@ export default function BlogPage() {
 	return (
 		<section className="bg-black text-white py-16 px-4 text-center">
 			<div className="container mx-auto py-16">
-				<h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
+				<h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 					Blog
-				</h2>
+				</h1>
 				<p className="text-xl md:text-2xl mb-8 text-gray-300 md:px-2">
 					Welcome to the Mo Muscle Blog — where we share more than
 					just workouts. Here, you'll find stories about community

@@ -34,9 +34,9 @@ export default function WhyMoMusclePage() {
 			{/* Hero Section */}
 			<div className="container mx-auto mb-16 mt-16 px-8">
 				<div className="mx-auto text-center">
-					<h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
+					<h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
 						Why Choose Mo Muscle?
-					</h2>
+					</h1>
 					<p className="text-xl md:text-2xl mb-8 text-gray-300 md:px-2">
 						At Mo Muscle, we're not just a gym – we're a community
 						of dedicated individuals committed to transforming lives
