@@ -24,6 +24,7 @@ const Header = () => {
 		goals: [],
 		needsMealPlan: "",
 		coachingPreference: "",
+		locationPreference: "",
 		trainerPreference: "", // Added field for the trainer preference
 		fullName: "",
 		email: "",
@@ -86,6 +87,15 @@ const Header = () => {
 			options: [
 				{ value: "in-person", label: "In person" },
 				{ value: "online", label: "Online" },
+			],
+		},
+		{
+			id: "locationPreference",
+			question: "Which location do you want to train at?",
+			type: "radio",
+			options: [
+				{ value: "hilliard", label: "Hilliard" },
+				{ value: "worthington", label: "Worthington" },
 			],
 		},
 		{

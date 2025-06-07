@@ -49,7 +49,8 @@ export default function ScheduleSection() {
 		goals: [],
 		needsMealPlan: "",
 		coachingPreference: "",
-		trainerPreference: "", // Added field for the trainer preference
+		locationPreference: "",
+		trainerPreference: "",
 		fullName: "",
 		email: "",
 		phone: "",
@@ -111,6 +112,15 @@ export default function ScheduleSection() {
 			options: [
 				{ value: "in-person", label: "In person" },
 				{ value: "online", label: "Online" },
+			],
+		},
+		{
+			id: "locationPreference",
+			question: "Which location do you want to train at?",
+			type: "radio",
+			options: [
+				{ value: "hilliard", label: "Hilliard" },
+				{ value: "worthington", label: "Worthington" },
 			],
 		},
 		{

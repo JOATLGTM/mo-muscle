@@ -138,6 +138,7 @@ export default function ServicesPage() {
 		fullName: "",
 		email: "",
 		phone: "",
+		locationPreference: "",
 		trainerPreference: "", // Added field for the trainer preference
 	});
 	const [errors, setErrors] = useState({
@@ -200,6 +201,15 @@ export default function ServicesPage() {
 			options: [
 				{ value: "in-person", label: "In person" },
 				{ value: "online", label: "Online" },
+			],
+		},
+		{
+			id: "locationPreference",
+			question: "Which location do you want to train at?",
+			type: "radio",
+			options: [
+				{ value: "hilliard", label: "Hilliard" },
+				{ value: "worthington", label: "Worthington" },
 			],
 		},
 		{

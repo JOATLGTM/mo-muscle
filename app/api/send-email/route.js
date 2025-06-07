@@ -12,6 +12,7 @@ export async function POST(req) {
 			fullName,
 			email,
 			phone,
+			locationPreference,
 			trainerPreference,
 		} = await req.json();
 
@@ -49,7 +50,7 @@ export async function POST(req) {
 				from: email,
 				to: recipient.user,
 				subject: "New Contact Form Submission",
-				text: `Name: ${fullName}\nEmail: ${email}\nPhone Number: ${phone}\nHave they had a coach before? ${hasCoach}\nHow many days they prefer working out: ${workoutDays}\nTheir list of goals: ${goals}\nDo they need a meal plan? ${needsMealPlan}\nTrainer Preference is: ${trainerPreference}\nCoaching Preference is: ${coachingPreference}\n`,
+				text: `Name: ${fullName}\nEmail: ${email}\nPhone Number: ${phone}\nHave they had a coach before? ${hasCoach}\nHow many days they prefer working out: ${workoutDays}\nTheir list of goals: ${goals}\nDo they need a meal plan? ${needsMealPlan}\nTrainer Preference is: ${trainerPreference}\nLocation Preference: ${locationPreference}\nCoaching Preference is: ${coachingPreference}\n`,
 			};
 
 			await transporter.sendMail(mailOptions);
