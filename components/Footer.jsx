@@ -10,8 +10,8 @@ const Footer = () => {
 				<div>
 					<h3 className="text-sm font-bold mb-6">CONTACT US</h3>
 					<address className="space-y-2 text-gray-400 not-italic">
-						<p>3675 Park Mill Run Dr</p>
-						<p>Hilliard, OH 43026</p>
+						<p>7530 Reliance St</p>
+						<p>Columbus Ohio 43085</p>
 						<p>(614) 357-8780</p>
 						<p>
 							<a
