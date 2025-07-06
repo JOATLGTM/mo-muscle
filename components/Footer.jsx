@@ -6,12 +6,30 @@ import { Facebook, Instagram } from "lucide-react";
 const Footer = () => {
 	return (
 		<footer className="bg-black text-white py-6 mt-5">
-			<div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+			<div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+				<div>
+					<h3 className="text-sm font-bold mb-6">
+						Worthington Location
+					</h3>
+					<address className="space-y-2 text-gray-400 not-italic">
+						<p>7530 Reliance St</p>
+						<p>Columbus, Ohio 43085</p>
+					</address>
+				</div>
+
+				<div>
+					<h3 className="text-sm font-bold mb-6">
+						Hilliard Location
+					</h3>
+					<address className="space-y-2 text-gray-400 not-italic">
+						<p>3675 Park Mill Run Dr</p>
+						<p>Hilliard, OH 43026</p>
+					</address>
+				</div>
+
 				<div>
 					<h3 className="text-sm font-bold mb-6">CONTACT US</h3>
 					<address className="space-y-2 text-gray-400 not-italic">
-						<p>7530 Reliance St</p>
-						<p>Columbus Ohio 43085</p>
 						<p>(614) 357-8780</p>
 						<p>
 							<a
