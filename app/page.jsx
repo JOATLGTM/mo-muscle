@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Mission from '@/components/sections/Mission';
@@ -12,13 +12,13 @@ import CTA from '@/components/sections/CTA';
 import HeroFooter from '@/components/sections/HeroFooter';
 import { ScrollingText } from '@/components/ScrollingText';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
-import Schedule from '@/components/Schedule';
 import FloatingNav from '@/components/FloatingNav';
 import useLenis from '@/hooks/useLenis';
+import { useScheduleModal } from '@/hooks/useScheduleModal';
 
 export default function Home() {
   useLenis();
-  const [showSchedule, setShowSchedule] = useState(false);
+  const { openModal } = useScheduleModal();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -66,11 +66,9 @@ export default function Home() {
       
       <Locations />
       
-      <CTA onScheduleClick={() => setShowSchedule(true)} />
+      <CTA onScheduleClick={openModal} />
       
       <HeroFooter />
-      
-      <Schedule />
     </main>
   );
 }

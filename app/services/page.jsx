@@ -7,14 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouter } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
-	ChevronRight,
-	ChevronLeft,
 	Calendar,
 	Dumbbell,
 	Zap,
@@ -24,7 +17,6 @@ import {
 	FileWarning,
 	Shield,
 	X,
-	CheckCircle2,
 	Leaf,
 	Flame,
 	Scale,
@@ -34,6 +26,8 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import VideoCarousel from "@/components/VideoCarousel";
+import Schedule from "@/components/Schedule";
+import { useScheduleModal } from "@/hooks/useScheduleModal";
 
 const tabs = [
 	{

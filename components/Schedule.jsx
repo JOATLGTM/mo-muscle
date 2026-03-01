@@ -18,9 +18,13 @@ import {
 	CheckCircle2,
 } from "lucide-react";
 
-export default function ScheduleSection() {
+export default function ScheduleSection({ showModal: externalShowModal, setShowModal: externalSetShowModal }) {
 	const [showModal, setShowModal] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
+
+	// Use external state if provided, otherwise use internal state
+	const isModalOpen = externalShowModal !== undefined ? externalShowModal : showModal;
+	const handleModalChange = externalSetShowModal !== undefined ? externalSetShowModal : setShowModal;
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [formData, setFormData] = useState({
 		hasCoach: "",
@@ -202,7 +206,7 @@ export default function ScheduleSection() {
 	};
 
 	const handleClose = () => {
-		setShowModal(false);
+		handleModalChange(false);
 		setCurrentStep(0);
 		setIsSuccess(false);
 		setFormData({
@@ -230,12 +234,12 @@ export default function ScheduleSection() {
 	return (
 		<div className="hidden">
 			{/* Hidden Schedule Modal - only shown when triggered */}
-			<Dialog open={showModal} onOpenChange={handleClose}>
-				<DialogContent className="max-w-2xl p-0 bg-transparent border-none">
-					<div className="relative bg-white rounded-2xl shadow-xl p-8">
+			<Dialog open={isModalOpen} onOpenChange={handleClose}>
+				<DialogContent className="max-w-2xl p-0 bg-transparent border-none backdrop-blur-sm">
+					<div className="relative bg-[#050508]/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/10">
 							<button
 								onClick={handleClose}
-								className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors z-10 mt-1 mr-1"
+								className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10"
 							>
 								<X className="h-6 w-6" />
 								<span className="sr-only">Close</span>
@@ -248,22 +252,22 @@ export default function ScheduleSection() {
 									className="text-center"
 								>
 									<div className="mb-6 flex justify-center">
-										<CheckCircle2 className="h-16 w-16 text-green-500" />
+										<CheckCircle2 className="h-16 w-16 text-[#0582c0]" />
 									</div>
-									<h2 className="text-2xl font-bold text-gray-900 mb-4">
+									<h2 className="font-display text-2xl font-bold text-white mb-4">
 										Congratulations!
 									</h2>
-									<p className="text-gray-600 mb-8">
+									<p className="text-white/70 mb-8">
 										Thank you for signing up. We will
 										contact you shortly to discuss your
 										fitness journey.
 									</p>
-									<Button
+									<button
 										onClick={handleClose}
-										className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90"
+										className="px-8 py-3 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-[#016a9e] transition-all duration-300"
 									>
 										Return Home
-									</Button>
+									</button>
 								</motion.div>
 							) : (
 								<>
@@ -271,9 +275,9 @@ export default function ScheduleSection() {
 										{currentStep <= questions.length - 1 ? (
 											<>
 												<div className="mb-8 mt-4">
-													<div className="h-2 w-full bg-gray-200 rounded-full">
+													<div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
 														<div
-															className="h-2 bg-[rgb(2,131,192)] rounded-full transition-all duration-300"
+															className="h-2 bg-[#0582c0] rounded-full transition-all duration-300"
 															style={{
 																width: `${
 																	((currentStep +
@@ -285,7 +289,7 @@ export default function ScheduleSection() {
 															}}
 														/>
 													</div>
-													<div className="mt-2 text-sm text-gray-600">
+													<div className="mt-2 text-sm font-mono-custom text-white/60 uppercase tracking-wider">
 														Question{" "}
 														{currentStep + 1} of{" "}
 														{questions.length}
@@ -309,7 +313,7 @@ export default function ScheduleSection() {
 														}}
 														className="space-y-6"
 													>
-														<h2 className="text-2xl font-bold text-gray-900 mb-4">
+														<h2 className="font-display text-2xl font-bold text-white mb-4">
 															{
 																questions[
 																	currentStep
@@ -318,7 +322,7 @@ export default function ScheduleSection() {
 														</h2>
 														{questions[currentStep]
 															.subtext && (
-															<p className="text-gray-600 -mt-2 mb-4">
+															<p className="text-white/60 -mt-2 mb-4">
 																{
 																	questions[
 																		currentStep
@@ -356,28 +360,26 @@ export default function ScheduleSection() {
 																	(
 																		option
 																	) => (
-																		<div
+																		<Label
 																			key={
 																				option.value
 																			}
-																			className="flex items-center"
+																			htmlFor={`${questions[currentStep].id}-${option.value}`}
+																			className="flex items-center p-4 rounded-lg border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300 cursor-pointer bg-white/5 w-full"
 																		>
 																			<RadioGroupItem
 																				value={
 																					option.value
 																				}
 																				id={`${questions[currentStep].id}-${option.value}`}
-																				className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
+																				className="border-white/30 text-[#0582c0] focus:ring-[#0582c0]"
 																			/>
-																			<Label
-																				htmlFor={`${questions[currentStep].id}-${option.value}`}
-																				className="ml-2 text-lg text-gray-700"
-																			>
+																			<span className="ml-3 text-lg text-white">
 																				{
 																					option.label
 																				}
-																			</Label>
-																		</div>
+																			</span>
+																		</Label>
 																	)
 																)}
 															</RadioGroup>
@@ -393,11 +395,12 @@ export default function ScheduleSection() {
 																	(
 																		option
 																	) => (
-																		<div
+																		<Label
 																			key={
 																				option.value
 																			}
-																			className="flex items-center"
+																			htmlFor={`${questions[currentStep].id}-${option.value}`}
+																			className="flex items-center p-4 rounded-lg border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300 cursor-pointer bg-white/5 w-full"
 																		>
 																			<Checkbox
 																				id={`${questions[currentStep].id}-${option.value}`}
@@ -440,17 +443,14 @@ export default function ScheduleSection() {
 																						newValues
 																					);
 																				}}
-																				className="border-gray-300 text-[rgb(2,131,192)] focus:ring-[rgb(2,131,192)]"
+																				className="border-white/30 text-[#0582c0] focus:ring-[#0582c0]"
 																			/>
-																			<Label
-																				htmlFor={`${questions[currentStep].id}-${option.value}`}
-																				className="ml-2 text-lg text-gray-700"
-																			>
+																			<span className="ml-3 text-lg text-white">
 																				{
 																					option.label
 																				}
-																			</Label>
-																		</div>
+																			</span>
+																		</Label>
 																	)
 																)}
 															</div>
@@ -509,10 +509,10 @@ export default function ScheduleSection() {
 												animate={{ opacity: 1 }}
 												className="space-y-6"
 											>
-												<h2 className="text-2xl font-bold text-center text-gray-900">
+												<h2 className="font-display text-2xl font-bold text-center text-white">
 													Contact Us
 												</h2>
-												<p className="text-center text-gray-600">
+												<p className="text-center text-white/60">
 													We are looking forward to
 													helping with your physical
 													training. Please fill in the
@@ -532,10 +532,10 @@ export default function ScheduleSection() {
 																e.target.value
 															)
 														}
-														className="w-full text-black"
+														className="w-full bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-[#0582c0] focus:ring-[#0582c0]"
 													/>
 													{errors.fullName && (
-														<p className="text-red-500 text-sm">
+														<p className="text-red-400 text-sm">
 															{errors.fullName}
 														</p>
 													)}
@@ -551,10 +551,10 @@ export default function ScheduleSection() {
 																e.target.value
 															)
 														}
-														className="w-full text-black"
+														className="w-full bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-[#0582c0] focus:ring-[#0582c0]"
 													/>
 													{errors.email && (
-														<p className="text-red-500 text-sm">
+														<p className="text-red-400 text-sm">
 															{errors.email}
 														</p>
 													)}
@@ -570,10 +570,10 @@ export default function ScheduleSection() {
 																e.target.value
 															)
 														}
-														className="w-full text-black"
+														className="w-full bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-[#0582c0] focus:ring-[#0582c0]"
 													/>
 													{errors.phone && (
-														<p className="text-red-500 text-sm">
+														<p className="text-red-400 text-sm">
 															{errors.phone}
 														</p>
 													)}
@@ -582,35 +582,34 @@ export default function ScheduleSection() {
 										)}
 
 										<div className="flex justify-between mt-8">
-											<Button
+											<button
 												type="button"
-												variant="outline"
 												onClick={handlePrevious}
 												disabled={currentStep === 0}
-												className="flex items-center text-black"
+												className="flex items-center px-6 py-2.5 border border-white/20 text-white rounded-full hover:border-white/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
 											>
 												<ChevronLeft className="mr-2 h-4 w-4" />
 												Previous
-											</Button>
+											</button>
 
 											{currentStep >= questions.length ? (
-												<Button
+												<button
 													onClick={handleSubmit}
-													className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90"
+													className="px-8 py-2.5 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-[#016a9e] transition-all duration-300"
 												>
 													Submit
-												</Button>
+												</button>
 											) : (
-												<Button
+												<button
 													onClick={handleNext}
 													disabled={
 														!isCurrentQuestionAnswered()
 													}
-													className="bg-[rgb(2,131,192)] text-white hover:bg-[rgb(2,131,192)]/90 flex items-center"
+													className="px-8 py-2.5 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-[#016a9e] disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all duration-300"
 												>
 													Next
 													<ChevronRight className="ml-2 h-4 w-4" />
-												</Button>
+												</button>
 											)}
 										</div>
 									</>
