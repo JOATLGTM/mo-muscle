@@ -1,20 +1,21 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import {
+	generateContactFormEmail,
+	generateContactFormEmailText,
+} from "@/lib/email-templates/contact-form-template";
 
 export async function POST(req) {
 	try {
+		const formData = await req.json();
 		const {
-			hasCoach,
-			workoutDays,
-			goals,
-			needsMealPlan,
-			coachingPreference,
-			fullName,
 			email,
-			phone,
-			locationPreference,
 			trainerPreference,
-		} = await req.json();
+		} = formData;
+
+		// Generate email content from template (with production flag for proper URL)
+		const htmlContent = generateContactFormEmail(formData, { isProduction: true });
+		const textContent = generateContactFormEmailText(formData);
 
 		const recipients =
 			trainerPreference === "brie-miller"
@@ -50,7 +51,8 @@ export async function POST(req) {
 				from: email,
 				to: recipient.user,
 				subject: "New Contact Form Submission",
-				text: `Name: ${fullName}\nEmail: ${email}\nPhone Number: ${phone}\nHave they had a coach before? ${hasCoach}\nHow many days they prefer working out: ${workoutDays}\nTheir list of goals: ${goals}\nDo they need a meal plan? ${needsMealPlan}\nTrainer Preference is: ${trainerPreference}\nLocation Preference: ${locationPreference}\nCoaching Preference is: ${coachingPreference}\n`,
+				text: textContent,
+				html: htmlContent,
 			};
 
 			await transporter.sendMail(mailOptions);
