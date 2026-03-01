@@ -13,12 +13,13 @@ import HeroFooter from '@/components/sections/HeroFooter';
 import { ScrollingText } from '@/components/ScrollingText';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import FloatingNav from '@/components/FloatingNav';
+import Schedule from '@/components/Schedule';
 import useLenis from '@/hooks/useLenis';
 import { useScheduleModal } from '@/hooks/useScheduleModal';
 
 export default function Home() {
   useLenis();
-  const { openModal } = useScheduleModal();
+  const { showModal, setShowModal, openModal } = useScheduleModal();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -69,6 +70,8 @@ export default function Home() {
       <CTA onScheduleClick={openModal} />
       
       <HeroFooter />
+      
+      <Schedule showModal={showModal} setShowModal={setShowModal} />
     </main>
   );
 }

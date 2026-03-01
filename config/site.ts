@@ -48,7 +48,7 @@ export const heroConfig: HeroConfig = {
 	ctaPrimaryTarget: "services",
 	ctaSecondary: "View Services",
 	ctaSecondaryTarget: "services",
-	cornerLabel: "Est. 2024",
+	cornerLabel: "Est. 2020",
 	cornerDetail: "Expert Training",
 	navItems: [
 		{ label: "Home", sectionId: "hero", icon: "disc" },
@@ -311,7 +311,11 @@ export const ctaConfig: CTAConfig = {
 		"Join thousands who have already changed their lives with Mo Muscle.",
 	buttonText: "Schedule With Mo Muscle",
 	buttonTarget: "contact",
-	images: ["/images/transform.jpeg", "/images/transform2.jpeg", "/images/transform3.jpeg"],
+	images: [
+		"/images/transform.jpeg",
+		"/images/transform2.jpeg",
+		"/images/transform3.jpeg",
+	],
 };
 
 // Footer Section
