@@ -96,18 +96,19 @@ export default function TrainersPage() {
 					className="object-cover"
 					priority
 				/>
-			<div className="absolute inset-0 bg-black/50" />
-			<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
-			
-			<div className="absolute top-8 left-8">
-				<img
-					src="/badge_logo_white.png"
-					alt="Mo Muscle"
-					className="w-48 h-8 object-contain"
-				/>
-			</div>
+		<div className="absolute inset-0 bg-black/50" />
+		<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
+		
+		{/* Logo - positioned relative to section */}
+		<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
+			<img
+				src="/badge_logo_white.png"
+				alt="Mo Muscle"
+				className="h-[4rem] md:w-48 md:h-8 object-contain"
+			/>
+		</div>
 
-			<div ref={titleRef} className="relative z-10 text-center max-w-4xl mx-auto px-4">
+		<div ref={titleRef} className="relative z-10 text-center max-w-4xl mx-auto px-4">
 					<div className="flex items-center justify-center gap-4 mb-6">
 						<div className="w-12 h-px bg-white/30" />
 						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider">

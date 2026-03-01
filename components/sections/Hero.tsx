@@ -120,18 +120,19 @@ export default function Hero() {
 					ref={overlayRef}
 					className="absolute inset-0 bg-primary-accent/10 opacity-0"
 				/>
-			</div>
+		</div>
 
-			<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
-			<div className="absolute top-8 left-8 z-30">
-				<img
-					src="/badge_logo_white.png"
-					alt="Mo Muscle"
-					className="w-48 h-8 object-contain"
-				/>
-			</div>
+		{/* Logo - positioned relative to section */}
+		<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
+			<img
+				src="/badge_logo_white.png"
+				alt="Mo Muscle"
+				className="h-[4rem] md:w-48 md:h-8 object-contain"
+			/>
+		</div>
 
-			<div className="flex flex-col items-center justify-center max-w-7xl w-full">
+		<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
+		<div className="flex flex-col items-center justify-center max-w-7xl w-full">
 					<h1
 						ref={titleRef}
 						className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"

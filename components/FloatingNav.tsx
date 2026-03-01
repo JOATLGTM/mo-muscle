@@ -11,6 +11,8 @@ import {
 	BookOpen,
 	Heart,
 	Calendar,
+	Menu,
+	X,
 } from "lucide-react";
 import Schedule from "@/components/Schedule";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
@@ -44,6 +46,7 @@ export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
 	const navRef = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(true);
 	const [lastScrollY, setLastScrollY] = useState(0);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const pathname = usePathname();
 	const isHomePage = pathname === "/";
 	const { showModal, openModal, setShowModal } = useScheduleModal();
@@ -72,12 +75,37 @@ export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [lastScrollY]);
 
+	// Close mobile menu when clicking outside
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (isMobileMenuOpen && navRef.current && !navRef.current.contains(event.target as Node)) {
+				setIsMobileMenuOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [isMobileMenuOpen]);
+
+	// Prevent body scroll when mobile menu is open
+	useEffect(() => {
+		if (isMobileMenuOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [isMobileMenuOpen]);
+
 	const handleNavClick =
 		(item: (typeof navItems)[0]) => (e: React.MouseEvent) => {
 			// If it's the Schedule button, open modal
 			if (item.label === "Schedule") {
 				e.preventDefault();
 				openModal();
+				setIsMobileMenuOpen(false); // Close mobile menu
 				return;
 			}
 
@@ -89,13 +117,14 @@ export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
 					element.scrollIntoView({ behavior: "smooth" });
 				}
 			}
+			setIsMobileMenuOpen(false); // Close mobile menu after navigation
 			// Otherwise, let the Link handle navigation (including /#section for other pages)
 		};
 
 	return (
 		<>
+			{/* Desktop Navigation */}
 			<nav
-				ref={navRef}
 				className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 nav-pill rounded-full px-2 py-2 hidden md:block transition-all duration-300 ${
 					isVisible
 						? "opacity-100 translate-y-0"
@@ -136,6 +165,80 @@ export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
 					})}
 				</div>
 			</nav>
+
+			{/* Mobile Hamburger Button */}
+			<button
+				onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+				className={`fixed top-4 right-4 z-50 md:hidden p-3 rounded-full bg-[#0582c0] text-white transition-all duration-300 ${
+					isVisible
+						? "opacity-100 translate-y-0"
+						: "opacity-0 -translate-y-4 pointer-events-none"
+				}`}
+				aria-label="Toggle menu"
+			>
+				{isMobileMenuOpen ? (
+					<X className="w-6 h-6" />
+				) : (
+					<Menu className="w-6 h-6" />
+				)}
+			</button>
+
+			{/* Mobile Slide-out Menu */}
+			<div
+				ref={navRef}
+				className={`fixed top-0 right-0 h-full w-[280px] bg-[#050508]/98 backdrop-blur-xl border-l border-white/10 z-40 md:hidden transition-transform duration-300 ease-in-out ${
+					isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+				}`}
+			>
+				<div className="flex flex-col h-full pt-20 px-6 pb-6">
+					<nav className="flex-1 space-y-2">
+						{navItems.map((item) => {
+							const IconComponent = item.icon;
+
+							if (item.href === null) {
+								// Schedule button
+								return (
+									<button
+										key={item.label}
+										onClick={handleNavClick(item)}
+										className="flex items-center gap-4 w-full px-4 py-4 text-sm font-mono-custom uppercase tracking-wider text-white/80 hover:text-white hover:bg-white/5 transition-all rounded-lg"
+									>
+										<IconComponent className="w-5 h-5 text-[#0582c0]" />
+										<span>{item.label}</span>
+									</button>
+								);
+							}
+
+							return (
+								<Link
+									key={item.label}
+									href={item.href}
+									onClick={handleNavClick(item)}
+									className="flex items-center gap-4 px-4 py-4 text-sm font-mono-custom uppercase tracking-wider text-white/80 hover:text-white hover:bg-white/5 transition-all rounded-lg"
+								>
+									<IconComponent className="w-5 h-5 text-[#0582c0]" />
+									<span>{item.label}</span>
+								</Link>
+							);
+						})}
+					</nav>
+
+					{/* Footer */}
+					<div className="pt-6 border-t border-white/10">
+						<p className="text-xs text-white/40 font-mono-custom uppercase tracking-wider text-center">
+							Mo Muscle
+						</p>
+					</div>
+				</div>
+			</div>
+
+			{/* Mobile Menu Overlay */}
+			{isMobileMenuOpen && (
+				<div
+					className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden"
+					onClick={() => setIsMobileMenuOpen(false)}
+				/>
+			)}
 
 			{/* Schedule Modal */}
 			<Schedule showModal={showModal} setShowModal={setShowModal} />
