@@ -123,18 +123,15 @@ export default function Hero() {
 			</div>
 
 			<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
-				<div className="absolute top-8 left-8 z-30">
-					<div className="flex items-center gap-2">
-						<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-accent to-primary-hover flex items-center justify-center">
-							<Dumbbell className="w-4 h-4 text-white" />
-						</div>
-						<span className="font-display text-lg text-white">
-							{heroConfig.brandName}
-						</span>
-					</div>
-				</div>
+			<div className="absolute top-8 left-8 z-30">
+				<img
+					src="/badge_logo_white.png"
+					alt="Mo Muscle"
+					className="w-48 h-8 object-contain"
+				/>
+			</div>
 
-				<div className="flex flex-col items-center justify-center max-w-7xl w-full">
+			<div className="flex flex-col items-center justify-center max-w-7xl w-full">
 					<h1
 						ref={titleRef}
 						className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"

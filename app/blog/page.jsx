@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Dumbbell, ArrowRight } from "lucide-react";
 import HeroFooter from "@/components/sections/HeroFooter";
 import useLenis from "@/hooks/useLenis";
+import FloatingNav from "@/components/FloatingNav";
 
 export default function BlogPage() {
 	useLenis();
@@ -101,6 +102,8 @@ export default function BlogPage() {
 
 	return (
 		<div className="bg-[#050508] text-white min-h-screen">
+			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
+			
 			{/* Hero Section */}
 			<section className="relative w-full h-screen overflow-hidden">
 				<div className="absolute inset-0 z-0">
@@ -115,17 +118,16 @@ export default function BlogPage() {
 					<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
 				</div>
 
-				<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
-					<div className="absolute top-8 left-8 z-30">
-						<div className="flex items-center gap-2">
-							<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0582c0] to-[#016a9e] flex items-center justify-center">
-								<Dumbbell className="w-4 h-4 text-white" />
-							</div>
-							<span className="font-display text-lg text-white">Mo Muscle</span>
-						</div>
-					</div>
+			<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
+				<div className="absolute top-8 left-8 z-30">
+					<img
+						src="/badge_logo_white.png"
+						alt="Mo Muscle"
+						className="w-48 h-8 object-contain"
+					/>
+				</div>
 
-					<div className="flex flex-col items-center justify-center max-w-7xl w-full">
+				<div className="flex flex-col items-center justify-center max-w-7xl w-full">
 						<h1
 							ref={titleRef}
 							className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"

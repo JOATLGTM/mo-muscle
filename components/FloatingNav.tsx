@@ -7,7 +7,7 @@ import { Home, Users, Briefcase, Dumbbell, BookOpen, Heart, Calendar } from 'luc
 import Schedule from '@/components/Schedule';
 import { useScheduleModal } from '@/hooks/useScheduleModal';
 
-const navItems = [
+const allNavItems = [
   { label: 'Home', sectionId: 'hero', icon: Home, href: '/' },
   { label: 'About', sectionId: 'about', icon: Users, href: '/#about' },
   { label: 'Services', sectionId: 'services', icon: Briefcase, href: '/#services' },
@@ -18,13 +18,22 @@ const navItems = [
   { label: 'Schedule', sectionId: null, icon: Calendar, href: null },
 ];
 
-export default function FloatingNav() {
+interface FloatingNavProps {
+  showOnly?: string[]; // Optional filter to show only specific items
+}
+
+export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
   const navRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const { showModal, openModal, setShowModal } = useScheduleModal();
+
+  // Filter nav items if showOnly is provided
+  const navItems = showOnly 
+    ? allNavItems.filter(item => showOnly.includes(item.label))
+    : allNavItems;
 
   useEffect(() => {
     const handleScroll = () => {

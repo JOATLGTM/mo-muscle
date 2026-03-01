@@ -4,10 +4,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import TrainerCard from "@/components/TrainerCard";
-import HeroFooter from "@/components/sections/HeroFooter";
+import Schedule from "@/components/Schedule";
+import { useScheduleModal } from "@/hooks/useScheduleModal";
 import Link from "next/link";
 import useLenis from "@/hooks/useLenis";
 import { Dumbbell } from "lucide-react";
+import FloatingNav from "@/components/FloatingNav";
 
 if (typeof window !== 'undefined') {
 	gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +17,7 @@ if (typeof window !== 'undefined') {
 
 export default function TrainersPage() {
 	useLenis();
+	const { showModal, openModal, setShowModal } = useScheduleModal();
 	const headerRef = useRef(null);
 	const trainersRef = useRef(null);
 	const ctaRef = useRef(null);
@@ -80,6 +83,8 @@ export default function TrainersPage() {
 
 	return (
 		<div className="bg-[#050508] text-white min-h-screen overflow-hidden">
+			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
+			
 			<section
 				ref={headerRef}
 				className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -91,22 +96,21 @@ export default function TrainersPage() {
 					className="object-cover"
 					priority
 				/>
-				<div className="absolute inset-0 bg-black/50" />
-				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
-				
-				<div className="absolute top-8 left-8">
-					<div className="flex items-center gap-2">
-						<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0582c0] to-[#016a9e] flex items-center justify-center">
-							<Dumbbell className="w-4 h-4 text-white" />
-						</div>
-						<span className="font-display text-lg text-white">Mo Muscle</span>
-					</div>
-				</div>
+			<div className="absolute inset-0 bg-black/50" />
+			<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
+			
+			<div className="absolute top-8 left-8">
+				<img
+					src="/badge_logo_white.png"
+					alt="Mo Muscle"
+					className="w-48 h-8 object-contain"
+				/>
+			</div>
 
-				<div ref={titleRef} className="relative z-10 text-center max-w-4xl mx-auto px-4">
+			<div ref={titleRef} className="relative z-10 text-center max-w-4xl mx-auto px-4">
 					<div className="flex items-center justify-center gap-4 mb-6">
 						<div className="w-12 h-px bg-white/30" />
-						<p className="font-mono-custom text-xs text-primary-accent/60 uppercase tracking-wider">
+						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider">
 							Meet The Team
 						</p>
 						<div className="w-12 h-px bg-white/30" />
@@ -156,13 +160,16 @@ export default function TrainersPage() {
 						journey to peak physical and mental performance. Join Mo
 						Muscle today and unlock your true potential.
 					</p>
-					<Link href="/services">
-						<button className="bg-white text-void-black hover:bg-white/90 px-8 py-6 text-lg font-display uppercase tracking-wider rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-							START PERSONAL TRAINING TODAY
-						</button>
-					</Link>
+					<button
+						onClick={openModal}
+						className="bg-[#0582c0] text-white hover:bg-[#016a9e] px-8 py-6 text-lg font-display uppercase tracking-wider rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+					>
+						START PERSONAL TRAINING TODAY
+					</button>
 				</div>
 			</section>
+
+			<Schedule showModal={showModal} setShowModal={setShowModal} />
 		</div>
 	);
 }

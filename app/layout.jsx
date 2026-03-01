@@ -15,6 +15,11 @@ export const metadata = {
 	verification: {
 		google: "CCXgAcNqEOViudRmIXOpEYhaR9gzx07qfAH9GfGWlTA",
 	},
+	icons: {
+		icon: '/badge_logo_white.png',
+		apple: '/badge_logo_white.png',
+		shortcut: '/badge_logo_white.png',
+	},
 	openGraph: {
 		title: "Mo Muscle - Personalized Fitness Coaching",
 		description: "Mo Muscle - Personalized Fitness Coaching",
