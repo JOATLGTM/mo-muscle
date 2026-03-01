@@ -143,7 +143,7 @@ export const servicesConfig: ServicesConfig = {
 			title: "In Person Coaching",
 			description:
 				"Get hands-on guidance and support from expert trainers in a fully equipped fitness facility.",
-			image: "/service_hero.jpg",
+			image: "/images/person-coaching.JPG",
 			details:
 				"Whether you're just beginning your fitness journey or pushing toward elite performance, our in-person coaching is personalized to fit your unique goals. We focus on form, function, and consistency—ensuring every rep counts.",
 		},
@@ -152,7 +152,7 @@ export const servicesConfig: ServicesConfig = {
 			title: "Online Coaching",
 			description:
 				"Train wherever you are with professional training programs delivered directly to you.",
-			image: "/service_hero.jpg",
+			image: "/images/online-coaching.JPG",
 			details:
 				"You'll receive a personalized program tailored to your goals, lifestyle, and available equipment. Your coach will stay connected through regular check-ins, progress tracking, and video feedback.",
 		},
@@ -161,7 +161,7 @@ export const servicesConfig: ServicesConfig = {
 			title: "Nutrition Coaching",
 			description:
 				"Fuel your success with personalized nutrition strategies that complement your training.",
-			image: "/service_hero.jpg",
+			image: "/images/nutrition.JPG",
 			details:
 				"Our expert coaches craft personalized nutrition strategies that complement your training and lifestyle. Whether your goal is to lose fat, gain muscle, or feel more energized, we guide you with realistic and sustainable plans.",
 		},
