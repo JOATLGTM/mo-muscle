@@ -44,7 +44,9 @@ export default function BlogPost({ params }) {
 		return (
 			<div className="min-h-screen bg-[#050508] flex items-center justify-center">
 				<div className="text-center">
-					<h1 className="text-4xl font-display text-white mb-4">Post Not Found</h1>
+					<h1 className="text-4xl font-display text-white mb-4">
+						Post Not Found
+					</h1>
 					<Link
 						href="/blog"
 						className="text-[#0582c0] hover:text-[#016a9e] transition-colors inline-flex items-center gap-2"
@@ -69,7 +71,15 @@ export default function BlogPost({ params }) {
 
 	return (
 		<div className="min-h-screen bg-[#050508]">
-			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
+			<FloatingNav
+				showOnly={[
+					"Home",
+					"Trainers",
+					"Blog",
+					"Why Mo Muscle",
+					"Schedule",
+				]}
+			/>
 
 			<article className="relative">
 				{/* Hero Section with Image */}
@@ -87,24 +97,26 @@ export default function BlogPost({ params }) {
 					</div>
 
 					<div className="relative z-20 h-full flex flex-col justify-end pb-16 px-6 md:px-12">
-					<div className="max-w-4xl mx-auto w-full">
-						<Link
-							href="/blog"
-							className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group"
-						>
-							<ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-							<span className="font-mono-custom text-sm uppercase tracking-wider">Back to Blog</span>
-						</Link>
+						<div className="max-w-4xl mx-auto w-full">
+							<Link
+								href="/blog"
+								className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group"
+							>
+								<ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+								<span className="font-mono-custom text-sm uppercase tracking-wider">
+									Back to Blog
+								</span>
+							</Link>
 
-						<div className="mb-4">
-							<img
-								src="/badge_logo_white.png"
-								alt="Mo Muscle"
-								className="w-48 h-8 object-contain"
-							/>
-						</div>
+							<div className="mb-4">
+								<img
+									src="/badge_logo_white.png"
+									alt="Mo Muscle"
+									className="h-8 object-contain"
+								/>
+							</div>
 
-						<h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+							<h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
 								{post.title}
 							</h1>
 
@@ -127,9 +139,11 @@ export default function BlogPost({ params }) {
 							</p>
 
 							{post.content && (
-								<div 
+								<div
 									className="text-white/80 leading-relaxed space-y-6"
-									dangerouslySetInnerHTML={{ __html: post.content }}
+									dangerouslySetInnerHTML={{
+										__html: post.content,
+									}}
 								/>
 							)}
 						</div>

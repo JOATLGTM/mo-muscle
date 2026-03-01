@@ -53,8 +53,8 @@ export default function Mission() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-void-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-void-black/50 via-void-black/60 to-void-black" />
+        <div className="absolute inset-0 bg-void-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-void-black/60 via-void-black/70 to-void-black" />
       </div>
 
       <div ref={contentRef} className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center">

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
 	ChevronRight,
 	ChevronLeft,
@@ -236,6 +236,14 @@ export default function ScheduleSection({ showModal: externalShowModal, setShowM
 			{/* Hidden Schedule Modal - only shown when triggered */}
 			<Dialog open={isModalOpen} onOpenChange={handleClose}>
 				<DialogContent className="max-w-2xl p-0 bg-transparent border-none backdrop-blur-sm">
+					<DialogTitle className="sr-only">
+						{isSuccess 
+							? "Registration Successful" 
+							: currentStep >= questions.length 
+								? "Contact Information"
+								: questions[currentStep]?.question || "Fitness Questionnaire"
+						}
+					</DialogTitle>
 					<div className="relative bg-[#050508]/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/10">
 							<button
 								onClick={handleClose}
