@@ -22,8 +22,16 @@ import {
 	Scale,
 	Apple,
 	Droplet,
+	ChevronRight,
+	CheckCircle2,
+	ChevronLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import VideoCarousel from "@/components/VideoCarousel";
 import Schedule from "@/components/Schedule";
