@@ -6,6 +6,26 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap");
 
+/* Scroll performance optimizations */
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img {
+	content-visibility: auto;
+}
+
+/* Smooth scrolling with GPU acceleration */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
 @layer base {
   :root {
     --background: 230 33% 2%;

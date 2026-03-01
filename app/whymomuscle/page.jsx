@@ -163,31 +163,39 @@ export default function WhyMoMusclePage() {
 						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider mb-6">
 							Our Community in Action
 						</p>
-						<div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-							{data.length === 0 ? (
-								<div className="col-span-full text-center text-white/60 py-20">
-									<p>Loading...</p>
-								</div>
-							) : (
-								data.map((item) => (
-									<div
-										key={item.id}
-										className="group relative overflow-hidden rounded-lg border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300"
-									>
-										{item.image && (
-											<div className="relative aspect-square">
-												<img
-													src={item.image}
-													alt="Mo Muscle Community"
-													className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-												/>
-												<div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-											</div>
-										)}
+					<div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+						{data.length === 0 ? (
+							// Skeleton Loaders
+							Array.from({ length: 8 }).map((_, index) => (
+								<div key={index} className="animate-pulse">
+									<div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/5">
+										<div className="relative aspect-square bg-white/10" />
 									</div>
-								))
-							)}
-						</div>
+								</div>
+							))
+						) : (
+							data.map((item) => (
+								<div
+									key={item.id}
+									className="group relative overflow-hidden rounded-lg border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300"
+								>
+									{item.image && (
+										<div className="relative aspect-square bg-[#050508]">
+											<img
+												src={item.image}
+												alt="Mo Muscle Community"
+												loading="lazy"
+												decoding="async"
+												className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+												style={{ willChange: 'transform' }}
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+										</div>
+									)}
+								</div>
+							))
+						)}
+					</div>
 					</div>
 				</div>
 			</section>

@@ -164,55 +164,70 @@ export default function BlogPage() {
 						</h2>
 					</div>
 
-					<div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-						{data.length === 0 ? (
-							<div className="col-span-full text-center text-white/60 py-20">
-								<p>Loading stories...</p>
+				<div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					{data.length === 0 ? (
+						// Skeleton Loaders
+						Array.from({ length: 8 }).map((_, index) => (
+							<div key={index} className="animate-pulse">
+								<div className="group relative overflow-hidden rounded-lg bg-[#0A0A0F] border border-white/10 h-full">
+									<div className="relative aspect-[4/3] bg-white/5" />
+									<div className="p-6">
+										<div className="h-3 bg-white/10 rounded w-1/3 mb-3" />
+										<div className="h-6 bg-white/10 rounded w-full mb-3" />
+										<div className="h-4 bg-white/10 rounded w-full mb-2" />
+										<div className="h-4 bg-white/10 rounded w-2/3 mb-4" />
+										<div className="h-4 bg-white/10 rounded w-24" />
+									</div>
+								</div>
 							</div>
-						) : (
-							data.map((item) => {
-								const [year, month, day] = item.date.split("-");
-								const date = new Date(year, month - 1, day);
-								const formattedDate = date.toLocaleDateString("en-US", {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								});
+						))
+					) : (
+						data.map((item) => {
+							const [year, month, day] = item.date.split("-");
+							const date = new Date(year, month - 1, day);
+							const formattedDate = date.toLocaleDateString("en-US", {
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							});
 
-								return (
-									<Link href={`/blog/${item.id}`} key={item.id}>
-										<div className="group relative overflow-hidden rounded-lg bg-[#0A0A0F] border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300 cursor-pointer h-full">
-											{item.image && (
-												<div className="relative aspect-[4/3] overflow-hidden">
-													<img
-														src={item.image}
-														alt={item.title}
-														className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-													/>
-													<div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/50 to-transparent" />
-												</div>
-											)}
-											<div className="p-6">
-												<p className="text-xs font-mono-custom text-[#0582c0] uppercase tracking-wider mb-3">
-													{formattedDate}
-												</p>
-												<h3 className="font-display text-xl text-white mb-3 group-hover:text-[#0582c0] transition-colors duration-300 line-clamp-2">
-													{item.title}
-												</h3>
-												<p className="text-white/60 text-sm leading-relaxed line-clamp-3 mb-4">
-													{item.description}
-												</p>
-												<div className="flex items-center text-[#0582c0] text-sm font-mono-custom uppercase tracking-wider">
-													Read More
-													<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-												</div>
+							return (
+								<Link href={`/blog/${item.id}`} key={item.id}>
+									<div className="group relative overflow-hidden rounded-lg bg-[#0A0A0F] border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300 cursor-pointer h-full">
+										{item.image && (
+											<div className="relative aspect-[4/3] overflow-hidden bg-[#0A0A0F]">
+												<img
+													src={item.image}
+													alt={item.title}
+													loading="lazy"
+													decoding="async"
+													className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+													style={{ willChange: 'transform' }}
+												/>
+												<div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/50 to-transparent" />
+											</div>
+										)}
+										<div className="p-6">
+											<p className="text-xs font-mono-custom text-[#0582c0] uppercase tracking-wider mb-3">
+												{formattedDate}
+											</p>
+											<h3 className="font-display text-xl text-white mb-3 group-hover:text-[#0582c0] transition-colors duration-300 line-clamp-2">
+												{item.title}
+											</h3>
+											<p className="text-white/60 text-sm leading-relaxed line-clamp-3 mb-4">
+												{item.description}
+											</p>
+											<div className="flex items-center text-[#0582c0] text-sm font-mono-custom uppercase tracking-wider">
+												Read More
+												<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
 											</div>
 										</div>
-									</Link>
-								);
-							})
-						)}
-					</div>
+									</div>
+								</Link>
+							);
+						})
+					)}
+				</div>
 				</div>
 			</section>
 
