@@ -120,19 +120,19 @@ export default function Hero() {
 					ref={overlayRef}
 					className="absolute inset-0 bg-primary-accent/10 opacity-0"
 				/>
-		</div>
+			</div>
 
-		{/* Logo - positioned relative to section */}
-		<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
-			<img
-				src="/badge_logo_white.png"
-				alt="Mo Muscle"
-				className="h-[4rem] md:w-48 md:h-8 object-contain"
-			/>
-		</div>
+			{/* Logo - positioned relative to section */}
+			<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
+				<img
+					src="/badge_logo_white.png"
+					alt="Mo Muscle"
+					className="h-[4rem] md:w-48 md:h-8 object-contain"
+				/>
+			</div>
 
-		<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
-		<div className="flex flex-col items-center justify-center max-w-7xl w-full">
+			<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
+				<div className="flex flex-col items-center justify-center max-w-7xl w-full">
 					<h1
 						ref={titleRef}
 						className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"
@@ -149,7 +149,7 @@ export default function Hero() {
 						className="flex items-center gap-4 mb-6 opacity-0"
 					>
 						<div className="w-12 h-px bg-white/30" />
-						<p className="font-mono-custom text-xs sm:text-sm md:text-base text-white font-semibold uppercase tracking-[0.3em]">
+						<p className="font-mono-custom text-xs sm:text-sm md:text-base text-white font-semibold uppercase tracking-[0.3em] text-center">
 							Transform Your Body. Elevate Your Life.
 						</p>
 						<div className="w-12 h-px bg-white/30" />
@@ -159,7 +159,9 @@ export default function Hero() {
 						ref={descRef}
 						className="max-w-2xl text-center text-white/80 text-sm md:text-base mb-8 opacity-0"
 					>
-						Join the premier fitness destination where champions are made. State-of-the-art equipment, expert trainers, and a community that pushes you to be your best.
+						Join the premier fitness destination where champions are
+						made. State-of-the-art equipment, expert trainers, and a
+						community that pushes you to be your best.
 					</p>
 
 					<div
