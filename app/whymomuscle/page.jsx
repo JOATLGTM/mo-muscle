@@ -1,10 +1,71 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
+import Image from "next/image";
+import { Dumbbell } from "lucide-react";
+import HeroFooter from "@/components/sections/HeroFooter";
+import useLenis from "@/hooks/useLenis";
 
 export default function WhyMoMusclePage() {
+	useLenis();
 	const [data, setData] = useState([]);
+	const titleRef = useRef(null);
+	const gridRef = useRef(null);
+	
+	const TARGET_TEXT = "WHY MO MUSCLE";
+	const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+	const [displayText, setDisplayText] = useState(' '.repeat(TARGET_TEXT.length));
+	const [isDecoding, setIsDecoding] = useState(true);
+
+	useEffect(() => {
+		let iteration = 0;
+		const maxIterations = TARGET_TEXT.length * 8;
+
+		const interval = setInterval(() => {
+			setDisplayText(() => {
+				return TARGET_TEXT.split('')
+					.map((_, index) => {
+						if (index < iteration / 8) {
+							return TARGET_TEXT[index];
+						}
+						return CHARS[Math.floor(Math.random() * CHARS.length)];
+					})
+					.join('');
+			});
+
+			iteration += 1;
+
+			if (iteration >= maxIterations) {
+				clearInterval(interval);
+				setDisplayText(TARGET_TEXT);
+				setIsDecoding(false);
+			}
+		}, 40);
+
+		return () => clearInterval(interval);
+	}, []);
+
+	useEffect(() => {
+		const ctx = gsap.context(() => {
+			gsap.fromTo(
+				gridRef.current?.children || [],
+				{ y: 60, opacity: 0, scale: 0.95 },
+				{
+					y: 0,
+					opacity: 1,
+					scale: 1,
+					duration: 0.8,
+					stagger: 0.1,
+					ease: 'power3.out',
+					delay: 1.5,
+				}
+			);
+		});
+
+		return () => ctx.revert();
+	}, [data]);
 
 	const fetchData = async () => {
 		try {
@@ -30,59 +91,106 @@ export default function WhyMoMusclePage() {
 	}, []);
 
 	return (
-		<section className="bg-black text-white py-16 md:py-24">
+		<div className="bg-[#050508] text-white min-h-screen">
 			{/* Hero Section */}
-			<div className="container mx-auto mb-16 mt-16 px-8">
-				<div className="mx-auto text-center">
-					<h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
-						Why Choose Mo Muscle?
-					</h1>
-					<p className="text-xl md:text-2xl mb-8 text-gray-300 md:px-2">
-						At Mo Muscle, we're not just a gym – we're a community
-						of dedicated individuals committed to transforming lives
-						through fitness. Our unique approach combines
-						cutting-edge training techniques with personalized
-						attention, creating an environment where every member
-						can thrive and achieve their goals.
-					</p>
-					<p className="text-lg text-gray-400">
-						Join a supportive community where motivation meets
-						results, and every workout brings you closer to becoming
-						the strongest version of yourself.
-					</p>
+			<section className="relative w-full h-screen overflow-hidden">
+				<div className="absolute inset-0 z-0">
+					<Image
+						src="/family.jpeg"
+						alt="Why Mo Muscle"
+						fill
+						className="object-cover scale-110"
+						priority
+					/>
+					<div className="absolute inset-0 bg-black/50" />
+					<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
 				</div>
-			</div>
 
-			{/* Image Grid Section */}
-			<div className="container mx-auto px-8 md:px-0">
-				<h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#0283C0] to-[#03a9f4] text-transparent bg-clip-text">
-					Our Community in Action
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{data.length === 0 ? (
-						<p className="text-center text-gray-300 col-span-full">
-							Loading...
-						</p>
-					) : (
-						data.map((item) => (
-							<div
-								key={item.id}
-								className="relative bg-white bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg hover:scale-105 transition-all duration-300 overflow-hidden"
-							>
-								{item.image && (
-									<div className="relative w-full h-full">
-										<img
-											src={item.image}
-											alt="Why Mo Muscle"
-											className="w-full h-full object-cover"
-										/>
-									</div>
-								)}
+				<div className="relative z-20 flex flex-col items-center justify-center h-full pb-20 px-4">
+					<div className="absolute top-8 left-8 z-30">
+						<div className="flex items-center gap-2">
+							<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0582c0] to-[#016a9e] flex items-center justify-center">
+								<Dumbbell className="w-4 h-4 text-white" />
 							</div>
-						))
-					)}
+							<span className="font-display text-lg text-white">Mo Muscle</span>
+						</div>
+					</div>
+
+					<div className="flex flex-col items-center justify-center max-w-7xl w-full">
+						<h1
+							ref={titleRef}
+							className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"
+						>
+							<span className={`${isDecoding ? 'text-glow-cyan' : ''} transition-all duration-300`}>
+								{displayText}
+							</span>
+						</h1>
+
+						<div className="flex items-center gap-4 mb-6 opacity-0" style={{ animation: 'fadeIn 0.8s ease-out 1.5s forwards' }}>
+							<div className="w-12 h-px bg-white/30" />
+							<p className="font-mono-custom text-xs sm:text-sm md:text-base text-white font-semibold uppercase tracking-[0.3em]">
+								More Than A Gym
+							</p>
+							<div className="w-12 h-px bg-white/30" />
+						</div>
+
+						<p className="max-w-2xl text-center text-white/80 text-sm md:text-base mb-8 opacity-0" style={{ animation: 'fadeIn 0.8s ease-out 1.7s forwards' }}>
+							At Mo Muscle, we're not just a gym – we're a community of dedicated individuals committed to transforming lives through fitness.
+						</p>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+
+			{/* Content Section */}
+			<section className="relative py-24 md:py-32 bg-[#050508]">
+				<div className="max-w-7xl mx-auto px-6 md:px-12">
+					<div className="mb-16">
+						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider mb-4">
+							Our Philosophy
+						</p>
+						<h2 className="font-display text-4xl md:text-6xl text-white mb-6">
+							WHY CHOOSE <span className="text-white/40">MO MUSCLE</span>
+						</h2>
+						<p className="text-lg text-white/70 max-w-3xl leading-relaxed">
+							Our unique approach combines cutting-edge training techniques with personalized attention, creating an environment where every member can thrive and achieve their goals. Join a supportive community where motivation meets results, and every workout brings you closer to becoming the strongest version of yourself.
+						</p>
+					</div>
+
+					{/* Image Grid */}
+					<div>
+						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider mb-6">
+							Our Community in Action
+						</p>
+						<div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+							{data.length === 0 ? (
+								<div className="col-span-full text-center text-white/60 py-20">
+									<p>Loading...</p>
+								</div>
+							) : (
+								data.map((item) => (
+									<div
+										key={item.id}
+										className="group relative overflow-hidden rounded-lg border border-white/10 hover:border-[#0582c0]/50 transition-all duration-300"
+									>
+										{item.image && (
+											<div className="relative aspect-square">
+												<img
+													src={item.image}
+													alt="Mo Muscle Community"
+													className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+												/>
+												<div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+											</div>
+										)}
+									</div>
+								))
+							)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<HeroFooter />
+		</div>
 	);
 }

@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import TrainerCard from "@/components/TrainerCard";
+import HeroFooter from "@/components/sections/HeroFooter";
 import Link from "next/link";
 import useLenis from "@/hooks/useLenis";
 import { Dumbbell } from "lucide-react";
@@ -78,7 +79,7 @@ export default function TrainersPage() {
 	}, []);
 
 	return (
-		<div className="bg-void-black text-white min-h-screen overflow-hidden">
+		<div className="bg-[#050508] text-white min-h-screen overflow-hidden">
 			<section
 				ref={headerRef}
 				className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -90,12 +91,12 @@ export default function TrainersPage() {
 					className="object-cover"
 					priority
 				/>
-				<div className="absolute inset-0 bg-void-black/70" />
-				<div className="absolute inset-0 bg-gradient-to-b from-void-black/50 via-void-black/60 to-void-black" />
+				<div className="absolute inset-0 bg-black/50" />
+				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
 				
 				<div className="absolute top-8 left-8">
 					<div className="flex items-center gap-2">
-						<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-accent to-primary-hover flex items-center justify-center">
+						<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0582c0] to-[#016a9e] flex items-center justify-center">
 							<Dumbbell className="w-4 h-4 text-white" />
 						</div>
 						<span className="font-display text-lg text-white">Mo Muscle</span>
