@@ -18,27 +18,6 @@ import {
 	CheckCircle2,
 } from "lucide-react";
 
-const reasons = [
-	{
-		icon: Dumbbell,
-		title: "Expert Guidance",
-		description:
-			"Our certified trainers provide personalized attention to help you achieve your fitness goals safely and effectively.",
-	},
-	{
-		icon: Target,
-		title: "Proven Results",
-		description:
-			"Join hundreds of successful clients who have transformed their bodies and lives with our proven training methods.",
-	},
-	{
-		icon: Users,
-		title: "Supportive Community",
-		description:
-			"Become part of a motivated community that encourages and supports each other throughout their fitness journey.",
-	},
-];
-
 export default function ScheduleSection() {
 	const [showModal, setShowModal] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
@@ -249,42 +228,11 @@ export default function ScheduleSection() {
 	};
 
 	return (
-		<div className="bg-[rgb(2,131,192)] py-20">
-			<div className="max-w-7xl mx-auto px-4">
-				<div className="text-center text-white">
-					<h2 className="text-4xl font-bold mb-12">
-						WHY TRAIN WITH US
-					</h2>
-					<div className="grid md:grid-cols-3 gap-16 mb-12">
-						{reasons.map(
-							({ icon: Icon, title, description }, index) => (
-								<div
-									key={index}
-									className="p-6 rounded-lg bg-white/10 backdrop-blur-sm"
-								>
-									<Icon className="w-12 h-12 mb-4 mx-auto" />
-									<h3 className="text-xl font-bold mb-2">
-										{title}
-									</h3>
-									<p className="text-white/80">
-										{description}
-									</p>
-								</div>
-							)
-						)}
-					</div>
-					<Button
-						onClick={() => setShowModal(true)}
-						className="bg-white text-[rgb(2,131,192)] hover:bg-white/90 text-lg px-8 py-6"
-					>
-						SCHEDULE WITH MO MUSCLE
-					</Button>
-				</div>
-
-				{/* Modal with form */}
-				<Dialog open={showModal} onOpenChange={handleClose}>
-					<DialogContent className="max-w-2xl p-0 bg-transparent border-none">
-						<div className="relative bg-white rounded-2xl shadow-xl p-8">
+		<div className="hidden">
+			{/* Hidden Schedule Modal - only shown when triggered */}
+			<Dialog open={showModal} onOpenChange={handleClose}>
+				<DialogContent className="max-w-2xl p-0 bg-transparent border-none">
+					<div className="relative bg-white rounded-2xl shadow-xl p-8">
 							<button
 								onClick={handleClose}
 								className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors z-10 mt-1 mr-1"
@@ -671,7 +619,6 @@ export default function ScheduleSection() {
 						</div>
 					</DialogContent>
 				</Dialog>
-			</div>
 		</div>
 	);
 }

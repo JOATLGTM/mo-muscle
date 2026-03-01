@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+import NewFooter from "../components/sections/NewFooter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -28,7 +28,6 @@ export const metadata = {
 	},
 };
 
-// Add JSON-LD schema
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "FitnessCenter",
@@ -67,10 +66,10 @@ export default function RootLayout({ children }) {
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 			</head>
-			<body className={`${inter.className} min-h-screen flex flex-col`}>
+			<body className={`${inter.className} min-h-screen flex flex-col bg-void-black`}>
 				<Header />
 				<main className="flex-1">{children}</main>
-				<Footer />
+				<NewFooter />
 				<Analytics />
 				<SpeedInsights />
 			</body>

@@ -242,7 +242,7 @@ const Header = () => {
 							aria-label="Go to home page"
 						>
 							<Image
-								src="/badge-logo-white.png"
+								src="/badge_logo_white.png"
 								alt="Mo Muscle"
 								width={192}
 								height={32}

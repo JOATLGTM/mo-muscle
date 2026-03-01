@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// ... existing config ...
+	// Configure external image domains
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'cdn.prod.website-files.com',
+				port: '',
+				pathname: '/**',
+			},
+		],
+	},
 
 	// Ensure static files are properly served
 	async headers() {
