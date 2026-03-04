@@ -7,16 +7,15 @@ import TrainerCard from "@/components/TrainerCard";
 import Schedule from "@/components/Schedule";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
 import Link from "next/link";
-import useLenis from "@/hooks/useLenis";
 import { Dumbbell } from "lucide-react";
 import FloatingNav from "@/components/FloatingNav";
 
-if (typeof window !== 'undefined') {
+// Register GSAP plugins
+if (typeof window !== "undefined") {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
 export default function TrainersPage() {
-	useLenis();
 	const { showModal, openModal, setShowModal } = useScheduleModal();
 	const headerRef = useRef(null);
 	const trainersRef = useRef(null);
@@ -86,6 +85,7 @@ export default function TrainersPage() {
 			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
 			
 			<section
+				id="top"
 				ref={headerRef}
 				className="relative min-h-screen flex items-center justify-center overflow-hidden"
 			>

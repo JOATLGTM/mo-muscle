@@ -84,7 +84,7 @@ export default function Team() {
 
         <div ref={cardsRef} className="flex flex-col md:flex-row gap-8 justify-center items-center">
           {teamConfig.trainers.map((trainer) => (
-            <Link href="/trainers" key={trainer.id}>
+            <Link href="/trainers" key={trainer.id} scroll={true}>
               <div className="team-card min-w-[350px] md:min-w-[500px] group cursor-pointer transform hover:scale-105 transition-all duration-300">
                 <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
                   <Image
@@ -107,7 +107,7 @@ export default function Team() {
         </div>
 
         <div className="text-center mt-12">
-          <Link href="/trainers">
+          <Link href="/trainers" scroll={true}>
             <button className="px-8 py-3 bg-primary-accent text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-primary-hover transform hover:scale-105 transition-all duration-300">
               See All Trainers
             </button>

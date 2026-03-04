@@ -9,7 +9,6 @@ import Marquee from '@/components/sections/Marquee';
 import Services from '@/components/sections/Services';
 import FloatingNav from '@/components/FloatingNav';
 import Schedule from '@/components/Schedule';
-import useLenis from '@/hooks/useLenis';
 import { useScheduleModal } from '@/hooks/useScheduleModal';
 
 // Lazy load below-the-fold components
@@ -34,7 +33,6 @@ const HeroFooter = dynamic(() => import('@/components/sections/HeroFooter'), {
 });
 
 export default function Home() {
-  useLenis();
   const { showModal, setShowModal, openModal } = useScheduleModal();
 
   useEffect(() => {

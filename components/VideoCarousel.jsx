@@ -117,7 +117,7 @@ const VideoCarousel = () => {
 		],
 		dotsClass: "slick-dots !bottom-[-40px]",
 		customPaging: () => (
-			<div className="w-3 h-3 bg-white/30 rounded-full hover:bg-[#0582c0] transition-colors duration-300" />
+			<div className="w-3 h-3 bg-white/30 rounded-full hover:bg-[#0582c0]/50 transition-colors duration-300 [.slick-active_&]:bg-[#0582c0] [.slick-active_&]:scale-125" />
 		),
 	};
 
