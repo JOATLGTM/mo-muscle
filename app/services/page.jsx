@@ -115,26 +115,11 @@ export default function ServicesPage() {
 	useLenis();
 	const [activeTab, setActiveTab] = useState("in-person");
 	const { showModal, openModal, setShowModal } = useScheduleModal();
-	const heroRef = useRef(null);
-	const titleRef = useRef(null);
 	const tabsRef = useRef(null);
 	const contentRef = useRef(null);
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
-			// Hero title animation
-			gsap.fromTo(
-				titleRef.current,
-				{ y: 50, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 0.8,
-					ease: "power3.out",
-					delay: 0.3,
-				}
-			);
-
 			// Tabs section scroll animation
 			gsap.fromTo(
 				tabsRef.current,
@@ -149,7 +134,7 @@ export default function ServicesPage() {
 						start: "top 80%",
 						toggleActions: "play none none none",
 					},
-				}
+				},
 			);
 
 			// Content section scroll animation
@@ -167,81 +152,39 @@ export default function ServicesPage() {
 						start: "top 80%",
 						toggleActions: "play none none none",
 					},
-				}
+				},
 			);
-		}, heroRef);
+		});
 
 		return () => ctx.revert();
 	}, []);
 
 	return (
 		<div className="min-h-screen bg-void-black text-white">
-			<FloatingNav showOnly={['Home', 'Services', 'Schedule']} />
+			<FloatingNav showOnly={["Home", "Trainers", "Why Mo Muscle", "Blog", "Schedule"]} />
 
-			{/* Hero Section - Minimal Style */}
-			<section ref={heroRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-void-black py-32">
-				{/* Subtle background image */}
-				<div className="absolute inset-0 z-0 opacity-20">
-					<Image
-						src="/service_hero.jpg"
-						alt="Mo Muscle Services"
-						fill
-						className="object-cover"
-						priority
-					/>
-					<div className="absolute inset-0 bg-gradient-to-b from-void-black via-void-black/80 to-void-black" />
-				</div>
-
-				{/* Decorative gradient blur */}
-				<div className="absolute top-1/3 right-0 w-96 h-96 bg-[#0582c0]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-				<div className="absolute bottom-1/3 left-0 w-96 h-96 bg-[#0582c0]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
-				{/* Logo */}
-				<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
-					<img
-						src="/badge_logo_white.png"
-						alt="Mo Muscle"
-						className="h-[4rem] md:w-48 md:h-8 object-contain"
-					/>
-				</div>
-
-				<div className="relative z-20 max-w-5xl mx-auto px-6 md:px-12 text-center">
-					<div ref={titleRef}>
-						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider mb-6">
-							WHAT WE OFFER
-						</p>
-						<h1 className="font-display text-5xl md:text-6xl lg:text-8xl text-white mb-6 leading-tight">
-							OUR <span className="text-white/40">SERVICES</span>
-						</h1>
-						<div className="flex items-center justify-center gap-4 mb-8">
-							<div className="w-12 h-px bg-white/30" />
-							<p className="font-mono-custom text-xs sm:text-sm text-white/60 uppercase tracking-wider">
-								Transform Your Body. Elevate Your Life.
-							</p>
-							<div className="w-12 h-px bg-white/30" />
-						</div>
-					</div>
-				</div>
-
-				{/* Bottom gradient line */}
-				<div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#0582c0]/30 to-transparent" />
-			</section>
-
-			{/* Scrolling Text */}
-			<ScrollingText />
+			{/* Logo - Fixed at top */}
+			<div className="fixed top-4 left-4 md:top-8 md:left-8 z-50">
+				<img
+					src="/badge_logo_white.png"
+					alt="Mo Muscle"
+					className="h-[4rem] md:w-48 md:h-8 object-contain"
+				/>
+			</div>
 
 			{/* Services Content Section */}
 			<section className="relative py-24 md:py-32 bg-void-dark overflow-hidden">
 				{/* Decorative gradient blur */}
 				<div className="absolute top-1/2 left-0 w-96 h-96 bg-[#0582c0]/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-				
+
 				<div className="max-w-7xl mx-auto px-6 md:px-12">
 					<div ref={tabsRef} className="mb-16">
 						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider mb-4">
 							CHOOSE YOUR PATH
 						</p>
 						<h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-white">
-							TRAINING <span className="text-white/40">PROGRAMS</span>
+							TRAINING{" "}
+							<span className="text-white/40">PROGRAMS</span>
 						</h2>
 					</div>
 
@@ -262,7 +205,9 @@ export default function ServicesPage() {
 										<span className="font-mono-custom text-sm uppercase tracking-wider">
 											{tab.label}
 										</span>
-										<ChevronRight className={`w-5 h-5 transition-transform ${activeTab === tab.id ? "translate-x-1" : ""}`} />
+										<ChevronRight
+											className={`w-5 h-5 transition-transform ${activeTab === tab.id ? "translate-x-1" : ""}`}
+										/>
 									</button>
 								))}
 							</div>
@@ -299,28 +244,40 @@ export default function ServicesPage() {
 													{tab.id === "in-person" && (
 														<>
 															<h4 className="font-display text-2xl text-[#0582c0] mb-8 uppercase tracking-wider">
-																THE INDIVIDUALIZATION ELEMENTS
+																THE
+																INDIVIDUALIZATION
+																ELEMENTS
 															</h4>
 															<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-																{elements.map((element, index) => (
-																	<div
-																		key={index}
-																		className="flex flex-col items-center text-center group"
-																	>
-																		<div className="w-20 h-20 bg-void-black border border-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:border-[#0582c0]/50 group-hover:bg-[#0582c0]/10 transition-all duration-300">
-																			<element.icon className="h-10 w-10 text-[#0582c0]" />
+																{elements.map(
+																	(
+																		element,
+																		index,
+																	) => (
+																		<div
+																			key={
+																				index
+																			}
+																			className="flex flex-col items-center text-center group"
+																		>
+																			<div className="w-20 h-20 bg-void-black border border-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:border-[#0582c0]/50 group-hover:bg-[#0582c0]/10 transition-all duration-300">
+																				<element.icon className="h-10 w-10 text-[#0582c0]" />
+																			</div>
+																			<span className="text-white font-mono-custom text-xs uppercase tracking-wider whitespace-pre-line">
+																				{
+																					element.label
+																				}
+																			</span>
 																		</div>
-																		<span className="text-white font-mono-custom text-xs uppercase tracking-wider whitespace-pre-line">
-																			{element.label}
-																		</span>
-																	</div>
-																))}
+																	),
+																)}
 															</div>
 														</>
 													)}
 
 													{/* Video Carousel - Online Coaching */}
-													{tab.id === "online-coaching" && (
+													{tab.id ===
+														"online-coaching" && (
 														<div className="mt-8">
 															<VideoCarousel />
 														</div>
@@ -330,27 +287,36 @@ export default function ServicesPage() {
 													{tab.id === "nutrition" && (
 														<>
 															<h4 className="font-display text-2xl text-[#0582c0] mb-8 uppercase tracking-wider">
-																ESSENTIAL NUTRITIONAL ELEMENTS
+																ESSENTIAL
+																NUTRITIONAL
+																ELEMENTS
 															</h4>
 															<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-																{nutritionElements.map((element, index) => (
-																	<div
-																		key={`${element}-${index}`}
-																		className="flex flex-col items-center text-center group"
-																	>
-																		<div className="w-20 h-20 bg-void-black border border-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:border-[#0582c0]/50 group-hover:bg-[#0582c0]/10 transition-all duration-300">
-																			<element.icon className="h-10 w-10 text-[#0582c0]" />
+																{nutritionElements.map(
+																	(
+																		element,
+																		index,
+																	) => (
+																		<div
+																			key={`${element}-${index}`}
+																			className="flex flex-col items-center text-center group"
+																		>
+																			<div className="w-20 h-20 bg-void-black border border-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:border-[#0582c0]/50 group-hover:bg-[#0582c0]/10 transition-all duration-300">
+																				<element.icon className="h-10 w-10 text-[#0582c0]" />
+																			</div>
+																			<span className="text-white font-mono-custom text-xs uppercase tracking-wider">
+																				{
+																					element.label
+																				}
+																			</span>
 																		</div>
-																		<span className="text-white font-mono-custom text-xs uppercase tracking-wider">
-																			{element.label}
-																		</span>
-																	</div>
-																))}
+																	),
+																)}
 															</div>
 														</>
 													)}
 												</div>
-											)
+											),
 									)}
 								</motion.div>
 							</AnimatePresence>
@@ -369,19 +335,22 @@ export default function ServicesPage() {
 			<section className="relative py-24 md:py-32 bg-void-black overflow-hidden">
 				{/* Decorative gradient blur */}
 				<div className="absolute top-1/2 right-0 w-96 h-96 bg-[#0582c0]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-				
+
 				<div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
 					<h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-white mb-6">
 						READY TO <span className="text-[#0582c0]">START?</span>
 					</h2>
 					<p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8">
-						Join our community and start your transformation journey today
+						Join our community and start your transformation journey
+						today
 					</p>
 					<button
 						onClick={openModal}
 						className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full overflow-hidden transition-all duration-300 hover:bg-[#016a9e]"
 					>
-						<span className="relative z-10">SCHEDULE YOUR CONSULTATION</span>
+						<span className="relative z-10">
+							SCHEDULE YOUR CONSULTATION
+						</span>
 						<ChevronRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
 					</button>
 				</div>
