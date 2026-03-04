@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Why Mo Muscle | Your Path to Fitness Success & Results",
+	title: "Why Mo Muscle | Real Results, Community & Coaching That Works",
 	description:
-		"Experience the Mo Muscle difference with proven success stories. Get personalized training, expert guidance, and a supportive community dedicated to your transformation.",
+		"Discover what makes Mo Muscle different: proven client results, a supportive gym community, and coaching that blends strength training, mindset, and sustainable habits.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/whymomuscle",
 	},

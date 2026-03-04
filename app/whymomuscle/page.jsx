@@ -9,6 +9,29 @@ import HeroFooter from "@/components/sections/HeroFooter";
 import useLenis from "@/hooks/useLenis";
 import FloatingNav from "@/components/FloatingNav";
 
+const whyFaq = [
+	{
+		question: "What makes Mo Muscle different from other gyms?",
+		answer:
+			"Mo Muscle combines focused strength training, individualized coaching, and a tight-knit community. You’re never just another membership—your program is tailored to your goals and supported by real accountability.",
+	},
+	{
+		question: "Do you work with beginners or only advanced lifters?",
+		answer:
+			"We work with all levels, from complete beginners to experienced athletes. Programming is scaled to your starting point so you can progress safely and consistently.",
+	},
+	{
+		question: "What kinds of results can I expect?",
+		answer:
+			"Clients commonly see strength gains, fat loss, improved confidence, and better movement. Exact results depend on your starting point, goals, and consistency—but we’ll guide you every step of the way.",
+	},
+	{
+		question: "Is Mo Muscle right for me if I’ve tried other programs before?",
+		answer:
+			"Yes. Many of our members come from other programs that didn’t provide enough structure or support. We focus on sustainable habits, education, and a plan that actually fits your life.",
+	},
+];
+
 export default function WhyMoMusclePage() {
 	useLenis();
 	const [data, setData] = useState([]);
@@ -201,7 +224,47 @@ export default function WhyMoMusclePage() {
 				</div>
 			</section>
 
+			{/* FAQ Section */}
+			<section className="relative py-24 md:py-32 bg-[#050508] border-t border-white/10">
+				<div className="max-w-7xl mx-auto px-6 md:px-12">
+					<h3 className="font-display text-3xl md:text-4xl text-white mb-6">
+						Why Mo Muscle FAQs
+					</h3>
+					<div className="space-y-6">
+						{whyFaq.map((item) => (
+							<div key={item.question} className="border-b border-white/10 pb-4">
+								<h4 className="font-mono-custom text-xs md:text-sm text-[#0582c0] uppercase tracking-wider mb-2">
+									{item.question}
+								</h4>
+								<p className="text-white/70 text-sm md:text-base leading-relaxed">
+									{item.answer}
+								</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
 			<HeroFooter />
+
+			{/* FAQ Schema */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						mainEntity: whyFaq.map((f) => ({
+							"@type": "Question",
+							name: f.question,
+							acceptedAnswer: {
+								"@type": "Answer",
+								text: f.answer,
+							},
+						})),
+					}),
+				}}
+			/>
 		</div>
 	);
 }

@@ -112,6 +112,34 @@ const nutritionElements = [
 	{ icon: Droplet, label: "HYDRATION" },
 ];
 
+const servicesFaq = [
+	{
+		question: "What's the difference between in-person and online coaching?",
+		answer:
+			"In-person coaching happens at our Columbus gyms with hands-on guidance, real-time form corrections, and equipment access. Online coaching delivers a fully customized plan, check-ins, and video feedback so you can train anywhere on your schedule.",
+	},
+	{
+		question: "How many times per week should I train?",
+		answer:
+			"Most clients see great results with 2–4 structured sessions per week. We’ll recommend a schedule based on your goals, recovery, and lifestyle.",
+	},
+	{
+		question: "Do I need to be in shape before starting?",
+		answer:
+			"No. We coach beginners through advanced athletes. Your program starts from your current level and progresses safely over time.",
+	},
+	{
+		question: "Is nutrition coaching included?",
+		answer:
+			"Nutrition coaching is available as a dedicated service and can be combined with training. We align your nutrition plan with your workouts to support your goals.",
+	},
+	{
+		question: "Where is Mo Muscle located?",
+		answer:
+			"We coach out of locations in Worthington and Hilliard, Ohio. You can train with us in person locally or remotely through our online coaching.",
+	},
+];
+
 function ServicesContent() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
@@ -344,9 +372,49 @@ function ServicesContent() {
 					</div>
 				</div>
 
+				{/* FAQ Section */}
+				<div className="max-w-7xl mx-auto px-6 md:px-12 mt-24 border-t border-white/10 pt-12">
+					<h3 className="font-display text-3xl md:text-4xl text-white mb-6">
+						Frequently Asked Questions
+					</h3>
+					<div className="space-y-6">
+						{servicesFaq.map((item) => (
+							<div key={item.question} className="border-b border-white/10 pb-4">
+								<h4 className="font-mono-custom text-xs md:text-sm text-[#0582c0] uppercase tracking-wider mb-2">
+									{item.question}
+								</h4>
+								<p className="text-white/70 text-sm md:text-base leading-relaxed">
+									{item.answer}
+								</p>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Bottom gradient line */}
+
 				{/* Bottom gradient line */}
 				<div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#0582c0]/20 to-transparent" />
 			</section>
+
+			{/* FAQ Schema */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						mainEntity: servicesFaq.map((f) => ({
+							"@type": "Question",
+							name: f.question,
+							acceptedAnswer: {
+								"@type": "Answer",
+								text: f.answer,
+							},
+						})),
+					}),
+				}}
+			/>
 
 			{/* Scrolling Text */}
 			<ScrollingText />

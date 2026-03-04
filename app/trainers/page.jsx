@@ -15,6 +15,29 @@ if (typeof window !== "undefined") {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
+const trainersFaq = [
+	{
+		question: "How do I choose the right trainer for me?",
+		answer:
+			"We learn about your goals, experience level, and training preferences, then match you with the coach whose style and expertise best fit your needs.",
+	},
+	{
+		question: "Are Mo Muscle trainers certified?",
+		answer:
+			"Yes. Our trainers hold respected certifications and have years of hands-on coaching experience working with a wide range of clients.",
+	},
+	{
+		question: "Do you offer 1-on-1 or small-group sessions?",
+		answer:
+			"We primarily focus on 1-on-1 personal training, but can discuss small-group options depending on your goals and schedule.",
+	},
+	{
+		question: "Can my trainer design a program around injuries or limitations?",
+		answer:
+			"Absolutely. We routinely work around injuries, postural issues, and mobility restrictions. Your coach will design a plan that is both safe and effective.",
+	},
+];
+
 export default function TrainersPage() {
 	const { showModal, openModal, setShowModal } = useScheduleModal();
 	const headerRef = useRef(null);
@@ -143,6 +166,27 @@ export default function TrainersPage() {
 				</div>
 			</section>
 
+			{/* FAQ Section */}
+			<section className="py-16 bg-void-dark border-t border-white/10">
+				<div className="container mx-auto px-4">
+					<h3 className="font-display text-3xl md:text-4xl text-white mb-6">
+						Trainer FAQs
+					</h3>
+					<div className="space-y-6">
+						{trainersFaq.map((item) => (
+							<div key={item.question} className="border-b border-white/10 pb-4">
+								<h4 className="font-mono-custom text-xs md:text-sm text-[#0582c0] uppercase tracking-wider mb-2">
+									{item.question}
+								</h4>
+								<p className="text-white/70 text-sm md:text-base leading-relaxed">
+									{item.answer}
+								</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
 			<section
 				ref={ctaRef}
 				className="py-24 bg-gradient-to-br from-primary-accent via-primary-hover to-[#015a84] text-white text-center relative overflow-hidden"
@@ -171,6 +215,25 @@ export default function TrainersPage() {
 			</section>
 
 			<Schedule showModal={showModal} setShowModal={setShowModal} />
+
+			{/* FAQ Schema */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						mainEntity: trainersFaq.map((f) => ({
+							"@type": "Question",
+							name: f.question,
+							acceptedAnswer: {
+								"@type": "Answer",
+								text: f.answer,
+							},
+						})),
+					}),
+				}}
+			/>
 		</div>
 	);
 }

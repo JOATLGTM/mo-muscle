@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Mo Muscle Blog | Fitness Tips, Training & Nutrition Advice",
+	title: "Mo Muscle Blog | Fitness, Strength Training & Nutrition Tips",
 	description:
-		"Stay informed with Mo Muscle's expert fitness blog. Get actionable workout tips, nutrition advice, and health insights from our certified trainers to enhance your fitness journey.",
+		"Read Mo Muscle’s blog for actionable strength training, fat loss, and nutrition advice from certified trainers. Learn how to train smarter, eat better, and stay consistent.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/blog",
 	},

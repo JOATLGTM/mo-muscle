@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Mo Muscle Trainers | Expert Fitness Coaches & Trainers",
+	title: "Mo Muscle Trainers | Certified Personal Trainers in Columbus Ohio",
 	description:
-		"Meet Mo Muscle's certified expert trainers who combine years of experience with personalized coaching. Get the motivation and expertise you need to achieve your fitness goals.",
+		"Meet Mo Muscle’s certified trainers in Columbus, Ohio. Learn about their experience, coaching style, and how they help clients gain strength, lose fat, and build confidence.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/trainers",
 	},

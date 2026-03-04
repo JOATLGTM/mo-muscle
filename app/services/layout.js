@@ -1,7 +1,7 @@
 export const metadata = {
-	title: "Mo Muscle Services | Personal Training & Nutrition Programs",
+	title: "Mo Muscle Services | In‑Person Training, Online Coaching & Nutrition",
 	description:
-		"Discover Mo Muscle's comprehensive fitness services: personalized training, nutrition coaching, and specialized programs designed to help you reach your fitness goals effectively.",
+		"Explore Mo Muscle’s in-person training, online coaching, and nutrition programs. Personalized workouts, expert guidance, and accountable coaching to help you reach your fitness goals faster.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/services",
 	},
