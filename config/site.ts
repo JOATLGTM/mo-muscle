@@ -198,7 +198,7 @@ export const teamConfig: TeamConfig = {
 			name: "MO NAYAL",
 			role: "Head Trainer",
 			location: "COLUMBUS OHIO",
-			image: "/mo_2.jpeg",
+			image: "/images/mo-portrait.JPG",
 			description:
 				"Welcome to Mo Muscle, your gateway to a transformed, stronger, and healthier you. With over a decade of dedicated training experience and a specialization in muscle gain and fat loss, I'm here to guide you on your fitness journey.",
 		},
@@ -207,7 +207,7 @@ export const teamConfig: TeamConfig = {
 			name: "BRIE MILLER",
 			role: "Certified Trainer",
 			location: "COLUMBUS OHIO",
-			image: "/brie.jpeg",
+			image: "/images/brie-portrait.JPG",
 			description:
 				"Hi, I'm Brieanna Miller! I'm an ISSA-certified personal trainer and nutrition coach with a deep passion for helping others reach their full potential—both in and out of the gym.",
 		},

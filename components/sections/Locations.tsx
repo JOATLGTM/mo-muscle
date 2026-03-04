@@ -88,8 +88,8 @@ export default function Locations() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg group">
               <Image
-                src="/images/self-made.jpeg"
-                alt="Mo Muscle Self Made"
+                src="/images/selfmade-gym.JPG"
+                alt="Mo Muscle Self Made Gym"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />

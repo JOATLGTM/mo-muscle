@@ -59,31 +59,33 @@ export default function HeroFooter() {
 					ref={portraitRef}
 					className="absolute inset-0 flex items-center justify-center"
 				>
-					<div className="relative w-full max-w-xl aspect-[2/3] mx-auto">
+					<div className="relative w-full h-full mx-auto">
 						<Image
-							src="/mo_1.jpeg"
-							alt="Mo Muscle"
+							src="/images/momuscletrainers.JPG"
+							alt="Mo Muscle Trainers"
 							fill
-							className="object-cover"
+							className="object-contain"
 						/>
+						{/* Dark opacity overlay */}
+						<div className="absolute inset-0 bg-black/50" />
 						{/* Gradient overlay */}
 						<div className="absolute inset-0 bg-gradient-to-t from-void-black via-void-black/30 to-transparent" />
 						<div className="absolute inset-0 bg-gradient-to-b from-void-black via-transparent to-transparent opacity-50" />
 					</div>
 				</div>
 
-				{/* Parallax title overlay */}
-				<div
-					ref={titleRef}
-					className="relative z-10 text-center will-change-transform parallax-title"
-				>
-					<h2 className="font-display text-[12vw] md:text-[10vw] text-white leading-none tracking-tighter">
-						MOMUSCLE
-					</h2>
-					<p className="font-mono-custom text-lg text-[#0582c0] uppercase tracking-[0.5em] mt-4">
-						Transform Your Life
-					</p>
-				</div>
+			{/* Parallax title overlay */}
+			<div
+				ref={titleRef}
+				className="relative z-10 text-center will-change-transform parallax-title mt-[20vh] md:mt-[25vh] lg:mt-[30vh]"
+			>
+				<h2 className="font-display text-[12vw] md:text-[10vw] text-white leading-none tracking-tighter">
+					MOMUSCLE
+				</h2>
+				<p className="font-mono-custom text-lg text-[#0582c0] uppercase tracking-[0.5em] mt-4">
+					Transform Your Life
+				</p>
+			</div>
 			</div>
 		</section>
 	);
