@@ -1,0 +1,26 @@
+{
+  "name": "Mo Muscle - Personal Training & Fitness Coaching",
+  "short_name": "Mo Muscle",
+  "description": "Transform your fitness with Mo Muscle's expert coaching. Get personalized training programs, nutrition guidance, and dedicated support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#0582c0",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/badge_logo_white.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/badge_logo_white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["fitness", "health", "lifestyle"],
+  "scope": "/"
+}

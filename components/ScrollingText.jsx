@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 
-export function ScrollingText() {
+function ScrollingText() {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
@@ -41,3 +41,6 @@ export function ScrollingText() {
 		</div>
 	);
 }
+
+export { ScrollingText };
+export default memo(ScrollingText);

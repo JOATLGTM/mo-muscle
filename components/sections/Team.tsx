@@ -32,6 +32,7 @@ export default function Team() {
             trigger: titleRef.current,
             start: 'top 80%',
             toggleActions: 'play none none none',
+            once: true,
           },
         }
       );
@@ -52,6 +53,7 @@ export default function Team() {
               trigger: cardsRef.current,
               start: 'top 75%',
               toggleActions: 'play none none none',
+              once: true,
             },
           }
         );
@@ -89,6 +91,8 @@ export default function Team() {
                     src={trainer.image}
                     alt={trainer.name}
                     fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover transition-all duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-void-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -5,7 +5,11 @@ import NewFooter from "../components/sections/NewFooter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+	subsets: ["latin"],
+	display: 'swap',
+	preload: true,
+});
 
 export const metadata = {
 	title: "Mo Muscle | Expert Personal Training & Fitness Coaching",
@@ -20,6 +24,7 @@ export const metadata = {
 		apple: '/badge_logo_white.png',
 		shortcut: '/badge_logo_white.png',
 	},
+	manifest: '/manifest.json',
 	openGraph: {
 		title: "Mo Muscle - Personalized Fitness Coaching",
 		description: "Mo Muscle - Personalized Fitness Coaching",
@@ -31,6 +36,10 @@ export const metadata = {
 	alternates: {
 		canonical: "https://www.trainmomuscle.com",
 	},
+};
+
+export const viewport = {
+	themeColor: '#0582c0',
 };
 
 const jsonLd = {
@@ -66,6 +75,14 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="bg-black">
 			<head>
+				{/* Preconnect to external domains for faster loading */}
+				<link rel="preconnect" href="https://static.elfsight.com" />
+				<link rel="dns-prefetch" href="https://static.elfsight.com" />
+				<link rel="preconnect" href="https://cdn.prod.website-files.com" />
+				<link rel="dns-prefetch" href="https://cdn.prod.website-files.com" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

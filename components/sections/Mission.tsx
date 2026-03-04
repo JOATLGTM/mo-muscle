@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, memo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { missionConfig } from "@/config/site";
@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Mission() {
+function Mission() {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +30,7 @@ export default function Mission() {
 						trigger: sectionRef.current,
 						start: "top 70%",
 						toggleActions: "play none none none",
+						once: true,
 					},
 				},
 			);
@@ -51,6 +52,8 @@ export default function Mission() {
 					src={missionConfig.backgroundImage}
 					alt="Mo Muscle Mission"
 					fill
+					loading="lazy"
+					sizes="100vw"
 					className="object-cover brightness-[0.7]"
 				/>
 				<div className="absolute inset-0 bg-black/40" />
@@ -74,3 +77,5 @@ export default function Mission() {
 		</section>
 	);
 }
+
+export default memo(Mission);

@@ -1,36 +1,57 @@
 "use client";
 
 import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Mission from '@/components/sections/Mission';
 import Marquee from '@/components/sections/Marquee';
 import Services from '@/components/sections/Services';
-import Team from '@/components/sections/Team';
-import Locations from '@/components/sections/Locations';
-import CTA from '@/components/sections/CTA';
-import HeroFooter from '@/components/sections/HeroFooter';
-import { ScrollingText } from '@/components/ScrollingText';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
 import FloatingNav from '@/components/FloatingNav';
 import Schedule from '@/components/Schedule';
 import useLenis from '@/hooks/useLenis';
 import { useScheduleModal } from '@/hooks/useScheduleModal';
+
+// Lazy load below-the-fold components
+const Team = dynamic(() => import('@/components/sections/Team'), {
+  loading: () => <div className="h-screen bg-void-black" />,
+});
+const ScrollingText = dynamic(() => import('@/components/ScrollingText').then(mod => ({ default: mod.ScrollingText })), {
+  loading: () => <div className="h-24 bg-[#0283C0]" />,
+});
+const TestimonialCarousel = dynamic(() => import('@/components/TestimonialCarousel'), {
+  loading: () => <div className="h-screen bg-void-black" />,
+  ssr: false,
+});
+const Locations = dynamic(() => import('@/components/sections/Locations'), {
+  loading: () => <div className="h-screen bg-void-black" />,
+});
+const CTA = dynamic(() => import('@/components/sections/CTA'), {
+  loading: () => <div className="h-screen bg-void-black" />,
+});
+const HeroFooter = dynamic(() => import('@/components/sections/HeroFooter'), {
+  loading: () => <div className="h-96 bg-void-black" />,
+});
 
 export default function Home() {
   useLenis();
   const { showModal, setShowModal, openModal } = useScheduleModal();
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://static.elfsight.com/platform/platform.js";
-    script.async = true;
-    document.head.appendChild(script);
+    // Lazy load Elfsight script after page load
+    const loadElfsight = () => {
+      const script = document.createElement("script");
+      script.src = "https://static.elfsight.com/platform/platform.js";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    };
+
+    // Load after initial render
+    const timer = setTimeout(loadElfsight, 2000);
 
     return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
+      clearTimeout(timer);
     };
   }, []);
 

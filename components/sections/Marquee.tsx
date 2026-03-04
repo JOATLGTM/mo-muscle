@@ -1,8 +1,9 @@
 "use client";
 
+import { memo } from 'react';
 import { marqueeConfig } from '@/config/site';
 
-export default function Marquee() {
+function Marquee() {
   return (
     <section className="relative w-full py-12 bg-[#0582c0] overflow-hidden">
       <div className="flex whitespace-nowrap">
@@ -30,3 +31,5 @@ export default function Marquee() {
     </section>
   );
 }
+
+export default memo(Marquee);

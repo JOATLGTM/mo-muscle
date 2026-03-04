@@ -32,6 +32,7 @@ export default function Services() {
             trigger: titleRef.current,
             start: 'top 80%',
             toggleActions: 'play none none none',
+            once: true,
           },
         }
       );
@@ -51,6 +52,7 @@ export default function Services() {
               trigger: cardsRef.current,
               start: 'top 75%',
               toggleActions: 'play none none none',
+              once: true,
             },
           }
         );
@@ -88,6 +90,8 @@ export default function Services() {
                     src={service.image}
                     alt={service.title}
                     fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-void-black via-void-black/50 to-transparent" />

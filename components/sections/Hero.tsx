@@ -46,7 +46,7 @@ export default function Hero() {
 				setDisplayText(TARGET_TEXT);
 				setIsDecoding(false);
 			}
-		}, 40);
+		}, 60); // Reduced from 40ms to 60ms for better performance
 
 		return () => clearInterval(interval);
 	}, [TARGET_TEXT, CHARS]);
