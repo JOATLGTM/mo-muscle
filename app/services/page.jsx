@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -113,10 +114,30 @@ const nutritionElements = [
 
 export default function ServicesPage() {
 	useLenis();
-	const [activeTab, setActiveTab] = useState("in-person");
+	const searchParams = useSearchParams();
+	const router = useRouter();
+	
+	// Get tab from URL query parameter, default to "in-person"
+	const tabFromUrl = searchParams.get("tab") || "in-person";
+	const [activeTab, setActiveTab] = useState(tabFromUrl);
+	
 	const { showModal, openModal, setShowModal } = useScheduleModal();
 	const tabsRef = useRef(null);
 	const contentRef = useRef(null);
+	
+	// Update activeTab when URL changes
+	useEffect(() => {
+		const tab = searchParams.get("tab");
+		if (tab && tab !== activeTab) {
+			setActiveTab(tab);
+		}
+	}, [searchParams]);
+	
+	// Function to handle tab change and update URL
+	const handleTabChange = (tabId) => {
+		setActiveTab(tabId);
+		router.push(`/services?tab=${tabId}`, { scroll: false });
+	};
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -195,7 +216,7 @@ export default function ServicesPage() {
 								{tabs.map((tab) => (
 									<button
 										key={tab.id}
-										onClick={() => setActiveTab(tab.id)}
+										onClick={() => handleTabChange(tab.id)}
 										className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 flex items-center justify-between group ${
 											activeTab === tab.id
 												? "bg-[#0582c0] text-white"

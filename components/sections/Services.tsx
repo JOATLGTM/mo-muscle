@@ -82,31 +82,41 @@ export default function Services() {
         </div>
 
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesConfig.services.map((service) => (
-            <Link href="/services" key={service.id}>
-              <div className="service-card group relative overflow-hidden rounded-lg bg-void-black border border-white/10 hover:border-primary-accent/30 transition-all duration-300 cursor-pointer">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void-black via-void-black/50 to-transparent" />
+          {servicesConfig.services.map((service) => {
+            // Map service titles to tab IDs
+            const tabMap: { [key: string]: string } = {
+              "In Person Coaching": "in-person",
+              "Online Coaching": "online-coaching",
+              "Nutrition Coaching": "nutrition"
+            };
+            const tabId = tabMap[service.title] || "in-person";
+            
+            return (
+              <Link href={`/services?tab=${tabId}`} key={service.id}>
+                <div className="service-card group relative overflow-hidden rounded-lg bg-void-black border border-white/10 hover:border-primary-accent/30 transition-all duration-300 cursor-pointer">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-void-black via-void-black/50 to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-display text-2xl text-white mb-3 group-hover:text-primary-accent transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/60 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl text-white mb-3 group-hover:text-primary-accent transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
