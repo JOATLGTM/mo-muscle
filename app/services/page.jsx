@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
@@ -112,8 +112,7 @@ const nutritionElements = [
 	{ icon: Droplet, label: "HYDRATION" },
 ];
 
-export default function ServicesPage() {
-	useLenis();
+function ServicesContent() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	
@@ -380,5 +379,19 @@ export default function ServicesPage() {
 			{/* Schedule Modal */}
 			<Schedule showModal={showModal} setShowModal={setShowModal} />
 		</div>
+	);
+}
+
+export default function ServicesPage() {
+	useLenis();
+	
+	return (
+		<Suspense fallback={
+			<div className="min-h-screen bg-void-black flex items-center justify-center">
+				<div className="w-16 h-16 border-4 border-[#0582c0] border-t-transparent rounded-full animate-spin" />
+			</div>
+		}>
+			<ServicesContent />
+		</Suspense>
 	);
 }
