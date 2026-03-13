@@ -18,23 +18,20 @@ if (typeof window !== "undefined") {
 const trainersFaq = [
 	{
 		question: "How do I choose the right trainer for me?",
-		answer:
-			"We learn about your goals, experience level, and training preferences, then match you with the coach whose style and expertise best fit your needs.",
+		answer: "We learn about your goals, experience level, and training preferences, then match you with the coach whose style and expertise best fit your needs.",
 	},
 	{
 		question: "Are Mo Muscle trainers certified?",
-		answer:
-			"Yes. Our trainers hold respected certifications and have years of hands-on coaching experience working with a wide range of clients.",
+		answer: "Yes. Our trainers hold respected certifications and have years of hands-on coaching experience working with a wide range of clients.",
 	},
 	{
 		question: "Do you offer 1-on-1 or small-group sessions?",
-		answer:
-			"We primarily focus on 1-on-1 personal training, but can discuss small-group options depending on your goals and schedule.",
+		answer: "We primarily focus on 1-on-1 personal and semi-private training.",
 	},
 	{
-		question: "Can my trainer design a program around injuries or limitations?",
-		answer:
-			"Absolutely. We routinely work around injuries, postural issues, and mobility restrictions. Your coach will design a plan that is both safe and effective.",
+		question:
+			"Can my trainer design a program around injuries or limitations?",
+		answer: "Absolutely. We routinely work around injuries, postural issues, and mobility restrictions. Your coach will design a plan that is both safe and effective.",
 	},
 ];
 
@@ -73,7 +70,7 @@ export default function TrainersPage() {
 					duration: 1,
 					ease: "power3.out",
 					delay: 0.3,
-				}
+				},
 			);
 
 			gsap.from(".trainer-card", {
@@ -105,8 +102,16 @@ export default function TrainersPage() {
 
 	return (
 		<div className="bg-[#050508] text-white min-h-screen overflow-hidden">
-			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
-			
+			<FloatingNav
+				showOnly={[
+					"Home",
+					"Trainers",
+					"Blog",
+					"Why Mo Muscle",
+					"Schedule",
+				]}
+			/>
+
 			<section
 				id="top"
 				ref={headerRef}
@@ -119,19 +124,22 @@ export default function TrainersPage() {
 					className="object-cover"
 					priority
 				/>
-		<div className="absolute inset-0 bg-black/50" />
-		<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
-		
-		{/* Logo - positioned relative to section */}
-		<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
-			<img
-				src="/badge_logo_white.png"
-				alt="Mo Muscle"
-				className="h-[4rem] md:w-48 md:h-8 object-contain"
-			/>
-		</div>
+				<div className="absolute inset-0 bg-black/50" />
+				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
 
-		<div ref={titleRef} className="relative z-10 text-center max-w-4xl mx-auto px-4">
+				{/* Logo - positioned relative to section */}
+				<div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
+					<img
+						src="/badge_logo_white.png"
+						alt="Mo Muscle"
+						className="h-[4rem] md:w-48 md:h-8 object-contain"
+					/>
+				</div>
+
+				<div
+					ref={titleRef}
+					className="relative z-10 text-center max-w-4xl mx-auto px-4"
+				>
 					<div className="flex items-center justify-center gap-4 mb-6">
 						<div className="w-12 h-px bg-white/30" />
 						<p className="font-mono-custom text-xs text-[#0582c0] uppercase tracking-wider">
@@ -149,10 +157,7 @@ export default function TrainersPage() {
 				</div>
 			</section>
 
-			<section
-				ref={trainersRef}
-				className="py-24 bg-void-dark relative"
-			>
+			<section ref={trainersRef} className="py-24 bg-void-dark relative">
 				<div className="container mx-auto px-4">
 					<div className="space-y-32">
 						{trainers.map((trainer, index) => (
@@ -174,7 +179,10 @@ export default function TrainersPage() {
 					</h3>
 					<div className="space-y-6">
 						{trainersFaq.map((item) => (
-							<div key={item.question} className="border-b border-white/10 pb-4">
+							<div
+								key={item.question}
+								className="border-b border-white/10 pb-4"
+							>
 								<h4 className="font-mono-custom text-xs md:text-sm text-[#0582c0] uppercase tracking-wider mb-2">
 									{item.question}
 								</h4>
