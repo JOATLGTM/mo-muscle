@@ -360,12 +360,12 @@ export const footerConfig: FooterConfig = {
 		{
 			icon: "facebook",
 			label: "Facebook",
-			href: "https://www.facebook.com/momuscle20",
+			href: "https://www.facebook.com/momuscleohio/",
 		},
 		{
 			icon: "instagram",
 			label: "Instagram",
-			href: "https://www.instagram.com/momuscle20/",
+			href: "https://www.instagram.com/momuscleohio/",
 		},
 	],
 	copyrightText: "© 2025 Mo Muscle. All rights reserved",
