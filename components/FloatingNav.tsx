@@ -166,14 +166,10 @@ export default function FloatingNav({ showOnly }: FloatingNavProps = {}) {
 				</div>
 			</nav>
 
-			{/* Mobile Hamburger Button */}
+			{/* Mobile menu: always on top and tappable (not tied to desktop scroll-hide) */}
 			<button
 				onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-				className={`fixed top-4 right-4 z-50 md:hidden p-3 rounded-full bg-[#0582c0] text-white transition-all duration-300 ${
-					isVisible
-						? "opacity-100 translate-y-0"
-						: "opacity-0 -translate-y-4 pointer-events-none"
-				}`}
+				className="fixed top-4 right-4 z-[100] md:hidden p-3 rounded-full bg-[#0582c0] text-white shadow-lg transition-all duration-300 opacity-100 translate-y-0"
 				aria-label="Toggle menu"
 			>
 				{isMobileMenuOpen ? (
