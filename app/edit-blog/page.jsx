@@ -7,9 +7,10 @@ import {
 	storageRef,
 	uploadBytesResumable,
 	getDownloadURL,
+	deleteObject,
 } from "@/lib/firebase";
-import { ref, get, set } from "firebase/database";
-import { Upload, Image as ImageIcon, Calendar, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { ref, get, set, remove } from "firebase/database";
+import { Upload, Image as ImageIcon, Calendar, FileText, CheckCircle2, AlertCircle, Loader2, Trash2 } from "lucide-react";
 
 export default function AddItemForm() {
 	const [title, setTitle] = useState("");
@@ -21,6 +22,7 @@ export default function AddItemForm() {
 	const [uploading, setUploading] = useState(false);
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(false);
+	const [deleting, setDeleting] = useState(null);
 
 	// Fetch existing data from Realtime Database
 	const fetchData = async () => {
@@ -69,6 +71,7 @@ export default function AddItemForm() {
 				title,
 				description,
 				image: imageURL,
+				fileName: imageName || null,
 				date,
 			});
 			
@@ -87,6 +90,49 @@ export default function AddItemForm() {
 		}
 		
 		setUploading(false);
+	};
+
+	const getStoragePathFromUrl = (url) => {
+		try {
+			const match = url.match(/\/o\/([^?]+)/);
+			if (match) return decodeURIComponent(match[1]);
+		} catch {
+			return null;
+		}
+		return null;
+	};
+
+	const handleDelete = async (item) => {
+		if (!confirm(`Are you sure you want to delete "${item.title}"?`)) return;
+
+		setDeleting(item.id);
+		setError(null);
+
+		try {
+			const itemRef = ref(db, `items/${item.id}`);
+			await remove(itemRef);
+
+			try {
+				if (item.fileName) {
+					const imageRef = storageRef(storage, `images/${item.fileName}`);
+					await deleteObject(imageRef);
+				} else if (item.image) {
+					const path = getStoragePathFromUrl(item.image);
+					if (path) {
+						const imageRef = storageRef(storage, path);
+						await deleteObject(imageRef);
+					}
+				}
+			} catch (storageError) {
+				console.error("Error deleting cover image from storage:", storageError);
+			}
+
+			fetchData();
+		} catch (error) {
+			setError("Error deleting blog post: " + error.message);
+		} finally {
+			setDeleting(null);
+		}
 	};
 
 	const handleFileChange = (e) => {
@@ -282,6 +328,24 @@ export default function AddItemForm() {
 												<div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/50 to-transparent" />
 											</div>
 										)}
+										<button
+											type="button"
+											onClick={() => handleDelete(item)}
+											disabled={deleting === item.id}
+											className="absolute top-3 right-3 z-10 bg-red-500/90 hover:bg-red-600 text-white rounded-lg px-3 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-200 disabled:opacity-50"
+										>
+											{deleting === item.id ? (
+												<>
+													<Loader2 className="w-4 h-4 animate-spin" />
+													<span className="text-xs font-medium">Deleting...</span>
+												</>
+											) : (
+												<>
+													<Trash2 className="w-4 h-4" />
+													<span className="text-xs font-medium">Delete</span>
+												</>
+											)}
+										</button>
 										<div className="p-6">
 											<p className="text-xs font-mono-custom text-[#0582c0] uppercase tracking-wider mb-3">
 												{formattedDate}
