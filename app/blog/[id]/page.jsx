@@ -134,7 +134,7 @@ export default function BlogPost({ params }) {
 				<section className="relative py-16 md:py-24 bg-[#050508]">
 					<div className="max-w-4xl mx-auto px-6 md:px-12">
 						<div className="prose prose-lg prose-invert max-w-none">
-							<p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-12 font-light">
+							<p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-12 font-light whitespace-pre-line">
 								{post.description}
 							</p>
 
