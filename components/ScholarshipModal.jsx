@@ -14,8 +14,16 @@ const steps = [
 		type: "eligibility",
 		title: "Before we begin",
 		subtext:
-			"The Shawna Miller Scholarship is open to women over the age of 45 who are currently facing medical or health-related challenges.",
+			"The Shawna Miller Scholarship is open to women over the age of 45 in Columbus, Ohio who are currently facing medical or health-related challenges.",
 		fields: [
+			{
+				id: "isInColumbus",
+				question: "Are you located in Columbus, Ohio?",
+				options: [
+					{ value: "yes", label: "Yes" },
+					{ value: "no", label: "No" },
+				],
+			},
 			{
 				id: "isOver45",
 				question: "Are you a woman over the age of 45?",
@@ -113,6 +121,7 @@ const steps = [
 ];
 
 const initialFormData = {
+	isInColumbus: "",
 	isOver45: "",
 	hasHealthChallenges: "",
 	healthChallenges: "",
@@ -140,10 +149,16 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 	const step = steps[currentStep];
 	const isLastStep = currentStep === steps.length - 1;
 
+	// Location is a hard requirement: applicants outside Columbus, Ohio cannot continue.
+	const isOutsideColumbus = formData.isInColumbus === "no";
 	const isEligible =
-		formData.isOver45 === "yes" && formData.hasHealthChallenges === "yes";
+		formData.isInColumbus === "yes" &&
+		formData.isOver45 === "yes" &&
+		formData.hasHealthChallenges === "yes";
 	const eligibilityAnswered =
-		formData.isOver45 !== "" && formData.hasHealthChallenges !== "";
+		formData.isInColumbus !== "" &&
+		formData.isOver45 !== "" &&
+		formData.hasHealthChallenges !== "";
 
 	const handleChange = (id, value) => {
 		setFormData((prev) => ({ ...prev, [id]: value }));
@@ -167,7 +182,7 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 	const isCurrentStepComplete = () => {
 		switch (step.type) {
 			case "eligibility":
-				return eligibilityAnswered;
+				return eligibilityAnswered && !isOutsideColumbus;
 			case "textarea":
 				return formData[step.id].trim().length >= step.minLength;
 			case "logistics":
@@ -359,7 +374,27 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 									{step.type === "eligibility" && (
 										<div className="space-y-6">
 											{step.fields.map(renderRadioField)}
-											{eligibilityAnswered && !isEligible && (
+											{isOutsideColumbus && (
+												<div className="rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-white/80">
+													<p className="mb-2 text-white font-medium">
+														We're sorry, this scholarship
+														is only available to women
+														located in Columbus, Ohio.
+													</p>
+													<p>
+														Both Mo Muscle training
+														facilities are in the
+														Columbus area, and the
+														scholarship requires
+														in-person training. We're
+														not able to accept
+														applications from other
+														cities or states at this
+														time.
+													</p>
+												</div>
+											)}
+											{!isOutsideColumbus && eligibilityAnswered && !isEligible && (
 												<div className="rounded-lg border border-[#0582c0]/40 bg-[#0582c0]/10 p-4 text-sm text-white/80">
 													<p className="mb-2">
 														This scholarship is

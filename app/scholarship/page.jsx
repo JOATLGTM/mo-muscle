@@ -98,6 +98,8 @@ function PhotoPlaceholder({ label, className = "" }) {
 export default function ScholarshipPage() {
 	useLenis();
 	const [showModal, setShowModal] = useState(false);
+	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const videoRef = useRef(null);
 	const pageRef = useRef(null);
 	const heroContentRef = useRef(null);
 
@@ -158,6 +160,12 @@ export default function ScholarshipPage() {
 
 		return () => ctx.revert();
 	}, []);
+
+	const playVideo = () => {
+		const video = videoRef.current;
+		if (!video) return;
+		video.play().catch(() => {});
+	};
 
 	const scrollTo = (id) => {
 		const el = document.getElementById(id);
@@ -464,22 +472,42 @@ export default function ScholarshipPage() {
 						</p>
 					</div>
 
-					{/* Video placeholder. Replace this block with a <video> or <iframe> when the final cut is ready. */}
-					<div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#0A0A0F] to-[#050508]">
-						<div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(5,130,192,0.25)_0%,_transparent_65%)]" />
-						<div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-							<div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0582c0]/20 border border-[#0582c0]/40 flex items-center justify-center">
-								<div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0582c0] flex items-center justify-center">
-									<Play className="w-6 h-6 md:w-7 md:h-7 text-white ml-1" fill="currentColor" />
+					{/* Shawna's story video. Poster shows until the visitor presses play. */}
+					<div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#050508]">
+						<video
+							ref={videoRef}
+							src="/videos/shawna-story.mp4"
+							poster="/videos/shawna-story-poster.jpg"
+							preload="metadata"
+							playsInline
+							controls={isVideoPlaying}
+							onPlay={() => setIsVideoPlaying(true)}
+							onEnded={() => setIsVideoPlaying(false)}
+							className="absolute inset-0 w-full h-full object-cover"
+						>
+							Your browser does not support the video tag.
+						</video>
+
+						{!isVideoPlaying && (
+							<button
+								type="button"
+								onClick={playVideo}
+								aria-label="Play Shawna's story"
+								className="group absolute inset-0 flex flex-col items-center justify-center gap-5 bg-gradient-to-t from-[#050508]/80 via-[#050508]/20 to-transparent"
+							>
+								<div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0582c0]/20 border border-[#0582c0]/40 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+									<div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0582c0] flex items-center justify-center">
+										<Play className="w-6 h-6 md:w-7 md:h-7 text-white ml-1" fill="currentColor" />
+									</div>
 								</div>
-							</div>
-							<p className="font-mono-custom text-xs text-white/60 uppercase tracking-[0.3em]">
-								Video coming soon
-							</p>
-						</div>
-						<div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 font-mono-custom text-[10px] md:text-xs text-white/50 uppercase tracking-wider bg-[#050508]/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-							5:00
-						</div>
+								<p className="font-mono-custom text-xs text-white/80 uppercase tracking-[0.3em]">
+									Watch Her Story
+								</p>
+								<span className="absolute bottom-4 left-4 md:bottom-6 md:left-6 font-mono-custom text-[10px] md:text-xs text-white/60 uppercase tracking-wider bg-[#050508]/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
+									4:45
+								</span>
+							</button>
+						)}
 					</div>
 				</div>
 			</section>

@@ -6,6 +6,8 @@ import {
 	SCHOLARSHIP_QUESTIONS,
 } from "@/lib/email-templates/scholarship-application-template";
 
+const SCHOLARSHIP_RECIPIENT = "trainmomuscle@gmail.com";
+
 const REQUIRED_FIELDS = [
 	"fullName",
 	"email",
@@ -46,7 +48,7 @@ export async function POST(req) {
 		await transporter.sendMail({
 			from: process.env.EMAIL_USER,
 			replyTo: formData.email,
-			to: process.env.EMAIL_USER,
+			to: SCHOLARSHIP_RECIPIENT,
 			subject: `Shawna Miller Scholarship Application - ${formData.fullName}`,
 			text: textContent,
 			html: htmlContent,
