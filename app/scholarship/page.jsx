@@ -15,6 +15,7 @@ import {
 	Play,
 	ImageIcon,
 	ChevronDown,
+	CalendarDays,
 } from "lucide-react";
 import FloatingNav from "@/components/FloatingNav";
 import HeroFooter from "@/components/sections/HeroFooter";
@@ -25,10 +26,13 @@ if (typeof window !== "undefined") {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
+// Applications close at the end of November 2, 2026 (Eastern time).
+const APPLICATION_CLOSES_AT = new Date("2026-11-03T00:00:00-05:00");
+
 const benefits = [
 	{
 		icon: Dumbbell,
-		title: "6 Months of Personal Training",
+		title: "1 Year of Personal Training",
 		description: "One-on-one coaching with the Mo Muscle coaching team.",
 	},
 	{
@@ -101,6 +105,15 @@ export default function ScholarshipPage() {
 	useLenis();
 	const [showModal, setShowModal] = useState(false);
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const [isClosed, setIsClosed] = useState(false);
+
+	useEffect(() => {
+		const check = () =>
+			setIsClosed(Date.now() >= APPLICATION_CLOSES_AT.getTime());
+		check();
+		const timer = setInterval(check, 60 * 1000);
+		return () => clearInterval(timer);
+	}, []);
 	const videoRef = useRef(null);
 	const pageRef = useRef(null);
 	const heroContentRef = useRef(null);
@@ -221,17 +234,20 @@ export default function ScholarshipPage() {
 						<span className="text-[#0582c0]">INSPIRE ANOTHER.</span>
 					</h1>
 					<p className="hero-reveal max-w-2xl mx-auto text-white/80 text-base md:text-lg leading-relaxed mb-10 opacity-0">
-						A completely free 6-month training and wellness package
+						A completely free 1-year training and wellness package
 						for one woman over 45 who is facing health challenges
 						and ready to fight for her health.
 					</p>
 					<div className="hero-reveal flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
 						<button
 							onClick={() => setShowModal(true)}
-							className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-[#016a9e] transition-all duration-300"
+							disabled={isClosed}
+							className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0582c0] text-white font-display text-sm uppercase tracking-wider rounded-full hover:bg-[#016a9e] transition-all duration-300 disabled:bg-white/10 disabled:text-white/40 disabled:cursor-not-allowed disabled:hover:bg-white/10"
 						>
-							Apply Now
-							<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+							{isClosed ? "Applications Closed" : "Apply Now"}
+							{!isClosed && (
+								<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+							)}
 						</button>
 						<button
 							onClick={() => scrollTo("story")}
@@ -241,6 +257,12 @@ export default function ScholarshipPage() {
 							<ChevronDown className="w-4 h-4" />
 						</button>
 					</div>
+					<p className="hero-reveal mt-8 inline-flex items-center gap-2 font-mono-custom text-xs sm:text-sm uppercase tracking-wider text-white/70 opacity-0">
+						<CalendarDays className="w-4 h-4 text-[#0582c0]" />
+						{isClosed
+							? "Applications are now closed"
+							: "Applications close November 2, 2026"}
+					</p>
 				</div>
 
 				<div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#0582c0]/40 to-transparent" />
@@ -371,7 +393,7 @@ export default function ScholarshipPage() {
 						<p className="text-white/85 text-base md:text-lg leading-relaxed">
 							One woman over the age of 45 who is currently facing
 							medical or health-related challenges will receive a
-							completely free 6-month training and wellness package
+							completely free 1-year training and wellness package
 							at Mo Muscle.
 						</p>
 					</div>
@@ -449,16 +471,31 @@ export default function ScholarshipPage() {
 							</span>
 						</h2>
 						<p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto mb-10">
-							The application takes about 10 minutes. We'll ask
-							about your health challenges, why now is the right
-							time, and why you deserve this opportunity.
+							{isClosed
+								? "Thank you to every woman who shared her story. Applications for the Shawna Miller Scholarship closed on November 2, 2026, and we are now reviewing submissions."
+								: "The application takes about 10 minutes. We'll ask about your health challenges, why now is the right time, and why you deserve this opportunity."}
 						</p>
+						<div className="mb-10">
+							<div className="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-[#0582c0]/40 bg-[#0582c0]/10">
+								<CalendarDays className="w-4 h-4 text-[#0582c0]" />
+								<p className="font-mono-custom text-xs sm:text-sm uppercase tracking-wider text-white">
+									{isClosed
+										? "Applications are now closed"
+										: "Deadline: November 2, 2026"}
+								</p>
+							</div>
+						</div>
 						<button
 							onClick={() => setShowModal(true)}
-							className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-display text-sm md:text-base uppercase tracking-wider rounded-full overflow-hidden transition-colors duration-300 hover:bg-[#0582c0] hover:text-white border-2 border-white hover:border-[#0582c0]"
+							disabled={isClosed}
+							className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-display text-sm md:text-base uppercase tracking-wider rounded-full overflow-hidden transition-colors duration-300 hover:bg-[#0582c0] hover:text-white border-2 border-white hover:border-[#0582c0] disabled:bg-white/10 disabled:text-white/40 disabled:border-white/20 disabled:cursor-not-allowed disabled:hover:bg-white/10 disabled:hover:text-white/40 disabled:hover:border-white/20"
 						>
-							Apply for the Shawna Miller Scholarship
-							<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+							{isClosed
+								? "Applications Are Now Closed"
+								: "Apply for the Shawna Miller Scholarship"}
+							{!isClosed && (
+								<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+							)}
 						</button>
 					</div>
 				</div>
@@ -524,7 +561,10 @@ export default function ScholarshipPage() {
 
 			<HeroFooter />
 
-			<ScholarshipModal open={showModal} onOpenChange={setShowModal} />
+			<ScholarshipModal
+				open={showModal && !isClosed}
+				onOpenChange={setShowModal}
+			/>
 		</div>
 	);
 }

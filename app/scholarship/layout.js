@@ -1,7 +1,7 @@
 export const metadata = {
 	title: "The Shawna Miller Scholarship | Mo Muscle",
 	description:
-		"The Shawna Miller Scholarship gives one woman over 45 facing health challenges a completely free 6-month personal training and wellness package at Mo Muscle. Apply today.",
+		"The Shawna Miller Scholarship gives one woman over 45 facing health challenges a completely free 1-year personal training and wellness package at Mo Muscle. Applications close November 2, 2026.",
 	alternates: {
 		canonical: "https://www.trainmomuscle.com/scholarship",
 	},
@@ -11,7 +11,7 @@ export const metadata = {
 	openGraph: {
 		title: "The Shawna Miller Scholarship | Mo Muscle",
 		description:
-			"One story can inspire another. A free 6-month training and wellness package for one woman over 45 facing health challenges.",
+			"One story can inspire another. A free 1-year training and wellness package for one woman over 45 facing health challenges.",
 		url: "https://www.trainmomuscle.com/scholarship",
 		siteName: "Mo Muscle",
 		type: "website",
