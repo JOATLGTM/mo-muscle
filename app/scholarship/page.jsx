@@ -28,7 +28,7 @@ if (typeof window !== "undefined") {
 const benefits = [
 	{
 		icon: Dumbbell,
-		title: "6 Months of Personal Training",
+		title: "3 Years of Personal Training",
 		description: "One-on-one coaching with the Mo Muscle coaching team.",
 	},
 	{
@@ -221,7 +221,7 @@ export default function ScholarshipPage() {
 						<span className="text-[#0582c0]">INSPIRE ANOTHER.</span>
 					</h1>
 					<p className="hero-reveal max-w-2xl mx-auto text-white/80 text-base md:text-lg leading-relaxed mb-10 opacity-0">
-						A completely free 6-month training and wellness package
+						A completely free 3-year training and wellness package
 						for one woman over 45 who is facing health challenges
 						and ready to fight for her health.
 					</p>
@@ -293,10 +293,10 @@ export default function ScholarshipPage() {
 							</div>
 							<div className="absolute -bottom-6 -left-6 hidden md:block bg-[#0582c0] rounded-xl px-6 py-5 shadow-2xl">
 								<p className="font-display text-3xl text-white leading-none">
-									6
+									3
 								</p>
 								<p className="font-mono-custom text-[10px] text-white/80 uppercase tracking-wider mt-1">
-									Months, fully covered
+									Years, fully covered
 								</p>
 							</div>
 						</div>
@@ -371,7 +371,7 @@ export default function ScholarshipPage() {
 						<p className="text-white/85 text-base md:text-lg leading-relaxed">
 							One woman over the age of 45 who is currently facing
 							medical or health-related challenges will receive a
-							completely free 6-month training and wellness package
+							completely free 3-year training and wellness package
 							at Mo Muscle.
 						</p>
 					</div>
