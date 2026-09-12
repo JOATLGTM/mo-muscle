@@ -60,25 +60,27 @@ const benefits = [
 	},
 ];
 
-// Placeholder journey milestones. Swap `image` for real photos of Shawna when available.
 const journey = [
 	{
 		label: "Where She Started",
 		caption:
 			"Facing her own health challenges, Shawna made the decision to invest in herself.",
-		image: null,
+		image: "/images/Shauna/before.jpeg",
+		position: "object-[45%_center]",
 	},
 	{
 		label: "Showing Up",
 		caption:
 			"Session after session, her determination and consistency built real momentum.",
-		image: null,
+		image: "/images/Shauna/during.JPG",
+		position: "object-center",
 	},
 	{
 		label: "Where She Is Today",
 		caption:
 			"Stronger, healthier, and proof that it is never too late to change your life.",
-		image: null,
+		image: "/images/Shauna/after.png",
+		position: "object-top",
 	},
 ];
 
@@ -279,8 +281,15 @@ export default function ScholarshipPage() {
 						</div>
 
 						<div className="reveal relative">
-							<div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-								<PhotoPlaceholder label="Portrait of Shawna Miller" />
+							<div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10">
+								<Image
+									src="/images/Shauna/her-story.JPEG"
+									alt="Shawna Miller at Mo Muscle"
+									fill
+									sizes="(min-width: 1024px) 50vw, 100vw"
+									className="object-cover"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-[#050508]/40 to-transparent" />
 							</div>
 							<div className="absolute -bottom-6 -left-6 hidden md:block bg-[#0582c0] rounded-xl px-6 py-5 shadow-2xl">
 								<p className="font-display text-3xl text-white leading-none">
@@ -320,9 +329,10 @@ export default function ScholarshipPage() {
 									{milestone.image ? (
 										<Image
 											src={milestone.image}
-											alt={milestone.label}
+											alt={`Shawna Miller - ${milestone.label}`}
 											fill
-											className="object-cover transition-transform duration-700 group-hover:scale-105"
+											sizes="(min-width: 768px) 33vw, 100vw"
+											className={`object-cover transition-transform duration-700 group-hover:scale-105 ${milestone.position || "object-center"}`}
 										/>
 									) : (
 										<PhotoPlaceholder
