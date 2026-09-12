@@ -523,7 +523,7 @@ export default function ScholarshipPage() {
 					<div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#050508]">
 						<video
 							ref={videoRef}
-							src="/videos/shawna-story.mp4"
+							src="/videos/shawna.mp4"
 							poster="/videos/shawna-story-poster.jpg"
 							preload="metadata"
 							playsInline
