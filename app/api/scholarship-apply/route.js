@@ -13,6 +13,7 @@ const REQUIRED_FIELDS = [
 	"email",
 	"phone",
 	"age",
+	"children",
 	...SCHOLARSHIP_QUESTIONS.map((q) => q.id),
 ];
 

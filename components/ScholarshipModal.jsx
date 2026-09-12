@@ -14,19 +14,11 @@ const steps = [
 		type: "eligibility",
 		title: "Before we begin",
 		subtext:
-			"The Shawna Miller Scholarship is open to women over the age of 45 in Columbus, Ohio who are currently facing medical or health-related challenges.",
+			"The Shawna Miller Scholarship is open to women in Columbus, Ohio who are currently facing medical or health-related challenges.",
 		fields: [
 			{
 				id: "isInColumbus",
 				question: "Are you located in Columbus, Ohio?",
-				options: [
-					{ value: "yes", label: "Yes" },
-					{ value: "no", label: "No" },
-				],
-			},
-			{
-				id: "isOver45",
-				question: "Are you a woman over the age of 45?",
 				options: [
 					{ value: "yes", label: "Yes" },
 					{ value: "no", label: "No" },
@@ -44,47 +36,58 @@ const steps = [
 		],
 	},
 	{
-		id: "healthChallenges",
+		id: "healthConcerns",
 		type: "textarea",
-		question: "Tell us about the health challenges you're facing right now.",
+		question: "Current underlying health issues or concerns?",
 		subtext:
 			"Share as much or as little as you're comfortable with. This helps our coaches understand where you're starting from.",
-		placeholder: "For example: a recent diagnosis, chronic pain, mobility issues, recovery from surgery...",
-		minLength: 40,
+		placeholder: "For example: a diagnosis, blood pressure, diabetes, mobility, energy levels...",
 	},
 	{
-		id: "whyNow",
+		id: "painInjuries",
 		type: "textarea",
-		question: "Why is now the right time for you to make a change?",
-		subtext: "What has shifted for you? What made you decide to apply today?",
-		placeholder: "Tell us what brought you here...",
-		minLength: 40,
+		question: "Pain or injuries?",
+		subtext: "Anything current or past that we should know about before you train.",
+		placeholder: "For example: knee pain, a past surgery, back issues... or none.",
 	},
 	{
-		id: "whyDeserve",
+		id: "aboutYourself",
 		type: "textarea",
-		question: "Why do you deserve the Shawna Miller Scholarship?",
+		question: "Tell us a little about yourself.",
 		subtext:
-			"This isn't about being in shape or having it all figured out. It's about being ready.",
-		placeholder: "Tell us your story...",
-		minLength: 80,
+			"Who are you, what does your everyday life look like, and what would you like us to know about you?",
+		placeholder: "Tell us about you...",
 	},
 	{
-		id: "goals",
+		id: "healthImpact",
 		type: "textarea",
-		question: "What do you hope to achieve over the next 6 months?",
+		question:
+			"Do your current underlying health issues stop you from showing up to your day to day life?",
+		subtext: "Tell us how they affect you.",
+		placeholder: "For example: I get winded, I avoid certain activities, I miss out on things with my family...",
+	},
+	{
+		id: "consideredHowLong",
+		type: "textarea",
+		question:
+			"How long have you considered doing something about your health?",
+		subtext: "What has stopped you from pursuing that?",
+		placeholder: "Tell us what has held you back...",
+	},
+	{
+		id: "lifeChange",
+		type: "textarea",
+		question: "How would your life change by receiving this scholarship?",
 		subtext: "Think about how you want to feel, move, and live.",
-		placeholder: "For example: walk without pain, keep up with my grandkids, lower my blood pressure, feel strong again...",
-		minLength: 40,
+		placeholder: "Tell us what this would mean for you...",
 	},
 	{
-		id: "commitment",
+		id: "howItWouldFeel",
 		type: "textarea",
-		question: "How will you commit to showing up?",
-		subtext:
-			"Consistency is what made Shawna's journey possible. What will consistency look like for you?",
-		placeholder: "Tell us how you'll make this a priority...",
-		minLength: 40,
+		question:
+			"How would it feel to hit the health goals you have for yourself?",
+		subtext: "How would it feel to show up better for your family?",
+		placeholder: "Tell us how that would feel...",
 	},
 	{
 		id: "logistics",
@@ -122,19 +125,21 @@ const steps = [
 
 const initialFormData = {
 	isInColumbus: "",
-	isOver45: "",
+	age: "",
 	hasHealthChallenges: "",
-	healthChallenges: "",
-	whyNow: "",
-	whyDeserve: "",
-	goals: "",
-	commitment: "",
+	healthConcerns: "",
+	painInjuries: "",
+	aboutYourself: "",
+	healthImpact: "",
+	consideredHowLong: "",
+	lifeChange: "",
+	howItWouldFeel: "",
 	locationPreference: "",
 	availability: "",
+	children: "",
 	fullName: "",
 	email: "",
 	phone: "",
-	age: "",
 	referralSource: "",
 };
 
@@ -151,13 +156,16 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 
 	// Location is a hard requirement: applicants outside Columbus, Ohio cannot continue.
 	const isOutsideColumbus = formData.isInColumbus === "no";
+	const ageNum = Number(formData.age);
+	const ageEntered =
+		formData.age !== "" && !Number.isNaN(ageNum) && ageNum >= 1 && ageNum <= 120;
 	const isEligible =
 		formData.isInColumbus === "yes" &&
-		formData.isOver45 === "yes" &&
+		ageEntered &&
 		formData.hasHealthChallenges === "yes";
 	const eligibilityAnswered =
 		formData.isInColumbus !== "" &&
-		formData.isOver45 !== "" &&
+		ageEntered &&
 		formData.hasHealthChallenges !== "";
 
 	const handleChange = (id, value) => {
@@ -184,9 +192,18 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 			case "eligibility":
 				return eligibilityAnswered && !isOutsideColumbus;
 			case "textarea":
-				return formData[step.id].trim().length >= step.minLength;
-			case "logistics":
-				return step.fields.every((f) => Boolean(formData[f.id]));
+				return formData[step.id].trim().length > 0;
+			case "logistics": {
+				const childrenNum = Number(formData.children);
+				const childrenValid =
+					formData.children !== "" &&
+					Number.isInteger(childrenNum) &&
+					childrenNum >= 0;
+				return (
+					step.fields.every((f) => Boolean(formData[f.id])) &&
+					childrenValid
+				);
+			}
 			case "contact":
 				return true;
 			default:
@@ -215,12 +232,6 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 		}
 		if (!/^[0-9]{10}$/.test(formData.phone)) {
 			newErrors.phone = "Phone number must be 10 digits.";
-		}
-		const ageNum = Number(formData.age);
-		if (!formData.age || Number.isNaN(ageNum) || ageNum < 18 || ageNum > 120) {
-			newErrors.age = "Please enter your age.";
-		} else if (ageNum < 46) {
-			newErrors.age = "This scholarship is for women over the age of 45.";
 		}
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
@@ -373,7 +384,29 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 
 									{step.type === "eligibility" && (
 										<div className="space-y-6">
-											{step.fields.map(renderRadioField)}
+											{renderRadioField(step.fields[0])}
+											<div className="space-y-3">
+												<Label
+													htmlFor="age"
+													className="text-white font-medium text-base leading-normal"
+												>
+													What's your age?
+												</Label>
+												<Input
+													id="age"
+													type="number"
+													inputMode="numeric"
+													min={1}
+													max={120}
+													value={formData.age}
+													onChange={(e) =>
+														handleChange("age", e.target.value)
+													}
+													placeholder="Your age"
+													className={`max-w-[200px] ${inputClass(false)}`}
+												/>
+											</div>
+											{renderRadioField(step.fields[1])}
 											{isOutsideColumbus && (
 												<div className="rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-white/80">
 													<p className="mb-2 text-white font-medium">
@@ -399,7 +432,7 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 													<p className="mb-2">
 														This scholarship is
 														specifically for women
-														over 45 facing health
+														facing health
 														challenges. You're still
 														welcome to apply, and we'd
 														love to help you get
@@ -426,18 +459,33 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 												rows={6}
 												className="w-full rounded-lg bg-white/5 border border-white/10 focus:border-[#0582c0] focus:outline-none focus:ring-1 focus:ring-[#0582c0] text-white placeholder:text-white/30 p-4 text-base leading-relaxed resize-y transition-all duration-300"
 											/>
-											<p className="mt-2 text-xs font-mono-custom text-white/40 uppercase tracking-wider">
-												{formData[step.id].trim().length <
-												step.minLength
-													? `At least ${step.minLength} characters`
-													: `${formData[step.id].trim().length} characters`}
-											</p>
 										</div>
 									)}
 
 									{step.type === "logistics" && (
 										<div className="space-y-6">
 											{step.fields.map(renderRadioField)}
+											<div className="space-y-3">
+												<Label
+													htmlFor="children"
+													className="text-white font-medium text-base leading-normal"
+												>
+													How many children do you have?
+												</Label>
+												<Input
+													id="children"
+													type="number"
+													inputMode="numeric"
+													min={0}
+													max={30}
+													value={formData.children}
+													onChange={(e) =>
+														handleChange("children", e.target.value)
+													}
+													placeholder="0"
+													className={`max-w-[200px] ${inputClass(false)}`}
+												/>
+											</div>
 										</div>
 									)}
 
@@ -513,32 +561,6 @@ export default function ScholarshipModal({ open, onOpenChange }) {
 													{errors.phone && (
 														<p className="text-red-400 text-sm mt-1">
 															{errors.phone}
-														</p>
-													)}
-												</div>
-												<div>
-													<Label
-														htmlFor="age"
-														className="text-white/80 mb-2 block"
-													>
-														Age
-													</Label>
-													<Input
-														id="age"
-														type="number"
-														inputMode="numeric"
-														min={18}
-														max={120}
-														value={formData.age}
-														onChange={(e) =>
-															handleChange("age", e.target.value)
-														}
-														placeholder="Your age"
-														className={inputClass(errors.age)}
-													/>
-													{errors.age && (
-														<p className="text-red-400 text-sm mt-1">
-															{errors.age}
 														</p>
 													)}
 												</div>
