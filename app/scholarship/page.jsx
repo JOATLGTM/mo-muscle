@@ -83,7 +83,7 @@ const journey = [
 		label: "Where She Is Today",
 		caption:
 			"Stronger, healthier, and proof that it is never too late to change your life.",
-		image: "/images/Shauna/after.png",
+		image: "/images/Shauna/after.jpeg",
 		position: "object-top",
 	},
 ];
