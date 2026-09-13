@@ -33,7 +33,7 @@ const benefits = [
 	{
 		icon: Dumbbell,
 		title: "1 Year of Personal Training",
-		description: "One-on-one coaching with the Mo Muscle coaching team.",
+		description: "In person coaching with the Mo Muscle coaching team.",
 	},
 	{
 		icon: Utensils,
@@ -131,7 +131,7 @@ export default function ScholarshipPage() {
 					stagger: 0.15,
 					ease: "power3.out",
 					delay: 0.3,
-				}
+				},
 			);
 
 			// Scroll reveals
@@ -149,7 +149,7 @@ export default function ScholarshipPage() {
 							start: "top 85%",
 							toggleActions: "play none none none",
 						},
-					}
+					},
 				);
 			});
 
@@ -168,7 +168,7 @@ export default function ScholarshipPage() {
 							start: "top 80%",
 							toggleActions: "play none none none",
 						},
-					}
+					},
 				);
 			});
 		}, pageRef);
@@ -269,7 +269,10 @@ export default function ScholarshipPage() {
 			</section>
 
 			{/* Her Story */}
-			<section id="story" className="relative py-24 md:py-32 bg-[#050508]">
+			<section
+				id="story"
+				className="relative py-24 md:py-32 bg-[#050508]"
+			>
 				<div className="max-w-7xl mx-auto px-6 md:px-12">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 						<div className="reveal">
@@ -286,18 +289,18 @@ export default function ScholarshipPage() {
 								<p>
 									The Shawna Miller Scholarship was created in
 									honor of one of our incredible Mo Muscle
-									clients, whose journey is a powerful reminder
-									that it is never too late to fight for your
-									health, build your strength, and change your
-									life.
+									clients, whose journey is a powerful
+									reminder that it is never too late to fight
+									for your health, build your strength, and
+									change your life.
 								</p>
 								<p>
-									After facing her own health challenges, Shawna
-									made the decision to invest in herself. Her
-									determination, consistency, and willingness to
-									keep showing up inspired us to create an
-									opportunity for another woman to begin her own
-									journey.
+									After facing her own health challenges,
+									Shawna made the decision to invest in
+									herself. Her determination, consistency, and
+									willingness to keep showing up inspired us
+									to create an opportunity for another woman
+									to begin her own journey.
 								</p>
 							</div>
 						</div>
@@ -335,12 +338,14 @@ export default function ScholarshipPage() {
 						</p>
 						<h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05]">
 							SHOWING UP,{" "}
-							<span className="text-white/40">AGAIN AND AGAIN.</span>
+							<span className="text-white/40">
+								AGAIN AND AGAIN.
+							</span>
 						</h2>
 						<p className="text-white/70 text-base md:text-lg leading-relaxed">
 							Shawna's transformation didn't happen overnight. It
-							happened one session, one meal, and one decision at a
-							time. Here is a look at how far she has come.
+							happened one session, one meal, and one decision at
+							a time. Here is a look at how far she has come.
 						</p>
 					</div>
 
@@ -544,7 +549,10 @@ export default function ScholarshipPage() {
 							>
 								<div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0582c0]/20 border border-[#0582c0]/40 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
 									<div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0582c0] flex items-center justify-center">
-										<Play className="w-6 h-6 md:w-7 md:h-7 text-white ml-1" fill="currentColor" />
+										<Play
+											className="w-6 h-6 md:w-7 md:h-7 text-white ml-1"
+											fill="currentColor"
+										/>
 									</div>
 								</div>
 								<p className="font-mono-custom text-xs text-white/80 uppercase tracking-[0.3em]">
