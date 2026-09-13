@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Dumbbell, ChevronDown } from "lucide-react";
 import { heroConfig } from "@/config/site";
@@ -15,44 +15,22 @@ export default function Hero() {
 	const overlayRef = useRef<HTMLDivElement>(null);
 
 	const TARGET_TEXT = heroConfig.decodeText;
-	const CHARS =
-		heroConfig.decodeChars ||
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-	const [displayText, setDisplayText] = useState(
-		" ".repeat(TARGET_TEXT.length),
-	);
-	const [isDecoding, setIsDecoding] = useState(true);
-
-	useEffect(() => {
-		let iteration = 0;
-		const maxIterations = TARGET_TEXT.length * 8;
-
-		const interval = setInterval(() => {
-			setDisplayText(() => {
-				return TARGET_TEXT.split("")
-					.map((_, index) => {
-						if (index < iteration / 8) {
-							return TARGET_TEXT[index];
-						}
-						return CHARS[Math.floor(Math.random() * CHARS.length)];
-					})
-					.join("");
-			});
-
-			iteration += 1;
-
-			if (iteration >= maxIterations) {
-				clearInterval(interval);
-				setDisplayText(TARGET_TEXT);
-				setIsDecoding(false);
-			}
-		}, 60); // Reduced from 40ms to 60ms for better performance
-
-		return () => clearInterval(interval);
-	}, [TARGET_TEXT, CHARS]);
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
+			gsap.fromTo(
+				titleRef.current,
+				{ y: 20, opacity: 0, filter: "blur(12px)" },
+				{
+					y: 0,
+					opacity: 1,
+					filter: "blur(0px)",
+					duration: 1.4,
+					ease: "power3.out",
+					delay: 0.2,
+				},
+			);
+
 			gsap.fromTo(
 				subtitleRef.current,
 				{ y: 30, opacity: 0 },
@@ -135,13 +113,9 @@ export default function Hero() {
 				<div className="flex flex-col items-center justify-center max-w-7xl w-full">
 					<h1
 						ref={titleRef}
-						className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap"
+						className="decode-text text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5vw] xl:text-[4.5vw] font-bold text-white leading-none tracking-tighter mb-6 text-center whitespace-nowrap opacity-0"
 					>
-						<span
-							className={`${isDecoding ? "text-glow-cyan" : ""} transition-all duration-300`}
-						>
-							{displayText}
-						</span>
+						{TARGET_TEXT}
 					</h1>
 
 					<div
