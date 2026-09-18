@@ -77,6 +77,7 @@ export default function BlogPost({ params }) {
 					"Trainers",
 					"Blog",
 					"Why Mo Muscle",
+					"Scholarship",
 					"Schedule",
 				]}
 			/>

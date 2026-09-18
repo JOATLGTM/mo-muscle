@@ -195,6 +195,7 @@ export default function ScholarshipPage() {
 					"Trainers",
 					"Blog",
 					"Why Mo Muscle",
+					"Scholarship",
 					"Schedule",
 				]}
 			/>
@@ -495,9 +496,18 @@ export default function ScholarshipPage() {
 							disabled={isClosed}
 							className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-display text-sm md:text-base uppercase tracking-wider rounded-full overflow-hidden transition-colors duration-300 hover:bg-[#0582c0] hover:text-white border-2 border-white hover:border-[#0582c0] disabled:bg-white/10 disabled:text-white/40 disabled:border-white/20 disabled:cursor-not-allowed disabled:hover:bg-white/10 disabled:hover:text-white/40 disabled:hover:border-white/20"
 						>
-							{isClosed
-								? "Applications Are Now Closed"
-								: "Apply for the Shawna Miller Scholarship"}
+							{isClosed ? (
+								"Applications Are Now Closed"
+							) : (
+								<span className="text-center">
+									Apply for the Shawna
+									<br className="sm:hidden" />
+									<span className="whitespace-nowrap">
+										{" "}
+										Miller Scholarship
+									</span>
+								</span>
+							)}
 							{!isClosed && (
 								<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
 							)}

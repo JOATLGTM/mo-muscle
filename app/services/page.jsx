@@ -209,7 +209,7 @@ function ServicesContent() {
 
 	return (
 		<div className="min-h-screen bg-void-black text-white">
-			<FloatingNav showOnly={["Home", "Trainers", "Why Mo Muscle", "Blog", "Schedule"]} />
+			<FloatingNav showOnly={["Home", "Trainers", "Why Mo Muscle", "Blog", "Scholarship", "Schedule"]} />
 
 			{/* Logo - Fixed at top */}
 			<div className="fixed top-4 left-4 md:top-8 md:left-8 z-50">

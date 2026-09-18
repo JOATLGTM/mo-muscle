@@ -102,7 +102,7 @@ export default function BlogPage() {
 
 	return (
 		<div className="bg-[#050508] text-white min-h-screen">
-			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Schedule']} />
+			<FloatingNav showOnly={['Home', 'Trainers', 'Blog', 'Why Mo Muscle', 'Scholarship', 'Schedule']} />
 			
 			{/* Hero Section */}
 			<section className="relative w-full h-screen overflow-hidden">

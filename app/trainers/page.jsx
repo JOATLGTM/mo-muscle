@@ -108,6 +108,7 @@ export default function TrainersPage() {
 					"Trainers",
 					"Blog",
 					"Why Mo Muscle",
+					"Scholarship",
 					"Schedule",
 				]}
 			/>

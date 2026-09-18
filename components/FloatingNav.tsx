@@ -11,6 +11,7 @@ import {
 	BookOpen,
 	Heart,
 	Calendar,
+	Award,
 	Menu,
 	X,
 } from "lucide-react";
@@ -35,14 +36,12 @@ const allNavItems = [
 		href: "/whymomuscle",
 	},
 	{ label: "Blog", sectionId: null, icon: BookOpen, href: "/blog" },
-	// Scholarship page exists at /scholarship but is hidden from the nav until launch.
-	// Uncomment to show it (and add "Scholarship" back to each page's showOnly list).
-	// {
-	// 	label: "Scholarship",
-	// 	sectionId: null,
-	// 	icon: Award,
-	// 	href: "/scholarship",
-	// },
+	{
+		label: "Scholarship",
+		sectionId: null,
+		icon: Award,
+		href: "/scholarship",
+	},
 	{ label: "Schedule", sectionId: null, icon: Calendar, href: null },
 ];
 
