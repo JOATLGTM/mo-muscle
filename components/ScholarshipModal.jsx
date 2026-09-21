@@ -75,6 +75,23 @@ const steps = [
 		placeholder: "Tell us what has held you back...",
 	},
 	{
+		id: "biggestObstacle",
+		type: "textarea",
+		question:
+			"What do you feel has been your biggest obstacle to improving your health?",
+		subtext:
+			"This could be finances, accountability, knowledge, motivation, medical limitations, time, fear of the gym, or something else.",
+		placeholder: "Tell us what has gotten in the way...",
+	},
+	{
+		id: "whyNow",
+		type: "textarea",
+		question: "Why do you want to make a change right now?",
+		subtext:
+			"Was there a particular moment or realization that made you decide now is the time?",
+		placeholder: "Tell us what brought you here today...",
+	},
+	{
 		id: "lifeChange",
 		type: "textarea",
 		question: "How would your life change by receiving this scholarship?",
@@ -88,6 +105,14 @@ const steps = [
 			"How would it feel to hit the health goals you have for yourself?",
 		subtext: "How would it feel to show up better for your family?",
 		placeholder: "Tell us how that would feel...",
+	},
+	{
+		id: "whySelected",
+		type: "textarea",
+		question:
+			"Why should you be selected for the Mo Muscle Training Scholarship?",
+		subtext: "This is your chance to make your case. Be honest and be yourself.",
+		placeholder: "Tell us why this scholarship should go to you...",
 	},
 	{
 		id: "logistics",
@@ -132,8 +157,11 @@ const initialFormData = {
 	aboutYourself: "",
 	healthImpact: "",
 	consideredHowLong: "",
+	biggestObstacle: "",
+	whyNow: "",
 	lifeChange: "",
 	howItWouldFeel: "",
+	whySelected: "",
 	locationPreference: "",
 	availability: "",
 	children: "",
