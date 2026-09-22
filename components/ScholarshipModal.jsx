@@ -110,7 +110,7 @@ const steps = [
 		id: "whySelected",
 		type: "textarea",
 		question:
-			"Why should you be selected for the Mo Muscle Training Scholarship?",
+			"Why should you be selected for the Shawna Miller Scholarship?",
 		subtext: "This is your chance to make your case. Be honest and be yourself.",
 		placeholder: "Tell us why this scholarship should go to you...",
 	},
